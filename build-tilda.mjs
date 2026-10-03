@@ -64,3 +64,30 @@ BLOCKS.forEach(([file, sections, note]) => out(file, head('БЛОК ' + file.sli
 out('site-1-of-3-config.html', head('САЙТ · КОД 1 из 3 · КОНФИГ', 'меняйте только значения в кавычках') + `\n<script>\n${config}\n</script>`);
 out('site-2-of-3-fonts-styles.html', head('САЙТ · КОД 2 из 3 · ШРИФТЫ И СТИЛИ') + '\n' + fontsBlock + `\n<style>${css}</style>`);
 out('site-3-of-3-content-script.html', head('САЙТ · КОД 3 из 3 · СЕКЦИИ И СКРИПТ') + '\n' + BLOCKS.map(([, s]) => mount(s)).join('\n') + `\n<script>${js}</script>`);
+
+// --- Минифицированные файлы для подключения по ссылке (короткие блоки) ---
+const dist = new URL('dist/', import.meta.url);
+fs.mkdirSync(dist, { recursive: true });
+fs.writeFileSync(new URL('aawed.min.css', dist), css);
+fs.writeFileSync(new URL('aawed.min.js', dist), js);
+
+// LOADER_COMMIT — коммит, в котором лежат dist/aawed.min.* (обновляется после пересборки)
+const LOADER_COMMIT = process.env.LOADER_COMMIT || (fs.existsSync(new URL('dist/.commit', import.meta.url)) ? read('dist/.commit').trim() : '');
+if (LOADER_COMMIT) {
+  const cdn = (f) => `https://cdn.jsdelivr.net/gh/${REPO}@${LOADER_COMMIT}/${f}`;
+  const alt = (f) => `https://rawcdn.githack.com/${REPO}/${LOADER_COMMIT}/${f}`;
+  const fontF = 'assets/fonts/FloriselScript.woff2';
+  out('short-2-of-3-fonts-styles.html', head('КОД 2 из 3 · ШРИФТЫ И СТИЛИ') + `
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&subset=cyrillic&display=swap">
+<link rel="stylesheet" href="${cdn('dist/aawed.min.css')}" onerror="this.onerror=null;this.href='${alt('dist/aawed.min.css')}'">
+<style>
+@font-face {
+  font-family: 'Florisel Script'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url('${cdn(fontF)}') format('woff2'), url('${alt(fontF)}') format('woff2');
+}
+</style>`);
+  out('short-3-of-3-content-script.html', head('КОД 3 из 3 · СЕКЦИИ И СКРИПТ') + '\n' + BLOCKS.map(([, s]) => mount(s)).join('\n') + `
+<script src="${cdn('dist/aawed.min.js')}" onerror="var s=document.createElement('script');s.src='${alt('dist/aawed.min.js')}';document.body.appendChild(s)"></script>`);
+}
