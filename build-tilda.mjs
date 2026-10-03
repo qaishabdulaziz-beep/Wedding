@@ -59,3 +59,8 @@ out('02-fonts.html', head('БЛОК 2 · ШРИФТЫ') + '\n' + fontsBlock);
 out('03-styles.html', head('БЛОК 3 · СТИЛИ') + `\n<style>${css}</style>`);
 out('04-script.html', head('БЛОК 4 · СКРИПТ') + `\n<script>${js}</script>`);
 BLOCKS.forEach(([file, sections, note]) => out(file, head('БЛОК ' + file.slice(1, 2), note) + '\n' + mount(sections)));
+
+// --- Вариант «весь сайт в 3 блока» ---
+out('site-1-of-3-config.html', head('САЙТ · КОД 1 из 3 · КОНФИГ', 'меняйте только значения в кавычках') + `\n<script>\n${config}\n</script>`);
+out('site-2-of-3-fonts-styles.html', head('САЙТ · КОД 2 из 3 · ШРИФТЫ И СТИЛИ') + '\n' + fontsBlock + `\n<style>${css}</style>`);
+out('site-3-of-3-content-script.html', head('САЙТ · КОД 3 из 3 · СЕКЦИИ И СКРИПТ') + '\n' + BLOCKS.map(([, s]) => mount(s)).join('\n') + `\n<script>${js}</script>`);
