@@ -1,0 +1,54 @@
+<!-- КАЛЕНДАРЬ · Выемка на стыке -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..600&subset=cyrillic&display=swap">
+<style>
+@font-face{font-family:'Bikham Cyr Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@076d0ea8abd7db458bdebeb63300c70b9fd89215/bikhamcyrscript.ttf') format('truetype');}
+</style>
+<style>
+.ca3{--sand:#E8DDD0;--ivory:#F6F1EA;--choc:#3E2F27;--latte:#9C806C;--line:rgba(62,47,39,.2);
+--script:'Bikham Cyr Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--sand);color:var(--choc);font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.6;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.ca3 *,.ca3 *::before,.ca3 *::after{box-sizing:border-box}
+.ca3 :where(p,h2){margin:0;font-weight:inherit}
+.ca3::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.1;background-size:200px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.ca3 .script{font-family:var(--script);font-weight:400;line-height:1}
+.ca3 .caps{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--latte);line-height:1.5}
+.ca3 .grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-variant-numeric:lining-nums tabular-nums;font-weight:400;font-size:17px}
+.ca3 .grid span{position:relative;height:46px;display:flex;align-items:center;justify-content:center}
+.ca3 .grid .wd{height:36px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--latte)}
+.ca3 .grid .x{font-weight:600}
+.ca3 .grid .x svg{position:absolute;left:50%;top:50%;width:62px;height:52px;margin:-26px 0 0 -31px;overflow:visible;pointer-events:none}
+.ca3 .grid .x path{fill:none;stroke:var(--choc);stroke-width:1.25;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.ca3 .cap{text-align:center;font-size:17px;letter-spacing:.02em}
+.ca-js .ca3 .grid .x path{stroke-dashoffset:1}
+.ca-js .ca3.ca-on .grid .x path{transition:stroke-dashoffset 1.5s cubic-bezier(.45,.1,.3,1) .9s;stroke-dashoffset:0}
+.ca-js .ca3 .fade{opacity:0;transform:translateY(14px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.ca-js .ca3.ca-on .fade{opacity:1;transform:none}
+@media (max-width:360px){.ca3 .grid span{height:42px}.ca3 .grid{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.ca-js .ca3 .grid .x path{stroke-dashoffset:0;transition:none}.ca-js .ca3 .fade{transform:none;transition:opacity .6s linear}}
+.ca3{padding:110px 26px 88px}
+.ca3 .notch{position:absolute;left:50%;top:-38px;width:76px;height:76px;margin-left:-38px;border-radius:50%;background:var(--ivory)}
+.ca3 .notch::after{content:'';position:absolute;left:50%;bottom:16px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--choc);opacity:.7}
+.ca3 .head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.ca3 .head .script{font-size:clamp(54px,16vw,66px);padding:.2em .4em .22em;margin:-.2em -.4em -.22em -.32em}
+.ca3 .head .caps{color:var(--choc);font-size:13px;letter-spacing:.34em;padding-bottom:12px}
+.ca3 .cap{margin-top:28px;display:flex;align-items:center;gap:14px;justify-content:center}
+.ca3 .cap::before,.ca3 .cap::after{content:'';width:26px;height:1px;background:var(--latte);opacity:.6}
+</style>
+<section class="ca3" data-ca aria-label="Дата свадьбы">
+  <span class="notch" aria-hidden="true"></span>
+  <div class="head fade"><h2 class="script">Июль</h2><span class="caps">2027</span></div>
+  <div class="fade" style="--d:.15s"><div class="grid" role="img" aria-label="Календарь: июль 2027, выделено 23 июля 2027 · пятница"><span class="wd">пн</span><span class="wd">вт</span><span class="wd">ср</span><span class="wd">чт</span><span class="wd">пт</span><span class="wd">сб</span><span class="wd">вс</span><span></span><span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span class="x">23<svg viewBox="0 0 70 58" aria-hidden="true"><path pathLength="1" d="M16 44 C5 35 7 14 27 9 C46 4 64 13 62 29 C60 44 43 51 28 49 C14 47 7 38 10 27 C13 18 22 11 38 10"/></svg></span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></div></div>
+  <p class="cap fade" style="--d:.3s">23 июля 2027 · пятница</p>
+</section>
+<script>(function(){var d=document;d.documentElement.classList.add('ca-js');
+function go(){var els=d.querySelectorAll('[data-ca]:not(.ca-o)');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('ca-on')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ca-on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -15% 0px',threshold:.35});
+els.forEach(function(e){e.classList.add('ca-o');io.observe(e)})}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>
