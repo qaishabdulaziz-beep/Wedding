@@ -1,0 +1,46 @@
+<!-- ФОТОВСТАВКА · Триптих как в референсе -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..600&subset=cyrillic&display=swap">
+<script>document.documentElement.classList.add('pv-js')</script>
+<style>
+.pv1{--sand:#E8DDD0;--ivory:#F6F1EA;--choc:#2E221C;--latte:#8C7566;
+--script:'Bikham Cyr Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--sand);color:var(--choc);font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.5;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.pv1 *,.pv1 *::before,.pv1 *::after{box-sizing:border-box}
+.pv1 :where(p,h2,figure){margin:0;padding:0;font-weight:inherit}
+.pv1::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.12;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pv1 .ph{position:relative;overflow:hidden;background:linear-gradient(160deg,#CFC3B6,#9A8B80)}
+.pv1 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(1.03)}
+.pv1 .script{font-family:var(--script);font-weight:400;line-height:1;color:var(--choc)}
+.pv1 .script span{display:inline-block;padding:.3em .45em .3em;margin:-.3em -.45em -.3em}
+.pv1 .caps{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:var(--latte);margin-right:-.3em}
+.pv1{padding:56px 0 60px}
+.pv1 .row{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:8px;width:124%;margin-left:-12%;height:clamp(270px,78vw,400px)}
+/* появление: центр поднимается, края мягко приходят из-за экрана, фото чуть «отъезжают» */
+.pv-js .pv1 .ph{opacity:0;transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+.pv-js .pv1 .ph img{transform:scale(1.14);transition:transform 2.4s var(--ease)}
+.pv-js .pv1 .ph:nth-child(1){transform:translateX(-36px);transition-delay:.25s}
+.pv-js .pv1 .ph:nth-child(2){transform:translateY(26px)}
+.pv-js .pv1 .ph:nth-child(3){transform:translateX(36px);transition-delay:.25s}
+.pv-js .pv1.pv-on .ph{opacity:1;transform:none}
+.pv-js .pv1.pv-on .ph img{transform:none}
+@media (prefers-reduced-motion:reduce){.pv-js .pv1 .ph,.pv-js .pv1 .ph img{transform:none!important;transition:opacity .6s linear}}
+</style>
+<section class="pv1" data-pv aria-label="Фото">
+  <div class="row">
+    <!-- ФОТО 1 (левое) --><figure class="ph"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=70" alt="Артур и Анна" loading="lazy" decoding="async" onerror="this.style.display='none'"></figure>
+    <!-- ФОТО 2 (центр) --><figure class="ph"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=70" alt="Артур и Анна" loading="lazy" decoding="async" onerror="this.style.display='none'"></figure>
+    <!-- ФОТО 3 (правое) --><figure class="ph"><img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=800&q=70" alt="Артур и Анна" loading="lazy" decoding="async" onerror="this.style.display='none'"></figure>
+  </div>
+</section>
+<script>(function(){var d=document;
+function go(){var els=d.querySelectorAll('[data-pv]:not(.pv-o)');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('pv-on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.2});
+els.forEach(function(e){e.classList.add('pv-o');io.observe(e)})}else els.forEach(function(e){e.classList.add('pv-on')});
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var secs=[].slice.call(els).filter(function(s){return s.querySelector('[data-par]')}),tick=0;if(!secs.length)return;
+function upd(){tick=0;var vh=innerHeight;secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.bottom<-100||r.top>vh+100)return;
+var c=(r.top+r.height/2-vh/2);s.querySelectorAll('[data-par]').forEach(function(e){e.style.setProperty('--py',(-c*parseFloat(e.getAttribute('data-par'))).toFixed(1)+'px')})})}
+addEventListener('scroll',function(){if(!tick){tick=1;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd()}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>
