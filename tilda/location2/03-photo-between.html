@@ -1,0 +1,80 @@
+<!-- ДЕТАЛИ · Фото между локацией и трансфером -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&subset=cyrillic&display=swap">
+<style>
+@font-face{font-family:'Bikham Cyr Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@076d0ea8abd7db458bdebeb63300c70b9fd89215/bikhamcyrscript.ttf') format('truetype');}
+</style>
+<script>document.documentElement.classList.add('dl-js')</script>
+<style>
+.dtc{--ivory:#F6F1EA;--sand:#E8DDD0;--choc:#2E221C;--cream:#F3EBE1;--latte:#C4AE9A;
+--script:'Bikham Cyr Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--ivory);color:var(--ivory);font-family:var(--serif);font-weight:400;font-size:14px;line-height:1.5;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.dtc *,.dtc *::before,.dtc *::after{box-sizing:border-box}
+.dtc :where(p,h2,h3,ul,li){margin:0;padding:0;list-style:none;font-weight:inherit}
+.dtc::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.12;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.dtc .ttl{position:absolute;z-index:4;font-family:var(--script);font-weight:400;color:var(--choc);line-height:1;white-space:nowrap;pointer-events:none}
+.dtc .ttl span{display:inline-block;padding:.25em .45em .3em;margin:-.25em -.45em -.3em}
+.dtc .ph{position:relative;overflow:hidden;background:linear-gradient(160deg,#CDBDAE,#8E7A6C)}
+.dtc .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.55) sepia(.22) contrast(.95) brightness(1.02)}
+.dtc .panel{position:relative;background:var(--choc);color:var(--ivory)}
+.dtc .lbl{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--ivory)}
+.dtc .venue{margin-top:10px;font-size:14px;line-height:1.45;color:var(--cream)}
+.dtc .addr{margin-top:6px;font-size:clamp(11px,3.3vw,13px);line-height:1.45;white-space:nowrap;color:var(--cream)}
+.dtc .btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 10px;overflow:hidden;
+  font-size:11px;letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;font-weight:600;color:var(--ivory)!important;text-decoration:none;
+  box-shadow:inset 0 0 0 1px rgba(246,241,234,.55);transition:background .4s,color .4s}
+.dtc .btn:hover{background:var(--ivory);color:var(--choc)!important}
+.dtc .btn.short .pre{display:none}
+.dtc .sep{height:1px;background:var(--sand);opacity:.45}
+.dtc .tr{padding:22px 20px 30px}
+.dtc .txt{margin-top:10px;font-size:14px;line-height:1.55;color:var(--cream)}
+.dtc .pts{margin-top:12px;display:grid;gap:7px}
+.dtc .pts li{display:grid;grid-template-columns:52px 1fr;gap:8px;font-size:14px;line-height:1.4}
+.dtc .pts b{font-weight:600;color:var(--ivory);font-variant-numeric:lining-nums tabular-nums}
+.dtc .pts span{color:var(--cream)}
+.dtc .note{margin-top:12px;font-size:clamp(11px,3.4vw,13px);white-space:nowrap;color:var(--latte);line-height:1.45}
+.dl-js .dtc .fade{opacity:0;transform:translateY(14px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.dl-js .dtc.dl-on .fade{opacity:1;transform:none}
+.dl-js .dtc .ph.fade{transform:none;clip-path:inset(0 0 100% 0);transition:opacity .6s linear,clip-path 1.4s cubic-bezier(.7,0,.2,1)}
+.dl-js .dtc.dl-on .ph.fade{clip-path:inset(0)}
+@media (prefers-reduced-motion:reduce){.dl-js .dtc .fade{transform:none;transition:opacity .6s linear}.dl-js .dtc .ph.fade{clip-path:none}}
+.dtc .ttl{position:relative;display:block;padding:20px 0 0 12px;margin-bottom:-.2em;font-size:clamp(58px,17vw,74px)}
+.dtc .loc{padding:30px 20px 28px}
+.dtc .btn{margin-top:20px}
+.dtc .ph{aspect-ratio:3/2}
+.dtc .tr{padding-top:26px}
+</style>
+<section class="dtc" data-dl aria-label="Детали">
+  <h2 class="ttl fade"><span>Детали</span></h2>
+  <div class="panel">
+    <div class="loc fade" style="--d:.15s">
+      <h3 class="lbl">Локация</h3>
+      <p class="venue">Дрокино парк</p>
+      <p class="addr">г.&nbsp;Красноярск, ул.&nbsp;Монамур,&nbsp;2</p>
+      <a class="btn" href="https://2gis.ru/krasnoyarsk/geo/70030076451649732/92.787464,56.090637" target="_blank" rel="noopener"><span><span class="pre">Построить </span>маршрут</span><span aria-hidden="true">→</span></a>
+    </div>
+    <!-- ФОТО ЛОКАЦИИ --><div class="ph fade" style="--d:.25s"><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=70" alt="Дрокино парк" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+    <div class="tr fade" style="--d:.35s">
+      <h3 class="lbl">Трансфер</h3>
+      <p class="txt">Для вашего удобства мы организуем трансфер. Автобус заберёт гостей из трёх точек города и привезёт к месту праздника, а в 23:30 отвезёт всех обратно в город.</p>
+      <ul class="pts">
+        <li><b>хх:хх</b><span>Точка 1, адрес</span></li>
+        <li><b>хх:хх</b><span>Точка 2, адрес</span></li>
+        <li><b>хх:хх</b><span>Точка 3, адрес</span></li>
+      </ul>
+      <p class="note">Пожалуйста, отметьте в анкете, если вам нужен трансфер.</p>
+    </div>
+  </div>
+</section>
+<script>(function(){var d=document;
+function fit(){d.querySelectorAll('[data-dl] .btn').forEach(function(b){b.classList.remove('short');if(b.scrollWidth>b.clientWidth+1)b.classList.add('short')})}
+function go(){fit();addEventListener('resize',fit);if(d.fonts&&d.fonts.ready)d.fonts.ready.then(fit);
+var els=d.querySelectorAll('[data-dl]:not(.dl-o)');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('dl-on')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('dl-on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:.15});
+els.forEach(function(e){e.classList.add('dl-o');io.observe(e)})}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>
