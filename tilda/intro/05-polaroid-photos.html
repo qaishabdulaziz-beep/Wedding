@@ -1,0 +1,69 @@
+<!-- ВВЕДЕНИЕ · вариант 05 · Два фото внахлёст -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..600;1,400..600&subset=cyrillic&display=swap">
+<style>
+@font-face{font-family:'Bikham Cyr Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@076d0ea8abd7db458bdebeb63300c70b9fd89215/bikhamcyrscript.ttf') format('truetype');}
+</style>
+<style>
+.iv5{--bg:#F6F1EA;--choc:#3E2F27;--ink:#45352C;--taupe:#8C7566;--line:rgba(62,47,39,.22);--paper:#FBF8F3;
+--script:'Bikham Cyr Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:17.5px;line-height:1.68;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.iv5 *,.iv5 *::before,.iv5 *::after{box-sizing:border-box}
+.iv5 :where(p,h2,figure){margin:0;font-weight:400}
+.iv5::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.5;
+background:radial-gradient(120% 70% at 15% 0%,rgba(255,255,255,.55),transparent 60%),radial-gradient(90% 60% at 100% 100%,rgba(62,47,39,.05),transparent 70%)}
+.iv5::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.11;background-size:200px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.iv5>*{position:relative;z-index:1}
+.iv5 .s{font-family:var(--script);font-weight:400;color:var(--choc);line-height:1.15;letter-spacing:0}
+.iv5 .caps{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--taupe)}
+.iv5 .photo{position:relative;overflow:hidden;background:linear-gradient(160deg,#D8C8B9,#A99282 60%,#8C7566)}
+.iv5 .photo img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.18) saturate(.82) contrast(.95) brightness(1.03)}
+.iv5 .photo::after{content:'';position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:.8;background-size:160px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .9 0 0 0 1.4 -.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.iv5 svg.draw{overflow:visible;display:block}
+.iv5 svg.draw path{fill:none;stroke:var(--choc);stroke-width:.9;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.iv-js .iv5 [data-iv]{opacity:0;transform:translateY(16px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)}
+.iv-js .iv5 [data-iv].iv-in{opacity:1;transform:none}
+.iv-js .iv5 svg.draw path{stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease) var(--d,.3s)}
+.iv-js .iv5 svg.draw.iv-in path{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.iv-js .iv5 [data-iv]{transform:none;transition:opacity .6s linear}.iv-js .iv5 svg.draw path{stroke-dashoffset:0;transition:none}}
+.iv5{padding:96px 26px 104px}
+.iv5 .col{position:relative;height:clamp(360px,104vw,470px);margin-bottom:34px}
+.iv5 .big{position:absolute;left:0;top:0;width:66%;aspect-ratio:4/5.2;box-shadow:0 20px 34px -24px rgba(62,47,39,.6)}
+.iv5 .pol{position:absolute;right:0;bottom:0;width:48%;margin:0;padding:9px 9px 34px;background:var(--paper);transform:rotate(3deg);
+  box-shadow:0 1px 1px rgba(62,47,39,.1),0 18px 30px -16px rgba(62,47,39,.5)}
+.iv5 .pol .photo{aspect-ratio:1}
+.iv5 .pol figcaption{position:absolute;left:0;right:0;bottom:8px;text-align:center;font:italic 14px/1.3 var(--serif);color:var(--taupe)}
+.iv5 .tape{position:absolute;z-index:2;top:-11px;left:50%;width:70px;height:22px;margin-left:-35px;transform:rotate(-4deg);
+  background:rgba(232,222,210,.78);box-shadow:0 1px 2px rgba(62,47,39,.12);
+  clip-path:polygon(3% 8%,10% 0,20% 9%,31% 1%,43% 8%,55% 0,67% 8%,79% 1%,90% 8%,97% 2%,100% 50%,97% 95%,88% 100%,76% 92%,64% 100%,51% 93%,39% 100%,26% 92%,14% 100%,4% 94%,0 50%)}
+.iv5 h2{font-size:clamp(50px,15vw,64px);text-align:right;margin-right:-.06em}
+.iv5 h2 span{display:block}
+.iv5 h2 span+span{margin-top:-.2em;padding-right:.4em}
+.iv5 .lead{margin-top:26px;font-style:italic;font-size:20px;line-height:1.55;color:var(--choc)}
+.iv5 .lead span{display:block}
+.iv5 .body{margin-top:16px;max-width:300px}
+.iv5 .date{clear:both;display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:30px}
+.iv5 .date::before{content:'';width:28px;height:1px;background:var(--taupe);opacity:.6}
+</style>
+<section class="iv5" aria-label="Введение">
+  <div class="col">
+    <div class="photo big" data-iv><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=70" alt="Артур и Анна" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+    <figure class="pol" data-iv style="--d:.15s"><span class="tape" aria-hidden="true"></span><div class="photo"><img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?auto=format&fit=crop&w=600&q=70" alt="Артур и Анна" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><figcaption>мы · 2027</figcaption></figure>
+  </div>
+  <h2 class="s" data-iv><span>Дорогие родные</span><span>и друзья</span></h2>
+  <p class="lead" data-iv style="--d:.15s"><span>Один день. Одна история.</span><span>И вы — её важная часть.</span></p>
+  <p class="body" data-iv style="--d:.2s">Приглашаем вас разделить с нами самый главный праздник.</p>
+  <p class="caps date" data-iv style="--d:.25s">23 · 07 · 2027</p>
+</section>
+<script>(function(){var d=document;d.documentElement.classList.add('iv-js');
+function go(){var els=d.querySelectorAll('[data-iv]:not([data-iv-o]),svg.draw:not([data-iv-o])');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('iv-in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('iv-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.15});
+els.forEach(function(e){e.setAttribute('data-iv-o','');io.observe(e)})}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>

@@ -1,0 +1,63 @@
+<!-- ВВЕДЕНИЕ · вариант 04 · Фото в арке -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..600;1,400..600&subset=cyrillic&display=swap">
+<style>
+@font-face{font-family:'Bikham Cyr Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@076d0ea8abd7db458bdebeb63300c70b9fd89215/bikhamcyrscript.ttf') format('truetype');}
+</style>
+<style>
+.iv4{--bg:#F6F1EA;--choc:#3E2F27;--ink:#45352C;--taupe:#8C7566;--line:rgba(62,47,39,.22);--paper:#FBF8F3;
+--script:'Bikham Cyr Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:17.5px;line-height:1.68;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.iv4 *,.iv4 *::before,.iv4 *::after{box-sizing:border-box}
+.iv4 :where(p,h2,figure){margin:0;font-weight:400}
+.iv4::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.5;
+background:radial-gradient(120% 70% at 15% 0%,rgba(255,255,255,.55),transparent 60%),radial-gradient(90% 60% at 100% 100%,rgba(62,47,39,.05),transparent 70%)}
+.iv4::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.11;background-size:200px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.iv4>*{position:relative;z-index:1}
+.iv4 .s{font-family:var(--script);font-weight:400;color:var(--choc);line-height:1.15;letter-spacing:0}
+.iv4 .caps{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--taupe)}
+.iv4 .photo{position:relative;overflow:hidden;background:linear-gradient(160deg,#D8C8B9,#A99282 60%,#8C7566)}
+.iv4 .photo img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.18) saturate(.82) contrast(.95) brightness(1.03)}
+.iv4 .photo::after{content:'';position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:.8;background-size:160px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .9 0 0 0 1.4 -.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.iv4 svg.draw{overflow:visible;display:block}
+.iv4 svg.draw path{fill:none;stroke:var(--choc);stroke-width:.9;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.iv-js .iv4 [data-iv]{opacity:0;transform:translateY(16px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)}
+.iv-js .iv4 [data-iv].iv-in{opacity:1;transform:none}
+.iv-js .iv4 svg.draw path{stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease) var(--d,.3s)}
+.iv-js .iv4 svg.draw.iv-in path{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.iv-js .iv4 [data-iv]{transform:none;transition:opacity .6s linear}.iv-js .iv4 svg.draw path{stroke-dashoffset:0;transition:none}}
+.iv4{padding:96px 26px 100px}
+.iv4 .lab{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.iv4 .lab::before{content:'';width:34px;height:1px;background:var(--taupe);opacity:.6}
+.iv4 .vis{position:relative;width:72%;margin-left:auto}
+.iv4 .vis::before{content:'';position:absolute;inset:-11px 11px 13px -11px;border-radius:999px 999px 0 0;box-shadow:inset 0 0 0 1px var(--taupe);opacity:.45}
+.iv4 .photo{aspect-ratio:3/4;border-radius:999px 999px 0 0}
+.iv4 h2{position:relative;z-index:2;font-size:clamp(50px,15vw,64px);margin-top:-1.15em;margin-left:-.1em;
+  text-shadow:0 0 14px rgba(246,241,234,.95),0 0 30px rgba(246,241,234,.8)}
+.iv4 h2 span{display:block}
+.iv4 h2 span+span{margin-top:-.2em;padding-left:1.1em}
+.iv4 .lead{margin-top:26px;font-style:italic;font-size:20px;line-height:1.55;color:var(--choc)}
+.iv4 .lead span{display:block}
+.iv4 .lead span+span{padding-left:1.6em}
+.iv4 .body{margin-top:18px;padding-left:22%;position:relative}
+.iv4 .body::before{content:'';position:absolute;left:0;top:.85em;width:15%;height:1px;background:var(--taupe);opacity:.55}
+</style>
+<section class="iv4" aria-label="Введение">
+  <p class="caps lab" data-iv>Введение</p>
+  <div class="vis" data-iv><div class="photo"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=70" alt="Артур и Анна" loading="lazy" decoding="async" onerror="this.style.display='none'"></div></div>
+  <h2 class="s" data-iv style="--d:.2s"><span>Дорогие родные</span><span>и друзья</span></h2>
+  <p class="lead" data-iv style="--d:.25s"><span>Один день. Одна история.</span><span>И вы — её важная часть.</span></p>
+  <p class="body" data-iv style="--d:.35s">Приглашаем вас разделить с нами самый главный праздник.</p>
+</section>
+<script>(function(){var d=document;d.documentElement.classList.add('iv-js');
+function go(){var els=d.querySelectorAll('[data-iv]:not([data-iv-o]),svg.draw:not([data-iv-o])');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('iv-in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('iv-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.15});
+els.forEach(function(e){e.setAttribute('data-iv-o','');io.observe(e)})}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>
