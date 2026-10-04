@@ -1,0 +1,63 @@
+<!-- ТАЙМИНГ · Путь дня при скролле -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..600&subset=cyrillic&display=swap">
+<style>
+.tn3{--bg:#F6F1EA;--choc:#3E2F27;--ink:#4A3A31;--latte:#8C7566;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--bg);color:var(--choc);font-family:'Lora',Georgia,serif;font-weight:500;font-size:16px;line-height:1.5;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.tn3 *,.tn3 *::before,.tn3 *::after{box-sizing:border-box}
+.tn3 :where(p,h2,ol,li){margin:0;padding:0;list-style:none;font-weight:inherit}
+.tn3::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.1;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.tn3>*{position:relative;z-index:1}
+.tn3 h2{font-size:clamp(18px,5.2vw,22px);letter-spacing:.42em;text-transform:uppercase;font-weight:500;line-height:1.2;margin-right:-.42em}
+.tn3 .t{font-weight:400;font-variant-numeric:lining-nums tabular-nums;color:var(--latte);letter-spacing:.02em;line-height:1}
+.tn3 .n{color:var(--choc);font-weight:500}
+.tn3 .d{color:var(--ink);font-weight:400;text-wrap:balance}
+.tm-js .tn3 [data-tm]>*{opacity:0;transform:translateY(14px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.tm-js .tn3 [data-tm]>*:nth-child(2){transition-delay:.1s}
+.tm-js .tn3 [data-tm]>*:nth-child(3){transition-delay:.2s}
+.tm-js .tn3 .tm-in>*{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.tm-js .tn3 [data-tm]>*{transform:none;transition:opacity .6s linear}}
+.tn3{padding:64px 24px 72px}
+.tn3 h2{text-align:center}
+.tn3 .list{position:relative;margin-top:40px;display:grid;gap:30px;padding-left:0}
+.tn3 li{display:grid;grid-template-columns:74px 26px 1fr;align-items:baseline;transition:opacity .8s var(--ease)}
+.tn3 li>*{grid-column:3}
+.tn3 li .t{grid-column:1;grid-row:1 / span 2;font-size:clamp(24px,7vw,28px);text-align:right;transition:color .8s}
+.tn3 .n{font-size:17.5px;line-height:1.3}
+.tn3 .d{margin-top:3px;font-size:14.5px;line-height:1.45}
+.tn3 .track{position:absolute;left:87px;top:6px;bottom:6px;width:1px;background:rgba(62,47,39,.14)}
+.tn3 .fill{position:absolute;left:0;top:0;width:1px;height:var(--h,0px);background:var(--choc);transition:height .9s var(--ease)}
+.tn3 .ring{position:absolute;left:-5px;top:var(--h,0px);width:11px;height:11px;margin-top:-5px;border-radius:50%;
+  box-shadow:inset 0 0 0 1px var(--choc);background:var(--bg);transition:top .9s var(--ease)}
+.tm-js .tn3.tp li{opacity:.32}
+.tm-js .tn3.tp li.on{opacity:1}
+.tm-js .tn3.tp li.on .t{color:var(--choc)}
+@media (max-width:359px){.tn3 li{grid-template-columns:64px 24px 1fr}.tn3 .track{left:75px}}
+</style>
+<section class="tn3" aria-label="Тайминг">
+  <h2 data-tm><span>Тайминг</span></h2>
+  <ol class="list"><span class="track" aria-hidden="true"><span class="fill"></span><span class="ring"></span></span>
+    <li data-tm><p class="t">16:30</p><p class="n">Сбор гостей</p><p class="d">Welcome-зона, лёгкие закуски и время для тёплых встреч</p></li>
+    <li data-tm><p class="t">17:00</p><p class="n">Выездная церемония</p><p class="d">Самый трогательный момент дня</p></li>
+    <li data-tm><p class="t">18:00</p><p class="n">Начало банкета</p><p class="d">Ужин, тёплые слова и танцы</p></li>
+    <li data-tm><p class="t">23:00</p><p class="n">Завершение вечера</p><p class="d">В 23:30 трансфер отвезёт гостей в город</p></li>
+  </ol>
+</section>
+<script>(function(){var s=document.currentScript.previousElementSibling;if(!s||!s.querySelector)return;
+var list=s.querySelector('.list'),items=[].slice.call(list.querySelectorAll('li')),track=list.querySelector('.track'),tick=false;
+s.classList.add('tp');
+function upd(){tick=false;var line=window.innerHeight*.8,act=-1;
+items.forEach(function(li,i){if(li.getBoundingClientRect().top<line)act=i});
+items.forEach(function(li,i){li.classList.toggle('on',i<=act)});
+var h=0;if(act>=0){var t=items[act].querySelector('.t');h=t.getBoundingClientRect().top+t.offsetHeight*.42-track.getBoundingClientRect().top}
+track.style.setProperty('--h',Math.max(0,h)+'px')}
+function req(){if(!tick){tick=true;requestAnimationFrame(upd)}}
+window.addEventListener('scroll',req,{passive:true});window.addEventListener('resize',req);upd();setTimeout(upd,600)})();</script>
+<script>(function(){var d=document;d.documentElement.classList.add('tm-js');
+function go(){var els=d.querySelectorAll('[data-tm]:not(.tm-o)'),next=0;
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tm-in')});return}
+var io=new IntersectionObserver(function(es){es.filter(function(e){return e.isIntersecting}).sort(function(a,b){return a.boundingClientRect.top-b.boundingClientRect.top}).forEach(function(e){
+var now=Date.now(),at=Math.max(now,next);next=at+300;io.unobserve(e.target);setTimeout(function(){e.target.classList.add('tm-in')},at-now)})},{rootMargin:'0px 0px -8% 0px',threshold:.2});
+els.forEach(function(e){e.classList.add('tm-o');io.observe(e)})}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>
