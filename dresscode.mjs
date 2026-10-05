@@ -76,7 +76,7 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
 .dc .ttl{display:inline-block;margin:0 0 0 calc(-.3em + 2px);padding:.42em .3em .22em;font-family:var(--script);font-weight:400;color:var(--choc);
   font-size:clamp(58px,17.5vw,80px);line-height:1;letter-spacing:-.01em;white-space:nowrap}
 .dc .intro{margin-top:4px;display:grid;grid-template-columns:minmax(0,1fr) 43%;gap:14px;align-items:center}
-.dc .txt p{font-size:13.5px;line-height:1.6;color:var(--ink);text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+.dc .txt p{font-size:13.5px;line-height:1.65;color:var(--ink);text-align:left;-webkit-hyphens:manual;hyphens:manual;text-wrap:pretty}
 .dc .note{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.6;color:var(--choc);font-weight:500}
 .dc .hero{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--sand) center/cover}
 .dc .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
@@ -117,7 +117,7 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
   <h2 class="ttl">Дресс-код</h2>
   <div class="intro">
     <div class="txt fade" style="--d:.5s">
-      <p>Мы будем рады, если вы под&shy;дер&shy;жи&shy;те цве&shy;то&shy;вую гамму на&shy;ше&shy;го празд&shy;ни&shy;ка. Так вместе мы соз&shy;да&shy;дим единую и&nbsp;осо&shy;бен&shy;ную ат&shy;мо&shy;сфе&shy;ру этого дня.</p>
+      <p>Мы будем рады, если вы поддержите цветовую гамму нашего праздника. Так вместе мы создадим единую и&nbsp;особенную атмосферу этого дня.</p>
     </div>
     <!-- СТАРТОВОЕ ФОТО (с гостями) --><figure class="hero fade" style="--d:.65s"><img src="${GUESTS}" alt="Гости в палитре праздника" decoding="async" onerror="this.style.visibility='hidden'"></figure>
   </div>
