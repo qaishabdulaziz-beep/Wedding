@@ -1,0 +1,277 @@
+// Анкета гостя — 4 варианта оформления. Запуск: node rsvp-variants.mjs → tilda/rsvp/
+// Отправка: на веб-приложение Google Apps Script (google-apps-script/TelegramRSVP.gs), оно пересылает в Telegram.
+// Токен бота на сайт НЕ попадает.
+import fs from 'node:fs';
+
+const REPO = 'qaishabdulaziz-beep/Wedding';
+const ASTRUM_SHA = '4a83daeb45bb08fd036182115602a4c42002242b';
+const MAIN_SHA = '90b234a93fec945ba023e442202273e508899c9c';
+const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
+
+const FONTS = `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&subset=cyrillic&display=swap">
+<style>
+@font-face{font-family:'Astrum Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/${REPO}@${ASTRUM_SHA}/assets/fonts/AstrumScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/${REPO}/${ASTRUM_SHA}/assets/fonts/AstrumScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/${REPO}@${MAIN_SHA}/AstrumScriptCyrillicRegular%202.ttf') format('truetype');}
+</style>
+<script>document.documentElement.classList.add('rv-js')</script>`;
+
+const DRINKS = ['Красное вино', 'Белое вино', 'Игристое вино', 'Виски', 'Коньяк', 'Водка', 'Не пью алкоголь'];
+
+const FORM = `
+  <h2 class="ttl">Анкета гостя</h2>
+  <p class="lead">Пожалуйста, подтвердите своё присутствие до&nbsp;1&nbsp;июля 2027&nbsp;года. Это поможет нам всё подготовить с&nbsp;заботой о&nbsp;каждом госте.</p>
+  <!-- АДРЕС ОТПРАВКИ: вместо ВСТАВЬТЕ_URL_СКРИПТА вставьте URL веб-приложения Google Apps Script (…/exec) -->
+  <form class="form" novalidate data-endpoint="ВСТАВЬТЕ_URL_СКРИПТА">
+    <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="q" role="group" aria-labelledby="rvq1" data-step="1">
+      <p class="qt" id="rvq1"><span class="no">01</span><span>Ваше имя и фамилия</span></p>
+      <div class="names">
+        <div class="nm"><input type="text" name="guest" maxlength="80" autocomplete="name" placeholder="Например, Иванова Мария" aria-label="Имя и фамилия"></div>
+      </div>
+      <p class="help">Если придёте вдвоём или с&nbsp;детьми, укажите, пожалуйста, имена всех гостей</p>
+      <button type="button" class="add"><i aria-hidden="true"></i>Добавить гостя</button>
+      <p class="err" data-err="name" role="alert"></p>
+    </div>
+    <div class="q" role="group" aria-labelledby="rvq2" data-step="2">
+      <p class="qt" id="rvq2"><span class="no">02</span><span>Сможете ли вы присутствовать?</span></p>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="attend" value="yes"><span>С радостью приду</span></label>
+        <label class="opt"><input type="radio" name="attend" value="no"><span>К сожалению, не&nbsp;смогу прийти</span></label>
+      </div>
+      <p class="err" data-err="attend" role="alert"></p>
+    </div>
+    <div class="ifyes"><div>
+    <div class="q" role="group" aria-labelledby="rvq3" data-step="3">
+      <p class="qt" id="rvq3"><span class="no">03</span><span>Какие напитки вы предпочитаете?</span></p>
+      <p class="help">Можно выбрать несколько вариантов</p>
+      <div class="opts multi">${DRINKS.map((d) => `
+        <label class="opt"><input type="checkbox" name="drink" value="${d}"><span>${d}</span></label>`).join('')}
+        <label class="opt"><input type="checkbox" name="drink" value="__other"><span>Свой вариант</span></label>
+      </div>
+      <div class="other"><input type="text" name="other" maxlength="120" placeholder="Напишите свой вариант" aria-label="Свой вариант напитка"></div>
+    </div>
+    <div class="q" role="group" aria-labelledby="rvq4" data-step="4">
+      <p class="qt" id="rvq4"><span class="no">04</span><span>Как вы планируете добираться до места праздника?</span></p>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="way" value="self"><span>Доберусь самостоятельно</span></label>
+        <label class="opt"><input type="radio" name="way" value="transfer"><span>Нужен трансфер</span></label>
+      </div>
+    </div>
+    </div></div>
+    <div class="nav"><button type="button" class="back">Назад</button><button type="button" class="next">Далее</button></div>
+    <button type="submit" class="send"><span>Отправить ответ</span></button>
+    <p class="err" data-err="send" role="alert"></p>
+  </form>
+  <div class="done" hidden tabindex="-1">
+    <p class="done-t"></p>
+    <p class="done-p"></p>
+  </div>`;
+
+/* общая логика: гости, «свой вариант», проверка, отправка, пошаговый режим (data-steps) */
+const JS = `<script>(function(){
+var T={name:'Пожалуйста, укажите имя и фамилию',attend:'Пожалуйста, выберите, сможете ли вы прийти',send:'Не удалось отправить ответ. Попробуйте ещё раз чуть позже',
+yesT:'Спасибо!',yes:'Мы получили ваш ответ и с нетерпением ждём встречи 23 июля.',noT:'Спасибо, что сообщили',no:'Нам будет вас не хватать, и мы обязательно отпразднуем вместе в другой раз.'};
+function init(s){if(s.__rv)return;s.__rv=1;
+var f=s.querySelector('form'),q=function(x){return f.querySelector(x)},qa=function(x){return f.querySelectorAll(x)},t0=Date.now(),busy=false;
+var names=q('.names'),add=q('.add'),other=q('.other'),yesBox=q('.ifyes'),steps=s.hasAttribute('data-steps'),cur=1;
+function err(k,m){var e=f.querySelector('[data-err="'+k+'"]');if(e){e.textContent=m||'';e.classList.toggle('on',!!m)}}
+/* + гость */
+add.addEventListener('click',function(){if(names.children.length>=8)return;var d=document.createElement('div');d.className='nm extra';
+d.innerHTML='<input type="text" name="guest" maxlength="80" placeholder="Имя и фамилия гостя" aria-label="Имя и фамилия гостя"><button type="button" class="rm" aria-label="Убрать гостя"></button>';
+names.appendChild(d);d.querySelector('.rm').onclick=function(){d.classList.add('out');setTimeout(function(){d.remove();add.hidden=false},300)};
+requestAnimationFrame(function(){d.classList.add('in')});d.querySelector('input').focus();if(names.children.length>=8)add.hidden=true});
+names.addEventListener('input',function(){err('name')});
+/* свой вариант */
+var oc=q('input[value="__other"]');function syncOther(){other.classList.toggle('on',oc.checked);if(oc.checked)setTimeout(function(){other.querySelector('input').focus()},250)}
+oc.addEventListener('change',syncOther);
+/* «не смогу» скрывает вопросы 3–4 */
+function attend(){var r=q('input[name=attend]:checked');return r?r.value:''}
+qa('input[name=attend]').forEach(function(r){r.addEventListener('change',function(){err('attend');yesBox.classList.toggle('hide',attend()==='no');if(steps)paint()})});
+function guests(){return [].map.call(qa('input[name=guest]'),function(i){return i.value.trim()}).filter(String)}
+function check(k){if(k==='name'&&!guests().length){err('name',T.name);return false}if(k==='attend'&&!attend()){err('attend',T.attend);return false}return true}
+/* пошаговый режим */
+function list(){return [1,2,3,4].filter(function(n){return !(attend()==='no'&&n>2)})}
+function paint(){if(!steps)return;var L=list(),i=L.indexOf(cur);if(i<0){cur=L[L.length-1];i=L.length-1}
+qa('.q').forEach(function(x){x.classList.toggle('cur',+x.getAttribute('data-step')===cur)});
+s.style.setProperty('--prog',((i+1)/L.length));var c=s.querySelector('.count');if(c)c.textContent=(i+1)+' / '+L.length;
+q('.back').style.visibility=i?'visible':'hidden';var last=i===L.length-1;q('.next').hidden=last;q('.send').hidden=!last}
+if(steps){q('.next').onclick=function(){if(cur===1&&!check('name'))return;if(cur===2&&!check('attend'))return;var L=list();cur=L[Math.min(L.indexOf(cur)+1,L.length-1)];paint()};
+q('.back').onclick=function(){var L=list();cur=L[Math.max(L.indexOf(cur)-1,0)];paint()};paint()}
+/* отправка */
+f.addEventListener('submit',function(e){e.preventDefault();if(busy)return;err('send');
+var ok1=check('name'),ok2=check('attend');if(!ok1||!ok2){if(steps){cur=ok1?2:1;paint()}var fe=f.querySelector('.err.on');if(fe)fe.closest('.q').scrollIntoView({behavior:'smooth',block:'center'});return}
+var a=attend(),dr=[].filter.call(qa('input[name=drink]:checked'),function(i){return i.value!=='__other'}).map(function(i){return i.value});
+var data=new URLSearchParams({guests:guests().join('\\n'),attend:a,drinks:a==='yes'?dr.join('\\n'):'',other:a==='yes'&&oc.checked?q('input[name=other]').value.trim():'',
+way:a==='yes'&&q('input[name=way]:checked')?q('input[name=way]:checked').value:'',website:q('.hp').value,t:String(Date.now()-t0)});
+var ep=f.getAttribute('data-endpoint')||'';if(!/^https:\\/\\/script\\.google\\.com\\//.test(ep)){err('send',T.send);console.warn('Анкета: не указан адрес Google Apps Script (data-endpoint)');return}
+busy=true;f.classList.add('busy');var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){ctl&&ctl.abort()},15000);
+fetch(ep,{method:'POST',body:data,signal:ctl?ctl.signal:undefined}).then(function(r){return r.json()}).then(function(r){if(!r||!r.ok)throw 0;
+var d=s.querySelector('.done');d.querySelector('.done-t').textContent=a==='yes'?T.yesT:T.noT;d.querySelector('.done-p').textContent=a==='yes'?T.yes:T.no;
+f.classList.add('gone');setTimeout(function(){f.hidden=true;d.hidden=false;requestAnimationFrame(function(){d.classList.add('on')});d.focus({preventScroll:true});d.scrollIntoView({behavior:'smooth',block:'center'})},450)})
+['catch'](function(){err('send',T.send)}).then(function(){clearTimeout(tm);busy=false;f.classList.remove('busy')})})}
+function go(){document.querySelectorAll('[data-rv]').forEach(init);
+var els=document.querySelectorAll('[data-rv]:not(.rv-o)');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('rv-on')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rv-on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:.08});
+els.forEach(function(e){e.classList.add('rv-o');io.observe(e)})}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();</script>`;
+
+/* общая база стилей; --fg/--sub/--line/--err задают цвета поверх фона */
+const base = (p) => `
+.${p}{--ivory:#F6F1EA;--sand:#E8DDD0;--choc:#2E221C;--cream:#F3EBE1;--latte:#C4AE9A;
+--fg:var(--ivory);--sub:var(--latte);--line:rgba(232,221,208,.35);--line2:rgba(232,221,208,.7);--err:#E7B9A6;
+--script:'Astrum Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--choc);color:var(--fg);font-family:var(--serif);font-weight:400;font-size:14px;line-height:1.55;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.${p} *,.${p} *::before,.${p} *::after{box-sizing:border-box}
+.${p} :where(p,h2){margin:0;padding:0;font-weight:inherit}
+.${p}::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.16;background-size:200px;background-image:${NOISE}}
+.${p} button,.${p} input{font:inherit;color:inherit}
+.${p} button{background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.${p} .ttl{display:block;font-family:var(--script);font-weight:400;line-height:1;font-size:clamp(54px,16vw,72px);padding:.4em .3em .2em;margin:-.4em -.3em -.2em;white-space:nowrap;color:var(--fg)}
+.${p} .lead{margin-top:14px;font-size:14px;line-height:1.65;color:var(--sub)}
+.${p} .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.${p} .q{display:block;margin-top:30px}
+.${p} .qt{display:flex;gap:10px;align-items:baseline;font-size:15.5px;line-height:1.4;font-weight:600;color:var(--fg)}
+.${p} .no{flex:none;font-size:11px;letter-spacing:.14em;font-weight:600;color:var(--sub);font-variant-numeric:lining-nums}
+.${p} .help{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--sub)}
+/* поля */
+.${p} input[type=text]{display:block;width:100%;min-height:44px;padding:10px 0;background:none;border:0;border-bottom:1px solid var(--line2);border-radius:0;outline:0;font-size:15px;color:var(--fg);transition:border-color .3s;-webkit-appearance:none;appearance:none}
+.${p} input[type=text]::placeholder{color:var(--sub);opacity:.75}
+.${p} input[type=text]:focus{border-bottom-color:var(--fg)}
+.${p} .names{margin-top:8px;display:grid;gap:4px}
+.${p} .nm{position:relative}
+.${p} .nm.extra{opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s}
+.${p} .nm.extra.in{opacity:1;transform:none}.${p} .nm.extra.out{opacity:0;transform:translateY(-6px)}
+.${p} .nm.extra input{padding-right:36px}
+.${p} .rm{position:absolute;right:0;top:50%;width:32px;height:32px;margin-top:-16px}
+.${p} .rm::before,.${p} .rm::after{content:'';position:absolute;left:9px;right:9px;top:50%;height:1px;background:var(--sub);transform:rotate(45deg)}
+.${p} .rm::after{transform:rotate(-45deg)}
+.${p} .add{margin-top:12px;display:inline-flex;align-items:center;gap:10px;min-height:36px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--fg)}
+.${p} .add i{position:relative;width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);transition:background .3s}
+.${p} .add i::before,.${p} .add i::after{content:'';position:absolute;left:50%;top:50%;width:10px;height:1px;margin:-.5px 0 0 -5px;background:currentColor}
+.${p} .add i::after{transform:rotate(90deg)}
+.${p} .add:hover i{background:rgba(232,221,208,.12)}
+/* варианты ответа */
+.${p} .opts{margin-top:12px;display:grid;gap:2px}
+.${p} .opt{position:relative;display:flex;align-items:center;gap:12px;min-height:40px;cursor:pointer;font-size:14.5px;line-height:1.4}
+.${p} .opt input{position:absolute;opacity:0;width:1px;height:1px}
+.${p} .opt span::before{content:'';flex:none;display:inline-block;vertical-align:-4px;width:18px;height:18px;margin-right:12px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);transition:box-shadow .3s,background .3s}
+.${p} .opt input:checked+span::before{box-shadow:inset 0 0 0 1px var(--fg),inset 0 0 0 5px var(--choc),inset 0 0 0 9px var(--fg)}
+.${p} .opt input[type=checkbox]+span::before{border-radius:3px}
+.${p} .opt input[type=checkbox]:checked+span::before{box-shadow:inset 0 0 0 1px var(--fg),inset 0 0 0 4px var(--choc),inset 0 0 0 9px var(--fg)}
+.${p} .opt input:focus-visible+span{outline:1px dashed var(--sub);outline-offset:4px}
+.${p} .other{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.${p} .other>*{min-height:0;overflow:hidden}
+.${p} .other.on{grid-template-rows:1fr}
+.${p} .other.on input{margin-top:4px}
+.${p} .ifyes{display:grid;grid-template-rows:1fr;grid-template-columns:minmax(0,1fr);transition:grid-template-rows .6s var(--ease),opacity .5s}
+.${p} .ifyes>div{min-height:0;overflow:hidden;padding-bottom:2px}
+.${p} .ifyes.hide{grid-template-rows:0fr;opacity:0}
+.${p} .err{font-size:12.5px;line-height:1.45;color:var(--err);max-height:0;opacity:0;overflow:hidden;transition:max-height .35s,opacity .35s,margin .35s}
+.${p} .err.on{max-height:60px;opacity:1;margin-top:8px}
+.${p} .nav{display:none}
+/* кнопка */
+.${p} .send{position:relative;display:flex;width:100%;align-items:center;justify-content:center;min-height:56px;margin-top:34px;padding:12px 20px;
+  background:linear-gradient(180deg,#EDE4D8,#E2D5C5);color:var(--choc);font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;transition:background .5s}
+.${p} .send::before{content:'';position:absolute;inset:5px;border:1px solid rgba(46,34,28,.28);pointer-events:none;transition:inset .5s var(--ease),border-color .5s}
+.${p} .send span{margin-right:-.3em}
+.${p} .send:hover{background:var(--ivory)}.${p} .send:hover::before{inset:8px;border-color:rgba(46,34,28,.5)}
+.${p} .busy .send{pointer-events:none;opacity:.7}
+.${p} .busy .send span::after{content:'…'}
+/* после отправки */
+.${p} .form{transition:opacity .45s,transform .45s var(--ease)}
+.${p} .form.gone{opacity:0;transform:translateY(-10px)}
+.${p} .done{margin-top:30px;text-align:center;opacity:0;transform:translateY(12px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.${p} .done.on{opacity:1;transform:none}
+.${p} .done:focus{outline:0}
+.${p} .done-t{font-family:var(--script);font-size:clamp(44px,13vw,60px);line-height:1;padding:.3em .3em .15em;margin:-.3em -.3em -.15em;color:var(--fg)}
+.${p} .done-p{margin:14px auto 0;max-width:300px;font-size:15px;line-height:1.65;color:var(--fg)}
+/* появление */
+.rv-js .${p} .rise{opacity:0;transform:translateY(16px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.rv-js .${p}.rv-on .rise{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.${p} *{transition-duration:.01s!important;transition-delay:0s!important}}`;
+
+const wrap = (p, name, css, inner, attrs = '') => `<!-- АНКЕТА ГОСТЯ · ${name} -->
+${FONTS}
+<style>${base(p)}${css}
+</style>
+<section class="${p}" data-rv${attrs} aria-label="Анкета гостя">
+${inner}
+</section>
+${JS}
+`;
+// раскладываем общую разметку: заголовок + лид с анимацией появления
+const formRise = FORM.replace('<h2 class="ttl">', '<h2 class="ttl rise">').replace('<p class="lead">', '<p class="lead rise" style="--d:.2s">').replace('<form class="form"', '<form class="form rise" style="--d:.35s"');
+
+const V = [];
+
+/* 1. Линии: тонкие подчёркивания, круглые отметки, номера вопросов */
+V.push(['01-lines', 'Тонкие линии', wrap('rv1', 'Тонкие линии', `
+.rv1{padding:58px 22px 64px}
+.rv1 .q{padding-top:26px;border-top:1px solid var(--line)}
+.rv1 .form>.q:first-of-type{border-top:0;padding-top:0}`, `  ${formRise}`)]);
+
+/* 2. Карточка-приглашение: светлая карточка с тонкой рамкой на коричневом */
+V.push(['02-card', 'Карточка', wrap('rv2', 'Карточка', `
+.rv2{padding:46px 14px 52px}
+.rv2 .card{position:relative;background:var(--ivory);padding:40px 20px 34px;box-shadow:0 30px 50px -30px rgba(0,0,0,.6)}
+.rv2 .card::before{content:'';position:absolute;inset:8px;border:1px solid rgba(46,34,28,.22);pointer-events:none}
+.rv2 .card .ttl{font-size:clamp(46px,13.4vw,62px)}
+.rv2 .card{color:var(--fg);--fg:var(--choc);--sub:#8C7566;--line:rgba(46,34,28,.14);--line2:rgba(46,34,28,.4);--err:#9C4A35}
+.rv2 .card .opt input:checked+span::before{box-shadow:inset 0 0 0 1px var(--fg),inset 0 0 0 5px var(--ivory),inset 0 0 0 9px var(--fg)}
+.rv2 .card .opt input[type=checkbox]:checked+span::before{box-shadow:inset 0 0 0 1px var(--fg),inset 0 0 0 4px var(--ivory),inset 0 0 0 9px var(--fg)}
+.rv2 .ttl,.rv2 .lead{text-align:center}
+.rv2 .q{padding-top:24px;border-top:1px solid var(--line)}
+.rv2 .form>.q:first-of-type{border-top:0;padding-top:0}
+.rv2 .send{background:var(--choc);color:var(--ivory)}
+.rv2 .send::before{border-color:rgba(246,241,234,.35)}
+.rv2 .send:hover{background:#3d2e26}.rv2 .send:hover::before{border-color:rgba(246,241,234,.6)}
+.rv2 .add i:hover{background:rgba(46,34,28,.06)}`, `  <div class="card rise">${FORM}</div>`)]);
+
+/* 3. Пилюли: ответы — кнопки-пилюли, крупные номера вопросов */
+V.push(['03-pills', 'Кнопки-пилюли', wrap('rv3', 'Кнопки-пилюли', `
+.rv3{padding:58px 20px 64px}
+.rv3 .ttl,.rv3 .lead{text-align:center}
+.rv3 .q{margin-top:34px}
+.rv3 .qt{display:block}
+.rv3 .no{display:block;font-family:var(--script);font-size:38px;letter-spacing:0;line-height:1;color:var(--latte);margin-bottom:2px;padding:.2em .2em .05em;margin-left:-.2em}
+.rv3 input[type=text]{border:1px solid var(--line);border-radius:0;padding:10px 14px;background:rgba(246,241,234,.04)}
+.rv3 input[type=text]:focus{border-color:var(--line2)}
+.rv3 .nm.extra input{padding-right:40px}
+.rv3 .names{gap:8px}
+.rv3 .opts{display:flex;flex-wrap:wrap;gap:8px}
+.rv3 .opt{min-height:0}
+.rv3 .opt span{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line2);font-size:13.5px;transition:background .35s,color .35s,box-shadow .35s}
+.rv3 .opt span::before{display:none}
+.rv3 .opt input:checked+span{background:var(--sand);color:var(--choc);box-shadow:inset 0 0 0 1px var(--sand)}
+.rv3 .other.on input{margin-top:10px}`, `  ${formRise}`)]);
+
+/* 4. Пошагово: один вопрос на экране, полоса прогресса */
+V.push(['04-steps', 'Пошагово', wrap('rv4', 'Пошагово', `
+.rv4{padding:58px 22px 64px}
+.rv4 .bar{position:relative;margin-top:26px;height:1px;background:var(--line)}
+.rv4 .bar::after{content:'';position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--sand);transform-origin:left;transform:scaleX(var(--prog,.25));transition:transform .6s var(--ease)}
+.rv4 .count{margin-top:10px;font-size:11px;letter-spacing:.2em;color:var(--sub);font-variant-numeric:lining-nums}
+.rv4 .ifyes{display:block}.rv4 .ifyes>div{overflow:visible}
+.rv4 .ifyes.hide{opacity:1}
+.rv4 .q{display:none;margin-top:22px;min-height:210px}
+.rv4 .q.cur{display:block;animation:rv4-in .6s var(--ease)}
+@keyframes rv4-in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.rv4 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px}
+.rv4 .back,.rv4 .next{min-height:44px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.rv4 .back{color:var(--sub)}
+.rv4 .next{padding:0 26px;box-shadow:inset 0 0 0 1px var(--line2);transition:background .35s,color .35s}
+.rv4 .next:hover{background:var(--sand);color:var(--choc)}
+.rv4 .send{margin-top:18px}
+.rv4 .send[hidden],.rv4 .next[hidden]{display:none}`,
+  `  ${formRise.replace('<input class="hp"', '<div class="bar" aria-hidden="true"></div><p class="count" aria-live="polite">1 / 4</p>\n    <input class="hp"')}`, ' data-steps')]);
+
+const dir = new URL('tilda/rsvp/', import.meta.url);
+fs.mkdirSync(dir, { recursive: true });
+for (const [file, , code] of V) {
+  fs.writeFileSync(new URL(file + '.html', dir), code);
+  console.log(file.padEnd(12), (Buffer.byteLength(code) / 1024).toFixed(1) + ' KB');
+}
