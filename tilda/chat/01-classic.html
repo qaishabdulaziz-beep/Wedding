@@ -1,0 +1,39 @@
+<!-- ЧАТ ДЛЯ ГОСТЕЙ · Строгий -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&subset=cyrillic&display=swap">
+<script>document.documentElement.classList.add('fx-js')</script>
+<style>
+.ch1{--ivory:#F6F1EA;--sand:#E8DDD0;--choc:#2E221C;--ink:#4A3A31;--latte:#8C7566;
+--script:'Astrum Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--ivory);color:var(--choc);font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.6;
+max-width:520px;margin:0 auto;overflow:hidden;box-sizing:border-box;text-align:center;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.ch1 *,.ch1 *::before,.ch1 *::after{box-sizing:border-box}
+.ch1 :where(p,h2){margin:0;padding:0;font-weight:inherit}
+.ch1::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.1;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.fx-js .ch1 .rise{opacity:0;transform:translateY(16px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)}
+.fx-js .ch1.fx-on .rise{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.ch1 *{transition-duration:.01s!important;transition-delay:0s!important;animation:none!important}}
+.ch1{padding:64px 26px 70px}
+.ch1 .ttl{display:flex;align-items:center;gap:12px;justify-content:center;white-space:nowrap;font-size:clamp(14px,4.3vw,18px);letter-spacing:.28em;text-transform:uppercase;font-weight:600}
+.ch1 .ttl::before,.ch1 .ttl::after{content:'';flex:0 1 40px;min-width:16px;height:1px;background:rgba(46,34,28,.35)}
+.ch1 .ttl span{margin-right:-.28em}
+.ch1 .txt{margin:22px auto 0;max-width:330px;color:var(--ink);text-wrap:pretty}
+.ch1 .join{margin-top:10px;font-weight:600;color:var(--choc)}
+.ch1 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:12px 34px;margin-top:30px;
+  color:var(--ivory)!important;background:var(--choc);text-decoration:none;font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:background .5s}
+.ch1 .btn::before{content:'';position:absolute;inset:5px;border:1px solid rgba(246,241,234,.35);pointer-events:none;transition:inset .5s var(--ease),border-color .5s}
+.ch1 .btn span{margin-right:-.28em}
+.ch1 .btn:hover{background:#3d2e26}.ch1 .btn:hover::before{inset:8px;border-color:rgba(246,241,234,.6)}
+</style>
+<section class="ch1" data-fx aria-label="Чат для гостей">
+  <h2 class="ttl rise"><span>Чат для гостей</span></h2>
+  <p class="txt rise" style="--d:.15s">Мы создали общий чат в&nbsp;Telegram, где будем делиться важными новостями и&nbsp;деталями праздника, а&nbsp;после него&nbsp;— фотографиями.</p>
+  <p class="join rise" style="--d:.25s">Присоединяйтесь!</p>
+  <a class="btn rise" style="--d:.4s" href="https://t.me/+9a-HvZcIQNA2NmIy" target="_blank" rel="noopener"><span>Перейти в Telegram</span></a>
+</section>
+<script>(function(){var d=document;
+function go(){var els=d.querySelectorAll('[data-fx]:not(.fx-o)');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('fx-on')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('fx-on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.2});
+els.forEach(function(e){e.classList.add('fx-o');io.observe(e)})}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',go);else go()})();</script>
