@@ -50,7 +50,7 @@ const GUESTS = u('photo-1519225421980-715cb0215aed'); // стартовое фо
 
 const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
-const DATA = JSON.stringify(COLORS.map(({ id, ...c }) => c), null, 0)
+const DATA = JSON.stringify(COLORS.map(({ n, tex, main, looks }) => ({ n, tex, main, looks })), null, 0)
   .replace(/\},\{/g, '},\n{');
 
 const code = `<!-- ДРЕСС-КОД · палитра с образами -->
@@ -75,22 +75,20 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
 /* заголовок: поля дают место росчеркам, маска-«письмо» их не режет */
 .dc .ttl{display:inline-block;margin:0 0 0 calc(-.3em + 2px);padding:.42em .3em .22em;font-family:var(--script);font-weight:400;color:var(--choc);
   font-size:clamp(58px,17.5vw,80px);line-height:1;letter-spacing:-.01em;white-space:nowrap}
-.dc .intro{margin-top:4px;display:grid;grid-template-columns:minmax(0,1fr) 45%;gap:16px;align-items:center}
-.dc .txt p{font-size:13.5px;line-height:1.6;color:var(--ink)}
+.dc .intro{margin-top:4px;display:grid;grid-template-columns:minmax(0,1fr) 43%;gap:14px;align-items:center}
+.dc .txt p{font-size:13.5px;line-height:1.6;color:var(--ink);text-align:justify;-webkit-hyphens:auto;hyphens:auto}
 .dc .note{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.6;color:var(--choc);font-weight:500}
 .dc .hero{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--sand) center/cover}
 .dc .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
 .dc .hero img.off{opacity:0;transform:scale(1.06)}
 /* ткани */
-.dc .sw{margin-top:30px;display:flex;justify-content:space-between;align-items:center;padding:8px 6px}
-.dc .sw button{position:relative;width:clamp(46px,13.6vw,62px);aspect-ratio:1;border-radius:50%;background:center/cover;
+.dc .sw{margin-top:30px;display:flex;justify-content:space-between;align-items:center;padding:10px 8px}
+.dc .sw button{position:relative;width:clamp(44px,13vw,60px);aspect-ratio:1;border-radius:50%;background:center/cover;
   box-shadow:0 0 0 1px rgba(46,34,28,.12),0 6px 14px -8px rgba(46,34,28,.55);transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
-.dc .sw button::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--choc);opacity:0;transform:scale(.85);transition:opacity .5s,transform .55s var(--ease)}
-.dc .sw button.on{transform:scale(1.2)}
-.dc .sw button.on::after{opacity:.7;transform:none}
+.dc .sw button.on{transform:scale(1.22);box-shadow:0 0 0 1px rgba(46,34,28,.12),0 10px 20px -10px rgba(46,34,28,.6)}
 .dc .sw button:focus-visible{outline:1px dashed var(--latte);outline-offset:8px}
-.dc .hint{margin-top:16px;font-size:12px;line-height:1.5;color:var(--latte);text-align:center}
-.dc .hint b{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--ink);margin-right:4px}
+.dc .hint{margin-top:16px;display:flex;justify-content:center;align-items:baseline;gap:8px;font-size:12px;line-height:1.5;color:var(--latte);text-align:left}
+.dc .hint b{flex:none;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--ink)}
 /* образы: раскрываются после первого выбора */
 .dc .look{display:grid;grid-template-rows:0fr;transition:grid-template-rows .9s var(--ease)}
 .dc .look.open{grid-template-rows:1fr}
@@ -98,24 +96,10 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
 .dc .trio{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .dc .trio figure{position:relative;aspect-ratio:2/3;overflow:hidden;background:var(--sand) center/cover}
 .dc .trio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.dc .info{margin-top:22px}
-.dc .nm{display:flex;align-items:center;gap:12px}
-.dc .nm i{flex:none;width:30px;height:30px;border-radius:50%;background:center/cover;box-shadow:0 0 0 1px rgba(46,34,28,.12)}
-.dc .nm h3{font-family:var(--script);font-weight:400;white-space:nowrap;font-size:clamp(34px,11.5vw,52px);line-height:1;padding:.2em .2em .1em;margin:-.2em -.2em -.1em}
-.dc .lead{margin-top:10px;font-size:14px;line-height:1.6;color:var(--ink)}
-.dc .spec{margin-top:16px;border-top:1px solid var(--line)}
-.dc .spec div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
-.dc .spec dt{font-size:10px;line-height:1.45;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--latte);padding-top:2px}
-.dc .spec dd{font-size:13.5px;line-height:1.5;color:var(--choc)}
-.dc .mix{display:flex;flex-wrap:wrap;gap:6px 16px}
-.dc .mix button{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;line-height:1.5;text-decoration:underline;text-decoration-color:rgba(46,34,28,.3);text-underline-offset:3px}
-.dc .mix button i{width:16px;height:16px;border-radius:50%;background:center/cover;box-shadow:0 0 0 1px rgba(46,34,28,.15)}
 /* смена цвета: всё уходит и возвращается по очереди */
-.dc .trio figure,.dc .info>*{transition:opacity .6s var(--ease),transform .7s var(--ease)}
+.dc .trio figure{transition:opacity .6s var(--ease),transform .7s var(--ease)}
 .dc .trio figure:nth-child(2){transition-delay:.08s}.dc .trio figure:nth-child(3){transition-delay:.16s}
-.dc .info>*:nth-child(2){transition-delay:.12s}.dc .info>*:nth-child(3){transition-delay:.2s}
-.dc .swap .trio figure,.dc .swap .info>*{opacity:0;transform:translateY(14px);transition-delay:0s}
-@media (max-width:340px){.dc .spec div{grid-template-columns:96px minmax(0,1fr);gap:10px}.dc .spec dt{letter-spacing:.08em}}
+.dc .swap .trio figure{opacity:0;transform:translateY(14px);transition-delay:0s}
 /* появление блока */
 .dc-js .dc .ttl{-webkit-mask-image:linear-gradient(90deg,#000 45%,transparent 55%);mask-image:linear-gradient(90deg,#000 45%,transparent 55%);-webkit-mask-size:240% 100%;mask-size:240% 100%;-webkit-mask-position:100% 0;mask-position:100% 0;transition:-webkit-mask-position 1.9s cubic-bezier(.45,.05,.3,1) .2s,mask-position 1.9s cubic-bezier(.45,.05,.3,1) .2s}
 .dc-js .dc.dc-on .ttl{-webkit-mask-position:0 0;mask-position:0 0}
@@ -123,17 +107,17 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
 .dc-js .dc.dc-on .fade{opacity:1;transform:none}
 .dc-js .dc .sw button{opacity:0;transform:scale(.6)}
 .dc-js .dc.dc-on .sw button{opacity:1;transform:none;transition:transform .8s cubic-bezier(.3,1.4,.5,1),opacity .6s,box-shadow .55s}
-.dc-js .dc.dc-on .sw button.on{transform:scale(1.2)}
+.dc-js .dc.dc-on .sw button.on{transform:scale(1.22)}
 .dc-js .dc.dc-on .sw button:nth-child(2){transition-delay:.08s}.dc-js .dc.dc-on .sw button:nth-child(3){transition-delay:.16s}
 .dc-js .dc.dc-on .sw button:nth-child(4){transition-delay:.24s}.dc-js .dc.dc-on .sw button:nth-child(5){transition-delay:.32s}
 .dc-js .dc.dc-on .sw.ready button{transition-delay:0s}
 @media (prefers-reduced-motion:reduce){.dc *{transition-duration:.01s!important;transition-delay:0s!important}}
 </style>
-<section class="dc" data-dc aria-label="Дресс-код">
+<section class="dc" data-dc lang="ru" aria-label="Дресс-код">
   <h2 class="ttl">Дресс-код</h2>
   <div class="intro">
     <div class="txt fade" style="--d:.5s">
-      <p>Мы будем рады, если вы поддержите цветовую гамму нашего праздника. Так вместе мы создадим единую и особенную атмосферу этого дня, а&nbsp;фотографии станут по-настоящему гармоничными.</p>
+      <p>Мы будем рады, если вы под&shy;дер&shy;жи&shy;те цве&shy;то&shy;вую гамму на&shy;ше&shy;го празд&shy;ни&shy;ка. Так вместе мы соз&shy;да&shy;дим единую и&nbsp;осо&shy;бен&shy;ную ат&shy;мо&shy;сфе&shy;ру этого дня.</p>
     </div>
     <!-- СТАРТОВОЕ ФОТО (с гостями) --><figure class="hero fade" style="--d:.65s"><img src="${GUESTS}" alt="Гости в палитре праздника" decoding="async" onerror="this.style.visibility='hidden'"></figure>
   </div>
@@ -141,21 +125,10 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
   <div class="sw" role="radiogroup" aria-label="Цвета дресс-кода">${COLORS.map((c, i) => `
     <button type="button" role="radio" aria-checked="false" aria-label="${c.n}" data-i="${i}" style="background-image:url('${c.tex}')"></button>`).join('')}
   </div>
-  <p class="hint fade" style="--d:.9s"><b>Подсказка:</b> нажмите на&nbsp;цвет, чтобы увидеть пример образа (листайте вниз)</p>
-  <div class="look" aria-live="polite"><div>
+  <p class="hint fade" style="--d:.9s"><b>Подсказка:</b><span>нажмите на&nbsp;цвет, чтобы увидеть пример образа (листайте вниз)</span></p>
+  <div class="look"><div>
     <div class="trio">
       <figure><img alt="" decoding="async"></figure><figure><img alt="" decoding="async"></figure><figure><img alt="" decoding="async"></figure>
-    </div>
-    <div class="info">
-      <div class="nm"><i aria-hidden="true"></i><h3></h3></div>
-      <p class="lead"></p>
-      <dl class="spec">
-        <div><dt>Для неё</dt><dd data-k="her"></dd></div>
-        <div><dt>Для него</dt><dd data-k="him"></dd></div>
-        <div><dt>Ткани и фактуры</dt><dd data-k="fab"></dd></div>
-        <div><dt>Украшения</dt><dd data-k="jew"></dd></div>
-        <div><dt>Сочетается&nbsp;с</dt><dd class="mix" data-k="mix"></dd></div>
-      </dl>
     </div>
   </div></div>
 </section>
@@ -169,10 +142,7 @@ function setHero(src,tex){var old=hero.querySelectorAll('img'),im=new Image();im
   hero.style.backgroundImage="url('"+tex+"')";
   im.onload=im.onerror=function(){if(im.naturalWidth===0)im.style.visibility='hidden';requestAnimationFrame(function(){im.classList.remove('off');old.forEach(function(o){o.classList.add('off');setTimeout(function(){o.remove()},950)})})};
   im.src=src;hero.appendChild(im)}
-function fill(c){var f=qa('.trio figure');f.forEach(function(fg,k){fg.style.backgroundImage="url('"+c.tex+"')";var im=fg.querySelector('img');im.style.visibility='';im.onerror=function(){this.style.visibility='hidden'};im.alt=c.n+' — образ '+(k+1);im.src=c.looks[k]});
-  q('.nm i').style.backgroundImage="url('"+c.tex+"')";q('.nm h3').textContent=c.n;q('.lead').textContent=c.d;
-  ['her','him','fab','jew'].forEach(function(k){q('[data-k='+k+']').textContent=c[k].charAt(0).toUpperCase()+c[k].slice(1)});
-  var m=q('[data-k=mix]');m.innerHTML='';c.mix.forEach(function(j){var b=document.createElement('button');b.type='button';b.innerHTML='<i style="background-image:url(\\''+DC[j].tex+'\\')"></i>'+DC[j].n;b.onclick=function(){pick(j)};m.appendChild(b)})}
+function fill(c){var f=qa('.trio figure');f.forEach(function(fg,k){fg.style.backgroundImage="url('"+c.tex+"')";var im=fg.querySelector('img');im.style.visibility='';im.onerror=function(){this.style.visibility='hidden'};im.alt=c.n+' — образ '+(k+1);im.src=c.looks[k]});}
 function pick(i){if(i===cur)return;var first=cur<0;cur=i;var c=DC[i];
   btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-checked',k===i?'true':'false')});
   setHero(c.main,c.tex);
