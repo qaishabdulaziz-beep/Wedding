@@ -136,6 +136,24 @@ out.push(['final/01-fullscreen', 'ФИНАЛ · Во весь экран', true,
   ${SIGN}
 </section>`]);
 
+/* ФИНАЛ 3. Невысокий: ~1/3–1/2 экрана под детальное фото, текст укладывается внутрь */
+out.push(['final/03-short', 'ФИНАЛ · Невысокий', true, `
+<style>${finalBase('fn3')}
+.fn3{height:clamp(280px,46svh,430px);display:flex;align-items:center;justify-content:center;padding:0 22px 64px}
+.fn3 .bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,34,28,.2) 0,rgba(46,34,28,.35) 50%,rgba(46,34,28,.78) 100%)}
+.fn3 .bye{position:relative;z-index:2;font-size:clamp(30px,9.4vw,44px);line-height:1.15;letter-spacing:.02em;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.fn3 .sign{right:20px;bottom:18px}
+.fn3 .with{font-size:13px}
+.fn3 .names{font-size:clamp(32px,9.6vw,44px)}
+.fx-js .fn3 .bg img{transform:scale(1.1);transition:transform 5s cubic-bezier(.2,.6,.2,1)}
+.fx-js .fn3.fx-on .bg img{transform:none}
+</style>
+<section class="fn3" data-fx aria-label="До встречи">
+  <!-- ФОТО ФОНА (детальное, лучше горизонтальное) --><div class="bg" aria-hidden="true"><img src="${PHOTO}" alt="" decoding="async" onerror="this.style.display='none'"></div>
+  <p class="bye rise" style="--d:.3s">До встречи!</p>
+  ${SIGN}
+</section>`]);
+
 /* ФИНАЛ 2. Фото с тонкой рамкой внутри, «До встречи!» капсом с линией, подпись справа */
 out.push(['final/02-framed', 'ФИНАЛ · С рамкой', true, `
 <style>${finalBase('fn2')}
