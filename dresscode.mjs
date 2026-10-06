@@ -6,51 +6,48 @@ const ASTRUM_SHA = '4a83daeb45bb08fd036182115602a4c42002242b';
 const MAIN_SHA = '90b234a93fec945ba023e442202273e508899c9c';
 const TEX_SHA = '9e3d871b9efe03944f58969ddd13923ae119c089';
 const tex = (n) => `https://cdn.jsdelivr.net/gh/${REPO}@${TEX_SHA}/assets/dresscode/${n}.jpg`;
-const u = (id, w = 700) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+const PH_SHA = 'a136acb94662f6a10c4be2a656a95b1ff257d469'; // assets/dresscode/main.jpg и looks/*.jpg
+const ph = (n) => `https://cdn.jsdelivr.net/gh/${REPO}@${PH_SHA}/assets/dresscode/${n}.jpg`;
+const looks = (id) => [1, 2, 3].map((k) => ph(`looks/${id}-${k}`));
 
 // ВРЕМЕННЫЕ фото — замените на свои: main — фото справа от текста, looks — три образа
 const COLORS = [
-  { id: 'mokko', n: 'Мокко', tex: tex('mokko'),
+  { id: 'mokko',  n: 'Мокко', tex: tex('mokko'),
     d: 'Тёплый оттенок кофе с молоком: мягкий, глубокий и очень благородный.',
     her: 'платье-комбинация из матового шёлка, лёгкий трикотаж, замшевые акценты',
     him: 'брюки или пиджак в кофейной гамме, льняная рубашка в тон',
     fab: 'матовый шёлк, сатин, тонкая замша', jew: 'золото, жемчуг, янтарь', mix: [4, 2],
-    main: u('photo-1515372039744-b8f02a3ae446'),
-    looks: [u('photo-1496747611176-843222e1e57c', 500), u('photo-1507679799987-c73779587ccf', 500), u('photo-1539109136881-3be0616acf4b', 500)] },
-  { id: 'oliva', n: 'Олива', tex: tex('oliva'),
+    looks: looks('mokko') },
+  { id: 'oliva',  n: 'Олива', tex: tex('oliva'),
     d: 'Глубокий оттенок летней листвы, спокойный и естественный.',
     her: 'струящееся платье в пол, атласная юбка, костюм с широкими брюками',
     him: 'льняной костюм оливкового цвета или галстук и платок в тон',
     fab: 'лён, сатин, шифон', jew: 'золото, кожаные аксессуары коньячного оттенка', mix: [3, 4],
-    main: u('photo-1485968579580-b6d095142e6e'),
-    looks: [u('photo-1529139574466-a303027c1d8b', 500), u('photo-1593030761757-71fae45fa0e7', 500), u('photo-1490481651871-ab68de25d43d', 500)] },
-  { id: 'shalfey', n: 'Шалфей', tex: tex('shalfey'),
+    looks: looks('oliva') },
+  { id: 'shalfey',  n: 'Шалфей', tex: tex('shalfey'),
     d: 'Нежный серо-зелёный, лёгкий и воздушный, как летнее утро.',
     her: 'шифоновое или шёлковое платье миди, лёгкие многослойные ткани',
     him: 'рубашка цвета шалфея, светлые брюки',
     fab: 'шифон, шёлк, органза', jew: 'серебро, жемчуг', mix: [0, 3],
-    main: u('photo-1496747611176-843222e1e57c'),
-    looks: [u('photo-1515372039744-b8f02a3ae446', 500), u('photo-1617137968427-85924c800a22', 500), u('photo-1485968579580-b6d095142e6e', 500)] },
-  { id: 'bezhevo-seryy', n: 'Бежево-серый', tex: tex('bezhevo-seryy'),
+    looks: looks('shalfey') },
+  { id: 'bezhevo-seryy',  n: 'Бежево-серый', tex: tex('bezhevo-seryy'),
     d: 'Мягкий тёплый нейтральный оттенок, который делает образ спокойным и элегантным.',
     her: 'платье-рубашка, костюм-тройка, лёгкий трикотаж',
     him: 'костюм песочного оттенка, рубашка без галстука',
     fab: 'лён, хлопок, тонкая шерсть', jew: 'золото, перламутр', mix: [1, 0],
-    main: u('photo-1539109136881-3be0616acf4b'),
-    looks: [u('photo-1490481651871-ab68de25d43d', 500), u('photo-1507679799987-c73779587ccf', 500), u('photo-1529139574466-a303027c1d8b', 500)] },
-  { id: 'slivochnyy', n: 'Сливочный', tex: tex('slivochnyy'),
+    looks: looks('bezhevo-seryy') },
+  { id: 'slivochnyy',  n: 'Сливочный', tex: tex('slivochnyy'),
     d: 'Тёплый сливочно-жёлтый, как мягкий солнечный свет.',
     her: 'атласное или шёлковое платье, юбка с блеском шёлка',
     him: 'рубашка или платок в кармане в сливочном оттенке',
     fab: 'шёлк, атлас, сатин', jew: 'золото, жемчуг', mix: [1, 0],
-    main: u('photo-1529139574466-a303027c1d8b'),
-    looks: [u('photo-1485968579580-b6d095142e6e', 500), u('photo-1593030761757-71fae45fa0e7', 500), u('photo-1496747611176-843222e1e57c', 500)] },
+    looks: looks('slivochnyy') },
 ];
-const GUESTS = u('photo-1519225421980-715cb0215aed'); // стартовое фото с гостями
+const MAIN = ph('main'); // главное фото (статичное)
 
 const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
-const DATA = JSON.stringify(COLORS.map(({ n, tex, main, looks }) => ({ n, tex, main, looks })), null, 0)
+const DATA = JSON.stringify(COLORS.map(({ n, tex, looks }) => ({ n, tex, looks })), null, 0)
   .replace(/\},\{/g, '},\n{');
 
 const code = `<!-- ДРЕСС-КОД · палитра с образами -->
@@ -79,8 +76,7 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
 .dc .txt p{font-size:13.5px;line-height:1.65;color:var(--ink);text-align:left;-webkit-hyphens:manual;hyphens:manual;text-wrap:pretty}
 .dc .note{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.6;color:var(--choc);font-weight:500}
 .dc .hero{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--sand) center/cover}
-.dc .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
-.dc .hero img.off{opacity:0;transform:scale(1.06)}
+.dc .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* ткани */
 .dc .sw{margin-top:30px;display:flex;justify-content:space-between;align-items:center;padding:10px 8px}
 .dc .sw button{position:relative;width:clamp(44px,13vw,60px);aspect-ratio:1;border-radius:50%;background:center/cover;
@@ -94,7 +90,7 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
 .dc .look.open{grid-template-rows:1fr}
 .dc .look>div{overflow:hidden;min-height:0}
 .dc .trio{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.dc .trio figure{position:relative;aspect-ratio:2/3;overflow:hidden;background:var(--sand) center/cover}
+.dc .trio figure{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--sand) center/cover}
 .dc .trio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* смена цвета: всё уходит и возвращается по очереди */
 .dc .trio figure{transition:opacity .6s var(--ease),transform .7s var(--ease)}
@@ -119,7 +115,7 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
     <div class="txt fade" style="--d:.5s">
       <p>Мы будем рады, если вы поддержите цветовую гамму нашего праздника. Так вместе мы создадим единую и&nbsp;особенную атмосферу этого дня.</p>
     </div>
-    <!-- СТАРТОВОЕ ФОТО (с гостями) --><figure class="hero fade" style="--d:.65s"><img src="${GUESTS}" alt="Гости в палитре праздника" decoding="async" onerror="this.style.visibility='hidden'"></figure>
+    <!-- ГЛАВНОЕ ФОТО --><figure class="hero fade" style="--d:.65s"><img src="${MAIN}" alt="Гости в палитре праздника" decoding="async" onerror="this.style.visibility='hidden'"></figure>
   </div>
   <p class="note fade" style="--d:.75s">Пожалуйста, оставьте белый цвет для невесты и&nbsp;по&nbsp;возможности избегайте чёрного.</p>
   <div class="sw" role="radiogroup" aria-label="Цвета дресс-кода">${COLORS.map((c, i) => `
@@ -133,24 +129,19 @@ max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:
   </div></div>
 </section>
 <script>(function(){
-/* ЦВЕТА И ФОТО: main — фото справа от текста, looks — три образа (вертикальные 2:3). Замените ссылки на свои. */
+/* ЦВЕТА И ФОТО: looks — три образа для каждого цвета (вертикальные 4:5). Замените ссылки на свои. */
 var DC=${DATA};
 var s=document.currentScript.previousElementSibling;if(!s||!s.classList.contains('dc'))return;
 var q=function(x){return s.querySelector(x)},qa=function(x){return s.querySelectorAll(x)};
-var btns=qa('.sw button'),hero=q('.hero'),look=q('.look'),box=q('.look>div'),cur=-1,busy=0;
-function setHero(src,tex){var old=hero.querySelectorAll('img'),im=new Image();im.alt='';im.decoding='async';im.className='off';
-  hero.style.backgroundImage="url('"+tex+"')";
-  im.onload=im.onerror=function(){if(im.naturalWidth===0)im.style.visibility='hidden';requestAnimationFrame(function(){im.classList.remove('off');old.forEach(function(o){o.classList.add('off');setTimeout(function(){o.remove()},950)})})};
-  im.src=src;hero.appendChild(im)}
+var btns=qa('.sw button'),look=q('.look'),box=q('.look>div'),cur=-1,busy=0;
 function fill(c){var f=qa('.trio figure');f.forEach(function(fg,k){fg.style.backgroundImage="url('"+c.tex+"')";var im=fg.querySelector('img');im.style.visibility='';im.onerror=function(){this.style.visibility='hidden'};im.alt=c.n+' — образ '+(k+1);im.src=c.looks[k]});}
 function pick(i){if(i===cur)return;var first=cur<0;cur=i;var c=DC[i];
   btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-checked',k===i?'true':'false')});
-  setHero(c.main,c.tex);
   if(first){fill(c);box.classList.add('swap');look.classList.add('open');setTimeout(function(){box.classList.remove('swap')},350);return}
   box.classList.add('swap');clearTimeout(busy);busy=setTimeout(function(){fill(c);void box.offsetWidth;box.classList.remove('swap')},420)}
 btns.forEach(function(b){b.addEventListener('click',function(){pick(+b.getAttribute('data-i'))})});
 /* появление блока */
-function on(){s.classList.add('dc-on');setTimeout(function(){q('.sw').classList.add('ready')},1300)}
+function on(){s.classList.add('dc-on');/* заранее подгружаем фото образов, чтобы смена была мгновенной */setTimeout(function(){DC.forEach(function(c){c.looks.forEach(function(u){var i=new Image();i.src=u})})},1500);setTimeout(function(){q('.sw').classList.add('ready')},1300)}
 if(!('IntersectionObserver' in window))on();else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){on();io.disconnect()}},{rootMargin:'0px 0px -12% 0px',threshold:.12});io.observe(s)}
 })();</script>
 `;
