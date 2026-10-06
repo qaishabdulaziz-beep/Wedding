@@ -1,0 +1,115 @@
+<!-- ДРЕСС-КОД · Фото в арке -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&subset=cyrillic&display=swap">
+<style>
+@font-face{font-family:'Astrum Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@4a83daeb45bb08fd036182115602a4c42002242b/assets/fonts/AstrumScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/4a83daeb45bb08fd036182115602a4c42002242b/assets/fonts/AstrumScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@90b234a93fec945ba023e442202273e508899c9c/AstrumScriptCyrillicRegular%202.ttf') format('truetype');}
+</style>
+<script>document.documentElement.classList.add('dc-js')</script>
+<style>
+.dc{--ivory:#F6F1EA;--sand:#E8DDD0;--choc:#2E221C;--ink:#4A3A31;--latte:#8C7566;--line:rgba(46,34,28,.16);
+--script:'Astrum Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+position:relative;background:var(--ivory);color:var(--choc);font-family:var(--serif);font-weight:400;font-size:14px;line-height:1.55;
+max-width:520px;margin:0 auto;padding:44px 20px 60px;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.dc *,.dc *::before,.dc *::after{box-sizing:border-box}
+.dc :where(p,h2,h3,dl,dt,dd,ul,li,figure){margin:0;padding:0;list-style:none;font-weight:inherit}
+.dc button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.dc::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.1;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* заголовок: поля дают место росчеркам, маска-«письмо» их не режет */
+.dc .ttl{display:inline-block;margin:0 0 0 calc(-.3em + 2px);padding:.42em .3em .22em;font-family:var(--script);font-weight:400;color:var(--choc);
+  font-size:clamp(58px,17.5vw,80px);line-height:1;letter-spacing:-.01em;white-space:nowrap}
+.dc .intro{margin-top:4px;display:grid;grid-template-columns:minmax(0,1fr) 43%;gap:14px;align-items:center}
+.dc .txt p{font-size:13.5px;line-height:1.65;color:var(--ink);text-align:left;-webkit-hyphens:manual;hyphens:manual;text-wrap:pretty}
+.dc .note{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.6;color:var(--choc);font-weight:500}
+.dc .hero{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--sand) center/cover}
+.dc .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* ткани */
+.dc .sw{margin-top:30px;display:flex;justify-content:space-between;align-items:center;padding:10px 8px}
+.dc .sw button{position:relative;width:clamp(44px,13vw,60px);aspect-ratio:1;border-radius:50%;background:center/cover;
+  box-shadow:0 0 0 1px rgba(46,34,28,.12),0 6px 14px -8px rgba(46,34,28,.55);transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.dc .sw button.on{transform:scale(1.22);box-shadow:0 0 0 1px rgba(46,34,28,.12),0 10px 20px -10px rgba(46,34,28,.6)}
+.dc .sw button:focus-visible{outline:1px dashed var(--latte);outline-offset:8px}
+.dc .hint{margin-top:16px;display:flex;justify-content:center;align-items:baseline;gap:8px;font-size:12px;line-height:1.5;color:var(--latte);text-align:left}
+.dc .hint b{flex:none;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--ink)}
+/* образы: раскрываются после первого выбора */
+.dc .look{display:grid;grid-template-rows:0fr;transition:grid-template-rows .9s var(--ease)}
+.dc .look.open{grid-template-rows:1fr}
+.dc .look>div{overflow:hidden;min-height:0}
+.dc .trio{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.dc .trio figure{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--sand) center/cover}
+.dc .trio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* смена цвета: всё уходит и возвращается по очереди */
+.dc .trio figure{transition:opacity .6s var(--ease),transform .7s var(--ease)}
+.dc .trio figure:nth-child(2){transition-delay:.08s}.dc .trio figure:nth-child(3){transition-delay:.16s}
+.dc .swap .trio figure{opacity:0;transform:translateY(14px);transition-delay:0s}
+/* появление блока */
+.dc-js .dc .ttl{-webkit-mask-image:linear-gradient(90deg,#000 45%,transparent 55%);mask-image:linear-gradient(90deg,#000 45%,transparent 55%);-webkit-mask-size:240% 100%;mask-size:240% 100%;-webkit-mask-position:100% 0;mask-position:100% 0;transition:-webkit-mask-position 1.9s cubic-bezier(.45,.05,.3,1) .2s,mask-position 1.9s cubic-bezier(.45,.05,.3,1) .2s}
+.dc-js .dc.dc-on .ttl{-webkit-mask-position:0 0;mask-position:0 0}
+.dc-js .dc .fade{opacity:0;transform:translateY(14px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.dc-js .dc.dc-on .fade{opacity:1;transform:none}
+.dc-js .dc .sw button{opacity:0;transform:scale(.6)}
+.dc-js .dc.dc-on .sw button{opacity:1;transform:none;transition:transform .8s cubic-bezier(.3,1.4,.5,1),opacity .6s,box-shadow .55s}
+.dc-js .dc.dc-on .sw button.on{transform:scale(1.22)}
+.dc-js .dc.dc-on .sw button:nth-child(2){transition-delay:.08s}.dc-js .dc.dc-on .sw button:nth-child(3){transition-delay:.16s}
+.dc-js .dc.dc-on .sw button:nth-child(4){transition-delay:.24s}.dc-js .dc.dc-on .sw button:nth-child(5){transition-delay:.32s}
+.dc-js .dc.dc-on .sw.ready button{transition-delay:0s}
+/* верхняя часть: Фото в арке */
+.dc .top{text-align:center}
+.dc .top .ttl{margin:0 auto}
+.dc .arch{position:relative;width:min(66%,300px);margin:8px auto 0;aspect-ratio:3/4}
+.dc .arch::before{content:'';position:absolute;inset:-9px;border:1px solid rgba(46,34,28,.28);border-radius:999px 999px 0 0;border-bottom:0}
+.dc .arch figure{position:absolute;inset:0;overflow:hidden;border-radius:999px 999px 0 0;background:var(--sand)}
+.dc .arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.dc .lead{margin:26px auto 0;max-width:310px;font-size:14.5px;line-height:1.7;color:var(--ink);text-wrap:pretty}
+.dc .note2{margin:16px auto 0;max-width:290px;font-size:13.5px;line-height:1.6;font-weight:500;color:var(--choc);text-wrap:balance}
+.dc-js .dc .arch figure{clip-path:inset(100% 0 0 0 round 999px 999px 0 0);transition:clip-path 1.6s cubic-bezier(.7,0,.2,1) .3s}
+.dc-js .dc.dc-on .arch figure{clip-path:inset(0 0 0 0 round 999px 999px 0 0)}
+.dc-js .dc .arch img{transform:scale(1.15);transition:transform 2.6s var(--ease) .3s}
+.dc-js .dc.dc-on .arch img{transform:none}
+.dc-js .dc .arch::before{opacity:0;transition:opacity 1.2s var(--ease) 1.2s}
+.dc-js .dc.dc-on .arch::before{opacity:1}
+@media (prefers-reduced-motion:reduce){.dc *{transition-duration:.01s!important;transition-delay:0s!important}}
+</style>
+<section class="dc" data-dc lang="ru" aria-label="Дресс-код">
+  <div class="top">
+    <h2 class="ttl">Дресс-код</h2>
+    <!-- ГЛАВНОЕ ФОТО (в арке) --><div class="arch"><figure><img src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/main.jpg" alt="Гости в палитре праздника" decoding="async" onerror="this.style.visibility='hidden'"></figure></div>
+    <p class="lead fade" style="--d:.8s">Мы будем рады, если вы поддержите цветовую гамму нашего праздника. Так вместе мы создадим единую и&nbsp;особенную атмосферу этого дня.</p>
+    <p class="note2 fade" style="--d:1s">Пожалуйста, оставьте белый цвет для невесты и&nbsp;по&nbsp;возможности избегайте чёрного.</p>
+  </div>
+  <div class="sw" role="radiogroup" aria-label="Цвета дресс-кода">
+    <button type="button" role="radio" aria-checked="false" aria-label="Мокко" data-i="0" style="background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/mokko.jpg')"></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Олива" data-i="1" style="background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/oliva.jpg')"></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Шалфей" data-i="2" style="background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/shalfey.jpg')"></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Бежево-серый" data-i="3" style="background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/bezhevo-seryy.jpg')"></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Сливочный" data-i="4" style="background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/slivochnyy.jpg')"></button>
+  </div>
+  <p class="hint fade" style="--d:.9s"><b>Подсказка:</b><span>нажмите на&nbsp;цвет, чтобы увидеть пример образа (листайте вниз)</span></p>
+  <div class="look"><div>
+    <div class="trio">
+      <figure><img alt="" decoding="async"></figure><figure><img alt="" decoding="async"></figure><figure><img alt="" decoding="async"></figure>
+    </div>
+  </div></div>
+</section>
+<script>(function(){
+/* ЦВЕТА И ФОТО: looks — три образа для каждого цвета (вертикальные 4:5). Замените ссылки на свои. */
+var DC=[{"n":"Мокко","tex":"https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/mokko.jpg","looks":["https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/mokko-1.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/mokko-2.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/mokko-3.jpg"]},
+{"n":"Олива","tex":"https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/oliva.jpg","looks":["https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/oliva-1.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/oliva-2.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/oliva-3.jpg"]},
+{"n":"Шалфей","tex":"https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/shalfey.jpg","looks":["https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/shalfey-1.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/shalfey-2.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/shalfey-3.jpg"]},
+{"n":"Бежево-серый","tex":"https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/bezhevo-seryy.jpg","looks":["https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/bezhevo-seryy-1.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/bezhevo-seryy-2.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/bezhevo-seryy-3.jpg"]},
+{"n":"Сливочный","tex":"https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@9e3d871b9efe03944f58969ddd13923ae119c089/assets/dresscode/slivochnyy.jpg","looks":["https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/slivochnyy-1.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/slivochnyy-2.jpg","https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@a136acb94662f6a10c4be2a656a95b1ff257d469/assets/dresscode/looks/slivochnyy-3.jpg"]}];
+var s=document.currentScript.previousElementSibling;if(!s||!s.classList.contains('dc'))return;
+var q=function(x){return s.querySelector(x)},qa=function(x){return s.querySelectorAll(x)};
+var btns=qa('.sw button'),look=q('.look'),box=q('.look>div'),cur=-1,busy=0;
+function fill(c){var f=qa('.trio figure');f.forEach(function(fg,k){fg.style.backgroundImage="url('"+c.tex+"')";var im=fg.querySelector('img');im.style.visibility='';im.onerror=function(){this.style.visibility='hidden'};im.alt=c.n+' — образ '+(k+1);im.src=c.looks[k]});}
+function pick(i){if(i===cur)return;var first=cur<0;cur=i;var c=DC[i];
+  btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-checked',k===i?'true':'false')});
+  if(first){fill(c);box.classList.add('swap');look.classList.add('open');setTimeout(function(){box.classList.remove('swap')},350);return}
+  box.classList.add('swap');clearTimeout(busy);busy=setTimeout(function(){fill(c);void box.offsetWidth;box.classList.remove('swap')},420)}
+btns.forEach(function(b){b.addEventListener('click',function(){pick(+b.getAttribute('data-i'))})});
+/* появление блока */
+function on(){s.classList.add('dc-on');/* заранее подгружаем фото образов, чтобы смена была мгновенной */setTimeout(function(){DC.forEach(function(c){c.looks.forEach(function(u){var i=new Image();i.src=u})})},1500);setTimeout(function(){q('.sw').classList.add('ready')},1300)}
+if(!('IntersectionObserver' in window))on();else{var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){on();io.disconnect()}},{rootMargin:'0px 0px -12% 0px',threshold:.12});io.observe(s)}
+})();</script>
