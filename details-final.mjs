@@ -37,7 +37,7 @@ max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:b
 /* поля .ttl дают место росчеркам и верху букв — анимация-маска их не обрезает */
 .dxf .ttl{position:absolute;z-index:5;left:calc(6px - .17em);top:calc(var(--pt) - ${TITLE_TOP} - .45em);padding:.45em .3em .3em;font-family:var(--script);font-weight:400;color:var(--choc);
   font-size:${TITLE_SIZE};line-height:1;letter-spacing:-.02em;white-space:nowrap;pointer-events:none}
-.dxf .panel{position:relative;background:var(--choc);padding-bottom:56px}
+.dxf .panel{position:relative;background:var(--choc);padding-bottom:var(--gap)}
 .dxf .top{display:grid;grid-template-columns:48% minmax(0,1fr)}
 .dxf .ph{position:relative;overflow:hidden;background:linear-gradient(160deg,#CDBDAE,#8E7A6C)}
 .dxf .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.98)}
@@ -65,8 +65,6 @@ max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:b
 .dxf .btn span{margin-right:-.3em}
 .dxf .btn:hover{background:var(--ivory)}
 .dxf .btn:hover::before{inset:8px;border-color:rgba(46,34,28,.5)}
-/* три фото в ряд, крайние наполовину уходят за край */
-.dxf .row{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px;width:140%;margin-left:-20%;margin-top:var(--gap);height:clamp(230px,66vw,330px)}
 /* анимация */
 .dx-js .dxf .main{clip-path:inset(0 0 100% 0);transition:clip-path 1.5s cubic-bezier(.7,0,.2,1)}
 .dx-js .dxf.dx-on .main{clip-path:inset(0)}
@@ -78,12 +76,6 @@ max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:b
 .dx-js .dxf.dx-on .sep{transform:none}
 .dx-js .dxf .fade{opacity:0;transform:translateY(12px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
 .dx-js .dxf.dx-on .fade{opacity:1;transform:none}
-.dx-js .dxf .row .ph{opacity:0;transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
-.dx-js .dxf .row .ph:nth-child(1){transform:translateX(-36px)}
-.dx-js .dxf .row .ph:nth-child(2){transform:translateY(26px)}
-.dx-js .dxf .row .ph:nth-child(3){transform:translateX(36px)}
-.dx-js .dxf .row.dx-on .ph{opacity:1;transform:none}
-.dx-js .dxf .row .ph:nth-child(odd){transition-delay:.25s}
 @media (prefers-reduced-motion:reduce){.dx-js .dxf *{transition-duration:.01s!important;transition-delay:0s!important}}
 </style>
 <section class="dxf" data-dx aria-label="Детали">
@@ -91,7 +83,7 @@ max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:b
   <div class="panel">
     <div class="top">
       <!-- ФОТО ЛОКАЦИИ (главное) --><div class="ph main">
-        ${img(0)}
+        <img src="https://cdn.jsdelivr.net/gh/${REPO}@870ba8ffafe39f634721ce93f2e06ae8ca04af7e/assets/details/location.jpg" alt="Дрокино парк" decoding="async" onerror="this.style.display='none'">
         <p class="cap" aria-hidden="true">Krasnoyarsk · 2027</p>
       </div>
       <div class="col">
@@ -111,11 +103,6 @@ max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:b
       </div>
     </div>
     <a class="btn fade" style="--d:.8s" href="${ROUTE}" target="_blank" rel="noopener"><span>Построить маршрут</span></a>
-    <div class="row" data-dx>
-      <!-- ФОТО 2 --><figure class="ph">${img(1)}</figure>
-      <!-- ФОТО 3 --><figure class="ph">${img(2)}</figure>
-      <!-- ФОТО 4 --><figure class="ph">${img(3)}</figure>
-    </div>
   </div>
 </section>
 <script>(function(){var d=document;
