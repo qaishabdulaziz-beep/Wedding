@@ -33,7 +33,7 @@ function ribbon(pts, wfn) {
     A.push([pts[i][0] + nx * w, pts[i][1] + ny * w]); B.push([pts[i][0] - nx * w, pts[i][1] - ny * w]);
   }
   const all = A.concat(B.reverse());
-  return 'M' + all.map(([x, y]) => `${f(x)} ${f(y)}`).join(' L') + ' Z';
+  return 'M' + all.map(([x, y]) => `${f(x)} ${f(y)}`).join('L') + 'Z';
 }
 // ширина пера: тонко по одной диагонали, толсто по другой (как у широкого пера), сужение на концах
 const nib = (w0, w1, ang = -0.75) => (t, tx, ty) => { const s = Math.abs(Math.sin(Math.atan2(ty, tx) - ang)); const end = Math.min(1, t / .02, (1 - t) / .1); return (w0 + w1 * s) * Math.max(.18, end); };
@@ -57,7 +57,7 @@ const FLOW_C = [[178, -30], [150, -8], [100, 14], [52, 40], [30, 72], [44, 104],
 
 function geom(flow, curl) {
   const S = segs(flow), C = segs(curl);
-  return { S, C, d: dOf(S), dc: dOf(C), pts: sample(S), cpts: sample(C, 30) };
+  return { S, C, d: dOf(S), dc: dOf(C), pts: sample(S), cpts: sample(C, 9) };
 }
 
 const HEART = 'M0 7.2 C-1.6 5.6 -9.6 0.6 -9.6 -4.6 C-9.6 -7.8 -7.2 -10 -4.6 -10 C-2.6 -10 -0.9 -8.8 0 -7 C0.9 -8.8 2.6 -10 4.6 -10 C7.2 -10 9.6 -7.8 9.6 -4.6 C9.6 0.6 1.6 5.6 0 7.2 Z';
@@ -72,8 +72,8 @@ function page(v) {
   const body = mode === 'nib'
     ? `      <defs><mask id="${p}-m" maskUnits="userSpaceOnUse" x="-20" y="-60" width="400" height="${H + 80}"><path class="mk" d="${g.d}"/></mask></defs>
       <path class="trk" d="${g.d}"/>
-      <path class="ink lt" d="${ribbon(sample(g.S, 12), nib(.55, 2.1))}"/>
-      <path class="ink dk" mask="url(#${p}-m)" d="${ribbon(sample(g.S, 12), nib(.55, 2.1))}"/>
+      <path class="ink lt" d="${ribbon(sample(g.S, 7), nib(.55, 2.1))}"/>
+      <path class="ink dk" mask="url(#${p}-m)" d="${ribbon(sample(g.S, 7), nib(.55, 2.1))}"/>
       <path class="crl" d="${ribbon(g.cpts, nib(.5, 2, -0.75))}"/>`
     : `      <path class="trk" d="${g.d}"/>
       <path class="done"/>
