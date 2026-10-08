@@ -1,3 +1,4 @@
+// Внимание: после 08.10 tilda/details-final.html правится вручную (Hogarth, цветное фото, ссылка) — повторный запуск откатит правки.
 // Финальный блок «details» (вариант 4, доработка). Запуск: node details-final.mjs → tilda/details-final.html
 import fs from 'node:fs';
 

@@ -53,6 +53,11 @@ max-width:520px;margin:0 auto;padding:52px 0 40px;overflow:hidden;box-sizing:bor
 .ce3 .card .txt{margin-top:6px;font-size:clamp(13.5px,3.9vw,14.5px);line-height:1.6}
 .ce3 .card .btn{padding:10px 8px;font-size:clamp(9.5px,2.85vw,11.5px);letter-spacing:.13em}
 .ce3 .card .btn span{margin-right:-.13em}
+/* кнопка — шоколадная, как «Отправить ответ» в анкете */
+.ce3 .card .btn{background:var(--choc);color:var(--ivory)!important}
+.ce3 .card .btn::before{border-color:rgba(246,241,234,.35)}
+.ce3 .card .btn:hover{background:#3d2e26}
+.ce3 .card .btn:hover::before{border-color:rgba(246,241,234,.6)}
 /* до нажатия: имена рукописным на видимой части листа */
 .ce3 .cover{position:absolute;z-index:1;left:0;right:0;top:0;height:var(--vis,32%);display:flex;align-items:center;justify-content:center;
   padding-top:4px;font-family:'Hogarth Script',var(--script);font-weight:400;font-size:clamp(27px,8.4vw,36px);line-height:1.1;color:var(--choc);white-space:nowrap;pointer-events:none}

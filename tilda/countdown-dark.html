@@ -2,43 +2,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400..600&subset=cyrillic&display=swap">
 <style>
-@font-face{font-family:'Bikham Cyr Script';font-weight:400;font-style:normal;font-display:swap;
-src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
-url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/5b262026dec5461ae613b800d9f57ca265cc2c3d/assets/fonts/BikhamCyrScript.woff2') format('woff2'),
-url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@076d0ea8abd7db458bdebeb63300c70b9fd89215/bikhamcyrscript.ttf') format('truetype');}
+@font-face{font-family:'Hogarth Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@4140bb56dd6b6bb40a7439003be591b2e9dc7901/assets/fonts/HogarthScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/4140bb56dd6b6bb40a7439003be591b2e9dc7901/assets/fonts/HogarthScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@f86f97a5e97c0ca45d085be24ed0e5c6193f24e0/Hogarth%20script.ttf') format('truetype');}
 </style>
 <style>
 .cd1{--sand:#E8DDD0;--ivory:#F6F1EA;--choc:#2E221C;--latte:#9C806C;--latte-l:#C4AE9A;
 --fg:var(--ivory);--sub:var(--latte-l);--line:rgba(246,241,234,.22);
---script:'Bikham Cyr Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+--script:'Hogarth Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
 position:relative;background:var(--choc);color:var(--fg);font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.6;
 max-width:520px;margin:0 auto;overflow:hidden;overflow-x:clip;overflow-y:visible;box-sizing:border-box;text-align:center;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 .cd1 *,.cd1 *::before,.cd1 *::after{box-sizing:border-box}
 .cd1 :where(p,h2){margin:0;font-weight:inherit}
 .cd1::after{content:'';position:absolute;inset:0;top:var(--ov,0px);pointer-events:none;z-index:5;opacity:.16;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .cd1 h2{font-family:var(--script);font-weight:400;line-height:1;color:var(--fg)}
-.cd1 h2 br{display:none}
-.cd1 h2 span{display:block;padding:.4em .45em .26em;margin:-.4em -.45em -.26em}
-.cd1 h2 span+br+span{margin-top:-1.08em}
+.cd1 h2 span{display:block;padding:.3em .3em .2em;margin:-.3em -.3em -.2em;white-space:nowrap}
 .cd1 .units{display:grid;grid-template-columns:1.3fr auto 1fr auto 1fr auto 1fr;align-items:start;max-width:380px;margin-left:auto;margin-right:auto;font-variant-numeric:lining-nums tabular-nums}
 .cd1 .u{display:flex;flex-direction:column;align-items:center}
 .cd1 .n{font-weight:400;line-height:1;letter-spacing:.01em}
 .cd1 .l{margin-top:12px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--sub);white-space:nowrap}
 .cd1 .c{font-weight:400;line-height:1;opacity:.55;padding:0 .08em;transform:translateY(-.04em)}
-.cd1 .done{display:none;font-family:var(--script);font-weight:400;line-height:1.1}
+.cd1 .done{display:none;font-family:var(--script);font-weight:400;line-height:1.1;white-space:nowrap}
 .cd1.cd-done .units,.cd1.cd-done h2,.cd1.cd-done .hide-done{display:none}
 .cd1.cd-done .done{display:block}
 .cd-js .cd1 .fade{opacity:0;transform:translateY(14px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
 .cd-js .cd1.cd-on .fade{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.cd-js .cd1 .fade{transform:none;transition:opacity .6s linear}}
 .cd1{--ov:48px;margin-top:calc(-1 * var(--ov));padding:6px 22px 96px;background:linear-gradient(transparent 0 var(--ov),var(--choc) var(--ov))}
-.cd1 h2{font-size:clamp(46px,13.5vw,58px)}
+/* «До нашего дня осталось» — в одну строку: размер считается от ширины экрана */
+.cd1 h2{font-size:min(calc((100vw - 52px) / 7.2),60px)}
 .cd1 .units{margin-top:30px}
 .cd1 .n,.cd1 .c{font-size:clamp(40px,11.6vw,54px)}
-.cd1 .done{font-size:clamp(50px,15vw,64px)}
+.cd1 .done{font-size:min(calc((100vw - 52px) / 6.3),64px)}
 </style>
 <section class="cd1" data-cd aria-label="До дня свадьбы">
-  <h2 class="fade" aria-label="До нашего дня осталось"><span aria-hidden="true">До нашего дня</span><br><span aria-hidden="true">осталось</span></h2>
+  <h2 class="fade"><span>До нашего дня осталось</span></h2>
   <div class="units fade" style="--d:.15s" role="timer" aria-live="off">
     <div class="u"><span class="n" data-n="d">000</span><span class="l" data-u="d">дней</span></div><span class="c" aria-hidden="true">:</span>
     <div class="u"><span class="n" data-n="h">00</span><span class="l" data-u="h">часов</span></div><span class="c" aria-hidden="true">:</span>

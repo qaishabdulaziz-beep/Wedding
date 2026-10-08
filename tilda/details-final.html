@@ -6,36 +6,41 @@
 src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@4a83daeb45bb08fd036182115602a4c42002242b/assets/fonts/AstrumScript.woff2') format('woff2'),
 url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/4a83daeb45bb08fd036182115602a4c42002242b/assets/fonts/AstrumScript.woff2') format('woff2'),
 url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@90b234a93fec945ba023e442202273e508899c9c/AstrumScriptCyrillicRegular%202.ttf') format('truetype');}
+@font-face{font-family:'Hogarth Script';font-weight:400;font-style:normal;font-display:swap;
+src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@4140bb56dd6b6bb40a7439003be591b2e9dc7901/assets/fonts/HogarthScript.woff2') format('woff2'),
+url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/4140bb56dd6b6bb40a7439003be591b2e9dc7901/assets/fonts/HogarthScript.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@f86f97a5e97c0ca45d085be24ed0e5c6193f24e0/Hogarth%20script.ttf') format('truetype');}
 </style>
 <script>document.documentElement.classList.add('dx-js')</script>
 <style>
 .dxf{--ivory:#F6F1EA;--sand:#E8DDD0;--choc:#2E221C;--cream:#F3EBE1;--latte:#C4AE9A;--pt:clamp(76px,23vw,112px);--gap:24px;
---script:'Astrum Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
+--script:'Hogarth Script','Astrum Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;--ease:cubic-bezier(.22,.68,.18,1);
 position:relative;background:var(--ivory);color:var(--ivory);font-family:var(--serif);font-weight:400;font-size:14px;line-height:1.5;
 max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 .dxf *,.dxf *::before,.dxf *::after{box-sizing:border-box}
 .dxf :where(p,h2,h3,ul,li,figure){margin:0;padding:0;list-style:none;font-weight:inherit}
 .dxf::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.12;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* «details»: верхняя половина на бежевом, нижняя — на фото */
-/* поля .ttl дают место росчеркам и верху букв — анимация-маска их не обрезает */
-.dxf .ttl{position:absolute;z-index:5;left:calc(6px - .17em);top:calc(var(--pt) - .34em - .45em);padding:.45em .3em .3em;font-family:var(--script);font-weight:400;color:var(--choc);
-  font-size:min(calc(23vw - 5px),114px);line-height:1;letter-spacing:-.02em;white-space:nowrap;pointer-events:none}
+/* поля .ttl дают место росчеркам и верху букв — анимация-маска их не обрезает;
+   ширина слова — чуть меньше фото (48% блока), граница фото проходит через верх строчных букв */
+.dxf .ttl{position:absolute;z-index:5;left:calc(6px - .37em);top:calc(var(--pt) - 1.05em);padding:.45em .3em .3em;font-family:var(--script);font-weight:400;color:var(--choc);
+  font-size:min(calc(27.6vw - 9.2px),134px);line-height:1;white-space:nowrap;pointer-events:none}
 .dxf .panel{position:relative;background:var(--choc);padding-bottom:var(--gap)}
 .dxf .top{display:grid;grid-template-columns:48% minmax(0,1fr)}
 .dxf .ph{position:relative;overflow:hidden;background:linear-gradient(160deg,#CDBDAE,#8E7A6C)}
-.dxf .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.98)}
+.dxf .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .dxf .main{min-height:100%}
 .dxf .main::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(246,241,234,.6) 0,rgba(246,241,234,.2) 30px,rgba(246,241,234,0) 64px)}
 .dxf .main::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(46,34,28,.45),rgba(46,34,28,0) 40%)}
 .dxf .cap{position:absolute;z-index:2;left:12px;bottom:16px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--ivory);text-shadow:0 1px 6px rgba(0,0,0,.35)}
-.dxf .loc{padding:24px 8px 20px 12px}
+.dxf .loc{padding:24px 8px 14px 12px}
 .dxf .tr{padding:20px 8px 28px 12px}
 .dxf .lbl{font-size:14px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ivory);margin-right:-.22em}
 /* строки места и текст трансфера — один размер; «Дрокино парк, ул. Монамур, 2» всегда в одну строку */
-.dxf .pts{margin-top:10px}
+.dxf .pts{margin-top:8px}
 .dxf .pts li,.dxf .txt{font-size:min(13px,calc((52vw - 20px) / 13.6));color:var(--cream)}
-.dxf .pts li{padding:7px 0;line-height:1.35;white-space:nowrap;border-bottom:1px solid rgba(232,221,208,.18)}
-.dxf .pts li:last-child{border-bottom:0;padding-bottom:0}
+.dxf .pts li{padding:3px 0;line-height:1.35;white-space:nowrap}
+.dxf .pts li:last-child{padding-bottom:0}
 .dxf .sep{height:1px;background:var(--sand);opacity:.55}
 .dxf .txt{margin-top:10px;line-height:1.55}
 .dxf .lnk{color:var(--sand)!important;text-decoration:underline;text-decoration-color:rgba(232,221,208,.55);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .3s,text-decoration-color .3s}
@@ -80,8 +85,7 @@ max-width:520px;margin:0 auto;padding-top:var(--pt);overflow:hidden;box-sizing:b
         <div class="sep" aria-hidden="true"></div>
         <div class="tr fade" style="--d:.65s">
           <h3 class="lbl">Трансфер</h3>
-          <!-- ССЫЛКА НА ГРУППУ: вместо # вставьте адрес группы -->
-          <p class="txt">Для гостей будет организован трансфер. Подробности расскажем в&nbsp;<a class="lnk" href="#" target="_blank" rel="noopener" onclick="if(this.getAttribute('href')==='#')return false">онлайн-группе</a> ближе к&nbsp;дате праздника.</p>
+          <p class="txt">Для гостей будет организован трансфер. Подробности расскажем в&nbsp;<a class="lnk" href="https://t.me/+9a-HvZcIQNA2NmIy" target="_blank" rel="noopener">онлайн-группе</a> ближе к&nbsp;дате праздника.</p>
         </div>
       </div>
     </div>
