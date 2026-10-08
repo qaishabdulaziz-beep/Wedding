@@ -147,7 +147,7 @@ ${css}
   <div class="stage">
     <svg viewBox="0 0 ${g.W} ${f(g.H)}" aria-hidden="true">
       <path class="base" d="${g.d}"/>
-      <path class="done" d="${g.d}"/>${v.stops ? '\n      ' + g.anchors.map(([x, y]) => `<g class="stp" transform="translate(${f(x)} ${f(y)})"><circle r="4.2"/></g>`).join('') : ''}
+      <path class="done"/>${v.stops ? '\n      ' + g.anchors.map(([x, y]) => `<g class="stp" transform="translate(${f(x)} ${f(y)})"><circle r="4.2"/></g>`).join('') : ''}
       <g class="hrt"><g><path d="${HEART}"/></g></g>
     </svg>
     <ol class="list">
@@ -157,12 +157,12 @@ ${items}
 </section>
 <script>(function(){var d=document;
 /* сердечко едет по линии вместе с прокруткой: старт — когда видно ~30% блока, финиш — когда блок виден целиком */
-function init(s){if(s.__tw)return;s.__tw=1;var svg=s.querySelector('svg'),base=s.querySelector('.base'),done=s.querySelector('.done'),h=s.querySelector('.hrt'),its=s.querySelectorAll('.it'),st=s.querySelectorAll('.stp');
+function init(s){if(s.__tw)return;s.__tw=1;var base=s.querySelector('.base'),done=s.querySelector('.done'),h=s.querySelector('.hrt'),its=s.querySelectorAll('.it'),st=s.querySelectorAll('.stp');
 if(!base.getTotalLength)return;var T=base.getTotalLength(),N=500,pts=[],i;for(i=0;i<=N;i++){var q=base.getPointAtLength(T*i/N);pts.push([q.x,q.y,T*i/N])}
 function near(x,y){var b=0,bd=1e9;for(var j=0;j<pts.length;j++){var dx=pts[j][0]-x,dy=pts[j][1]-y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;b=pts[j][2]}}return b}
 var A=${JSON.stringify(g.anchors.map(([x, y]) => [f(x), f(y)]))},S=${JSON.stringify(g.stopAt.map(f))},END=near(S[0],S[1]),START=6,at=A.map(function(a){return near(a[0],a[1])});
-done.style.strokeDasharray=T+' '+T;s.classList.add('armed');
-var cur=-1,tgt=0,raf=0,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+done.setAttribute('d',base.getAttribute('d'));done.style.strokeDasharray=T+' '+T;s.classList.add('armed');
+var cur=-1,raf=0,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function place(L){var q=base.getPointAtLength(L);h.setAttribute('transform','translate('+q.x.toFixed(2)+' '+q.y.toFixed(2)+')');done.style.strokeDashoffset=(T-L).toFixed(2);
 for(var k=0;k<its.length;k++){its[k].classList.toggle('on',L>=at[k]-14);if(st[k])st[k].classList.toggle('on',L>=at[k]-2)}}
 function target(){var r=s.getBoundingClientRect(),vh=window.innerHeight||d.documentElement.clientHeight,hh=r.height,m=.3*Math.min(hh,vh),p=(vh-r.top-m)/Math.max(1,hh-m);p=Math.max(0,Math.min(1,p));return START+(END-START)*p}

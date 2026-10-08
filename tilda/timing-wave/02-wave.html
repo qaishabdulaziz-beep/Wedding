@@ -43,7 +43,7 @@ max-width:520px;margin:0 auto;padding:30px 18px 34px;overflow:hidden;box-sizing:
   <div class="stage">
     <svg viewBox="0 0 360 498" aria-hidden="true">
       <path class="base" d="M202 18 C198.3 20 199 23.7 180 30 C161 36.3 109.2 47.3 87.8 56 C66.5 64.7 52 73.3 52 82 C52 90.7 66.5 99.3 87.8 108 C109.2 116.7 149.3 125.3 180 134 C210.7 142.7 250.8 151.3 272.2 160 C293.5 168.7 308 177.3 308 186 C308 194.7 293.5 203.3 272.2 212 C250.8 220.7 210.7 229.3 180 238 C149.3 246.7 109.2 255.3 87.8 264 C66.5 272.7 52 281.3 52 290 C52 298.7 66.5 307.3 87.8 316 C109.2 324.7 149.3 333.3 180 342 C210.7 350.7 250.8 359.3 272.2 368 C293.5 376.7 308 385.3 308 394 C308 402.7 293.5 411.3 272.2 420 C250.8 428.7 196.4 439.7 180 446 C163.6 452.3 174.5 453.2 174 458 C173.5 462.8 175.8 470.7 177.1 475 C178.4 479.4 179.6 481.7 181.7 484.1 C183.8 486.5 186.9 488.5 189.8 489.6 C192.6 490.6 196.1 490.9 199 490.5 C201.9 490.1 205 488.8 207.2 487.1 C209.5 485.4 211.4 482.9 212.5 480.5 C213.6 478.1 214.1 475.1 213.9 472.6 C213.8 470 212.8 467.3 211.5 465.3 C210.2 463.3 208.2 461.5 206.2 460.4 C204.3 459.3 201.8 458.8 199.7 458.7 C197.5 458.7 195.2 459.4 193.5 460.3 C191.7 461.3 190.2 462.9 189.2 464.4 C188.2 466 187.6 468 187.5 469.7 C187.4 471.4 188.3 473.9 188.5 474.7"/>
-      <path class="done" d="M202 18 C198.3 20 199 23.7 180 30 C161 36.3 109.2 47.3 87.8 56 C66.5 64.7 52 73.3 52 82 C52 90.7 66.5 99.3 87.8 108 C109.2 116.7 149.3 125.3 180 134 C210.7 142.7 250.8 151.3 272.2 160 C293.5 168.7 308 177.3 308 186 C308 194.7 293.5 203.3 272.2 212 C250.8 220.7 210.7 229.3 180 238 C149.3 246.7 109.2 255.3 87.8 264 C66.5 272.7 52 281.3 52 290 C52 298.7 66.5 307.3 87.8 316 C109.2 324.7 149.3 333.3 180 342 C210.7 350.7 250.8 359.3 272.2 368 C293.5 376.7 308 385.3 308 394 C308 402.7 293.5 411.3 272.2 420 C250.8 428.7 196.4 439.7 180 446 C163.6 452.3 174.5 453.2 174 458 C173.5 462.8 175.8 470.7 177.1 475 C178.4 479.4 179.6 481.7 181.7 484.1 C183.8 486.5 186.9 488.5 189.8 489.6 C192.6 490.6 196.1 490.9 199 490.5 C201.9 490.1 205 488.8 207.2 487.1 C209.5 485.4 211.4 482.9 212.5 480.5 C213.6 478.1 214.1 475.1 213.9 472.6 C213.8 470 212.8 467.3 211.5 465.3 C210.2 463.3 208.2 461.5 206.2 460.4 C204.3 459.3 201.8 458.8 199.7 458.7 C197.5 458.7 195.2 459.4 193.5 460.3 C191.7 461.3 190.2 462.9 189.2 464.4 C188.2 466 187.6 468 187.5 469.7 C187.4 471.4 188.3 473.9 188.5 474.7"/>
+      <path class="done"/>
       <g class="hrt"><g><path d="M0 7.2 C-1.6 5.6 -9.6 0.6 -9.6 -4.6 C-9.6 -7.8 -7.2 -10 -4.6 -10 C-2.6 -10 -0.9 -8.8 0 -7 C0.9 -8.8 2.6 -10 4.6 -10 C7.2 -10 9.6 -7.8 9.6 -4.6 C9.6 0.6 1.6 5.6 0 7.2 Z"/></g></g>
     </svg>
     <ol class="list">
@@ -56,12 +56,12 @@ max-width:520px;margin:0 auto;padding:30px 18px 34px;overflow:hidden;box-sizing:
 </section>
 <script>(function(){var d=document;
 /* сердечко едет по линии вместе с прокруткой: старт — когда видно ~30% блока, финиш — когда блок виден целиком */
-function init(s){if(s.__tw)return;s.__tw=1;var svg=s.querySelector('svg'),base=s.querySelector('.base'),done=s.querySelector('.done'),h=s.querySelector('.hrt'),its=s.querySelectorAll('.it'),st=s.querySelectorAll('.stp');
+function init(s){if(s.__tw)return;s.__tw=1;var base=s.querySelector('.base'),done=s.querySelector('.done'),h=s.querySelector('.hrt'),its=s.querySelectorAll('.it'),st=s.querySelectorAll('.stp');
 if(!base.getTotalLength)return;var T=base.getTotalLength(),N=500,pts=[],i;for(i=0;i<=N;i++){var q=base.getPointAtLength(T*i/N);pts.push([q.x,q.y,T*i/N])}
 function near(x,y){var b=0,bd=1e9;for(var j=0;j<pts.length;j++){var dx=pts[j][0]-x,dy=pts[j][1]-y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;b=pts[j][2]}}return b}
 var A=[[52,82],[308,186],[52,290],[308,394]],S=[174,458],END=near(S[0],S[1]),START=6,at=A.map(function(a){return near(a[0],a[1])});
-done.style.strokeDasharray=T+' '+T;s.classList.add('armed');
-var cur=-1,tgt=0,raf=0,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+done.setAttribute('d',base.getAttribute('d'));done.style.strokeDasharray=T+' '+T;s.classList.add('armed');
+var cur=-1,raf=0,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function place(L){var q=base.getPointAtLength(L);h.setAttribute('transform','translate('+q.x.toFixed(2)+' '+q.y.toFixed(2)+')');done.style.strokeDashoffset=(T-L).toFixed(2);
 for(var k=0;k<its.length;k++){its[k].classList.toggle('on',L>=at[k]-14);if(st[k])st[k].classList.toggle('on',L>=at[k]-2)}}
 function target(){var r=s.getBoundingClientRect(),vh=window.innerHeight||d.documentElement.clientHeight,hh=r.height,m=.3*Math.min(hh,vh),p=(vh-r.top-m)/Math.max(1,hh-m);p=Math.max(0,Math.min(1,p));return START+(END-START)*p}
