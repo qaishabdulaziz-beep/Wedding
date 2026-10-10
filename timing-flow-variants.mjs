@@ -183,8 +183,24 @@ for (const v of V) {
 
 /* ФИНАЛ: линия варианта 1, подписи как в варианте 3; пока блок стоит, сверху продолжается коричневый фон прошлого блока */
 const FINAL = { file: 'timing-final', p: 'tmf', name: 'финальная версия', g: gA, anchors: ANCH, mode: 'stroke', css: `
-.tmf .ev{font-weight:400;letter-spacing:.06em;text-transform:none;font-size:15px;font-size:max(13px,4.3cqw)}
-/* полоса над блоком во время «задержки» — тот же шоколад и та же зернистость, что у предыдущего блока */
-.tmf-pin{background:#2E221C}
-.tmf-pin::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.16;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}` };
-{ const s = page(FINAL); fs.writeFileSync(new URL('tilda/timing-final.html', import.meta.url), s); console.log('timing-final', (Buffer.byteLength(s) / 1024).toFixed(1) + ' KB'); }
+.tmf .ev{font-weight:400;letter-spacing:.06em;text-transform:none;font-size:15px;font-size:max(13px,4.3cqw)}` };
+// без «задержки»: блок листается как обычный; сердечко стартует, когда блок показался снизу, и доходит до завитка,
+// когда блок дошёл до верха экрана (всё это время блок виден целиком) — поэтому движение медленное
+function noPin(h, p) {
+  const R = (a, b) => { if (!h.includes(a)) throw new Error('нет: ' + a.slice(0, 50)); h = h.split(a).join(b); };
+  R(`/* обёртка: даёт блоку «задержаться» на экране, пока сердечко проходит путь (высоту добавляет скрипт) */\n.${p}-pin{position:relative;background:#F6F1EA}\n`, '');
+  R(`.${p}-pin.pin .${p}{position:-webkit-sticky;position:sticky;bottom:0}\n`, '');
+  R(`<div class="${p}-pin"><div class="sp"></div>\n`, '');
+  R(`</section>\n</div>`, '</section>');
+  R(`/* задержка: обёртка выше блока на 60% его высоты — блок стоит на экране целиком, пока сердечко едет */\n`, '');
+  R(`var sticky=window.CSS&&CSS.supports&&(CSS.supports('position','sticky')||CSS.supports('position','-webkit-sticky')),rm=`, 'var rm=');
+  R(`,X=0;\nfunction size(){var hh=s.offsetHeight;X=sticky&&!rm?Math.round(hh*.6):0;w.classList.toggle('pin',X>0);sp.style.height=X+'px'}`, ';');
+  R(`function target(){var r=w.getBoundingClientRect(),vh=window.innerHeight||d.documentElement.clientHeight,hh=s.offsetHeight,m=.15*Math.min(hh,vh),p=(vh-r.top-m)/Math.max(1,r.height-m);`,
+    `/* старт — верх блока на 90% высоты экрана; финиш — верх блока у верха экрана (если блок выше экрана — когда виден его низ) */\nfunction target(){var r=s.getBoundingClientRect(),vh=window.innerHeight||d.documentElement.clientHeight,a=vh*.9,b=Math.min(0,vh-r.height),p=(a-r.top)/Math.max(1,a-b);`);
+  R(`size();addEventListener('scroll',on,{passive:true});addEventListener('resize',function(){size();on()});if(d.fonts&&d.fonts.ready)d.fonts.ready.then(function(){size();on()});on()}`,
+    `addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on()}`);
+  R(`var s=w.querySelector('.${p}'),sp=w.querySelector('.sp'),trk=`, `var s=w,trk=`);
+  R(`d.querySelectorAll('.${p}-pin');els.forEach(init)`, `d.querySelectorAll('section.${p}');els.forEach(init)`);
+  return h;
+}
+{ const s = noPin(page(FINAL), FINAL.p); fs.writeFileSync(new URL('tilda/timing-final.html', import.meta.url), s); console.log('timing-final', (Buffer.byteLength(s) / 1024).toFixed(1) + ' KB'); }

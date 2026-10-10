@@ -7,13 +7,10 @@
 src:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@4140bb56dd6b6bb40a7439003be591b2e9dc7901/assets/fonts/HogarthScript.woff2') format('woff2'),
 url('https://rawcdn.githack.com/qaishabdulaziz-beep/Wedding/4140bb56dd6b6bb40a7439003be591b2e9dc7901/assets/fonts/HogarthScript.woff2') format('woff2'),
 url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@f86f97a5e97c0ca45d085be24ed0e5c6193f24e0/Hogarth%20script.ttf') format('truetype');}
-/* обёртка: даёт блоку «задержаться» на экране, пока сердечко проходит путь (высоту добавляет скрипт) */
-.tmf-pin{position:relative;background:#F6F1EA}
 .tmf{--bg:#F6F1EA;--choc:#2E221C;--ink:#4A3A31;--latte:#8C7566;--line:#D5C5B6;--ease:cubic-bezier(.22,.68,.18,1);
 --script:'Hogarth Script','Snell Roundhand',cursive;--serif:'Lora',Georgia,serif;
 position:relative;background:var(--bg);color:var(--choc);font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.4;
 max-width:520px;margin:0 auto;padding:28px 18px 30px;overflow:hidden;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
-.tmf-pin.pin .tmf{position:-webkit-sticky;position:sticky;bottom:0}
 .tmf *,.tmf *::before,.tmf *::after{box-sizing:border-box}
 .tmf :where(p,h2,ol,li){margin:0;padding:0;list-style:none;font-weight:inherit}
 .tmf::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.1;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -37,14 +34,10 @@ max-width:520px;margin:0 auto;padding:28px 18px 30px;overflow:hidden;box-sizing:
 .tmf-js .tmf.armed .it:not(.on){opacity:.3}
 
 .tmf .ev{font-weight:400;letter-spacing:.06em;text-transform:none;font-size:15px;font-size:max(13px,4.3cqw)}
-/* полоса над блоком во время «задержки» — тот же шоколад и та же зернистость, что у предыдущего блока */
-.tmf-pin{background:#2E221C}
-.tmf-pin::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.16;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .tmf-js .tmf .ttl{-webkit-mask-image:linear-gradient(90deg,#000 45%,transparent 55%);mask-image:linear-gradient(90deg,#000 45%,transparent 55%);-webkit-mask-size:240% 100%;mask-size:240% 100%;-webkit-mask-position:100% 0;mask-position:100% 0;transition:-webkit-mask-position 1.8s cubic-bezier(.45,.05,.3,1) .2s,mask-position 1.8s cubic-bezier(.45,.05,.3,1) .2s}
 .tmf-js .tmf.tmf-on .ttl{-webkit-mask-position:0 0;mask-position:0 0}
 @media (prefers-reduced-motion:reduce){.tmf *{animation:none!important;transition-duration:.01s!important}}
 </style>
-<div class="tmf-pin"><div class="sp"></div>
 <section class="tmf" aria-label="Тайминг">
   <h2 class="ttl">Тайминг</h2>
   <div class="stage">
@@ -62,24 +55,22 @@ max-width:520px;margin:0 auto;padding:28px 18px 30px;overflow:hidden;box-sizing:
     </ol>
   </div>
 </section>
-</div>
 <script>(function(){var d=document;
-function init(w){if(w.__tf)return;w.__tf=1;var s=w.querySelector('.tmf'),sp=w.querySelector('.sp'),trk=s.querySelector('.trk'),done=s.querySelector('.done')||s.querySelector('.mk'),h=s.querySelector('.hrt'),its=s.querySelectorAll('.it');
+function init(w){if(w.__tf)return;w.__tf=1;var s=w,trk=s.querySelector('.trk'),done=s.querySelector('.done')||s.querySelector('.mk'),h=s.querySelector('.hrt'),its=s.querySelectorAll('.it');
 if(!trk.getTotalLength)return;var T=trk.getTotalLength(),N=400,pts=[],i;for(i=0;i<=N;i++){var q=trk.getPointAtLength(T*i/N);pts.push([q.x,q.y,T*i/N])}
 function near(x,y){var b=0,bd=1e9;for(var j=0;j<pts.length;j++){var dx=pts[j][0]-x,dy=pts[j][1]-y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;b=pts[j][2]}}return b}
 var A=[[30,84],[334,186],[30,298],[336,410]],at=A.map(function(a){return near(a[0],a[1])}),END=T-1,START=4;
 if(done.classList.contains('done'))done.setAttribute('d',trk.getAttribute('d'));done.style.strokeDasharray=T+' '+T;s.classList.add('armed');
-/* задержка: обёртка выше блока на 60% его высоты — блок стоит на экране целиком, пока сердечко едет */
-var sticky=window.CSS&&CSS.supports&&(CSS.supports('position','sticky')||CSS.supports('position','-webkit-sticky')),rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,X=0;
-function size(){var hh=s.offsetHeight;X=sticky&&!rm?Math.round(hh*.6):0;w.classList.toggle('pin',X>0);sp.style.height=X+'px'}
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function place(L){var q=trk.getPointAtLength(L);h.setAttribute('transform','translate('+q.x.toFixed(2)+' '+q.y.toFixed(2)+')');done.style.strokeDashoffset=(T-L).toFixed(2);
 for(var k=0;k<its.length;k++)its[k].classList.toggle('on',L>=at[k]-12);s.classList.toggle('fin',L>=END-2)}
-function target(){var r=w.getBoundingClientRect(),vh=window.innerHeight||d.documentElement.clientHeight,hh=s.offsetHeight,m=.15*Math.min(hh,vh),p=(vh-r.top-m)/Math.max(1,r.height-m);p=Math.max(0,Math.min(1,p));return START+(END-START)*p}
+/* старт — верх блока на 90% высоты экрана; финиш — верх блока у верха экрана (если блок выше экрана — когда виден его низ) */
+function target(){var r=s.getBoundingClientRect(),vh=window.innerHeight||d.documentElement.clientHeight,a=vh*.9,b=Math.min(0,vh-r.height),p=(a-r.top)/Math.max(1,a-b);p=Math.max(0,Math.min(1,p));return START+(END-START)*p}
 var cur=-1,raf=0;
 function tick(){raf=0;var t=target();if(cur<0||rm)cur=t;else cur+=(t-cur)*.09;place(cur);if(Math.abs(t-cur)>.2)raf=requestAnimationFrame(tick)}
 function on(){if(!raf)raf=requestAnimationFrame(tick)}
-size();addEventListener('scroll',on,{passive:true});addEventListener('resize',function(){size();on()});if(d.fonts&&d.fonts.ready)d.fonts.ready.then(function(){size();on()});on()}
-function go(){var els=d.querySelectorAll('.tmf-pin');els.forEach(init);var ss=d.querySelectorAll('.tmf:not(.tmf-o)');
+addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on()}
+function go(){var els=d.querySelectorAll('section.tmf');els.forEach(init);var ss=d.querySelectorAll('.tmf:not(.tmf-o)');
 if(!('IntersectionObserver' in window)){ss.forEach(function(e){e.classList.add('tmf-on')});return}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('tmf-on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:.15});
 ss.forEach(function(e){e.classList.add('tmf-o');io.observe(e)})}
