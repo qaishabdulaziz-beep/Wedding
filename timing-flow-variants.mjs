@@ -180,3 +180,11 @@ for (const v of V) {
   fs.writeFileSync(new URL(v.file + '.html', dir), s);
   console.log(v.file.padEnd(10), (Buffer.byteLength(s) / 1024).toFixed(1) + ' KB');
 }
+
+/* ФИНАЛ: линия варианта 1, подписи как в варианте 3; пока блок стоит, сверху продолжается коричневый фон прошлого блока */
+const FINAL = { file: 'timing-final', p: 'tmf', name: 'финальная версия', g: gA, anchors: ANCH, mode: 'stroke', css: `
+.tmf .ev{font-weight:400;letter-spacing:.06em;text-transform:none;font-size:15px;font-size:max(13px,4.3cqw)}
+/* полоса над блоком во время «задержки» — тот же шоколад и та же зернистость, что у предыдущего блока */
+.tmf-pin{background:#2E221C}
+.tmf-pin::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.16;background-size:200px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 .18 0 0 0 0 .15 0 0 0 1.6 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}` };
+{ const s = page(FINAL); fs.writeFileSync(new URL('tilda/timing-final.html', import.meta.url), s); console.log('timing-final', (Buffer.byteLength(s) / 1024).toFixed(1) + ' KB'); }
