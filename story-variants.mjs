@@ -178,11 +178,88 @@ const V = [
     <p class="fin rv">${FIN}</p>
     <p class="rv wr" style="--d:.5s"><span class="sign">${SIGN}</span></p>
   </div>`],
+
+  /* 5. Главы-карусель: фото в арках, листаются свайпом; внизу тонкий индикатор */
+  ['05-arches', 'Арки и свайп по главам', 'st5', `
+.st5{padding:54px 0 56px;text-align:center}
+.st5 .ttl{margin:0 auto}
+.st5 .track{display:flex;gap:16px;margin-top:10px;padding:12px 11% 6px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.st5 .track::-webkit-scrollbar{display:none}
+.st5 .slide{flex:0 0 78%;scroll-snap-align:center;scroll-snap-stop:always}
+.st5 .arch{position:relative;width:86%;margin:0 auto;aspect-ratio:3/4}
+.st5 .arch::before{content:'';position:absolute;inset:-8px -8px 0;border:1px solid rgba(232,221,208,.38);border-bottom:0;border-radius:999px 999px 0 0;pointer-events:none}
+.st5 .arch .ph{position:absolute;inset:0;border-radius:999px 999px 0 0}
+.st5 .no{display:block;margin-top:22px;font-size:11px;letter-spacing:.3em;margin-right:-.3em;color:var(--latte);font-variant-numeric:lining-nums}
+.st5 .hd{margin-top:8px}
+.st5 .tx{margin:12px auto 0;max-width:290px}
+.st5 .dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+.st5 .dots button{width:22px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.st5 .dots button::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--sand);opacity:.35;transition:opacity .5s,transform .5s var(--ease);transform-origin:center}
+.st5 .dots button.on::before{opacity:1;transform:scaleX(1.6)}
+.st5 .end{margin:30px 28px 0;padding-top:28px;border-top:1px solid var(--line)}`, `
+  <h2 class="ttl rv wr">Our story</h2>
+  <div class="track rv" style="--d:.2s" aria-roledescription="карусель">
+    <article class="slide"><div class="arch"><!-- ФОТО 1 --><figure class="ph">${img(0, 'Артур и Анна')}</figure></div><span class="no">01 / 03</span>${ch(0)}</article>
+    <article class="slide"><div class="arch"><!-- ФОТО 2 --><figure class="ph">${img(1)}</figure></div><span class="no">02 / 03</span>${ch(1)}</article>
+    <article class="slide"><div class="arch"><!-- ФОТО 3 --><figure class="ph">${img(2)}</figure></div><span class="no">03 / 03</span>${ch(2)}</article>
+  </div>
+  <div class="dots" aria-label="Главы"><button type="button" class="on" aria-label="Глава 1"></button><button type="button" aria-label="Глава 2"></button><button type="button" aria-label="Глава 3"></button></div>
+  <div class="end">
+    <p class="fin rv">${FIN}</p>
+    <p class="rv wr" style="--d:.5s"><span class="sign">${SIGN}</span></p>
+  </div>`, `<script>(function(){var d=document;
+function init(s){if(s.__c)return;s.__c=1;var t=s.querySelector('.track'),sl=s.querySelectorAll('.slide'),b=s.querySelectorAll('.dots button');if(!t)return;
+function cur(){var c=t.scrollLeft+t.clientWidth/2,k=0,m=1e9;sl.forEach(function(e,i){var x=Math.abs(e.offsetLeft+e.offsetWidth/2-c);if(x<m){m=x;k=i}});return k}
+function mark(){var k=cur();b.forEach(function(e,i){e.classList.toggle('on',i===k)})}
+function go(i){var e=sl[i];t.scrollTo({left:e.offsetLeft-(t.clientWidth-e.offsetWidth)/2,behavior:'smooth'})}
+t.addEventListener('scroll',function(){clearTimeout(t.__m);t.__m=setTimeout(mark,60)},{passive:true});
+b.forEach(function(e,i){e.addEventListener('click',function(){go(i)})});
+/* лёгкая подсказка «листайте»: один раз чуть сдвигаем ленту, когда блок на экране */
+if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){o.disconnect();setTimeout(function(){if(t.scrollLeft<4){t.scrollTo({left:46,behavior:'smooth'});setTimeout(function(){t.scrollTo({left:0,behavior:'smooth'})},650)}},1400)}},{threshold:.6});o.observe(t)}}
+function run(){d.querySelectorAll('.st5').forEach(init)}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run()})();</script>`],
+
+  /* 6. Напечатанные фотокарточки: снимки в светлых рамках «лежат» на шоколаде с лёгким наклоном, между ними главы */
+  ['06-prints', 'Фотокарточки', 'st6', `
+.st6{padding:50px 0 56px}
+.st6 .ttl{display:block;width:max-content;margin:0 0 0 calc(14px - .3em)}
+.st6 .print{position:relative;padding:7px 7px 30px;background:#F3ECE2;box-shadow:0 2px 3px rgba(0,0,0,.25),0 22px 36px -18px rgba(0,0,0,.75)}
+.st6 .print .ph{aspect-ratio:4/5}
+.st6 .print .ph img{filter:sepia(.18) saturate(.85) contrast(1.02)}
+.st6 .collage{position:relative;height:min(118vw,560px);margin-top:4px}
+.st6 .collage .p1{position:absolute;right:7%;top:0;width:60%;--r:-3.5deg;z-index:1}
+.st6 .collage .p2{position:absolute;left:7%;bottom:0;width:46%;--r:5deg;z-index:2}
+.st6 .solo{width:66%;margin:6px auto 4px;--r:2.5deg}
+.st6 .print{transform:rotate(var(--r))}
+.st6 .body{padding:0 26px}
+.st6 .chap{position:relative;padding:26px 0 26px 22px;border-left:1px solid var(--line)}
+.st6 .chap::before{content:'';position:absolute;left:-4px;top:31px;width:7px;height:7px;border-radius:50%;background:var(--latte)}
+.st6 .chap:first-child{margin-top:30px}
+.st6 .solo+.chap,.st6 .chap+.solo{margin-top:22px}
+.st6 .end{margin:28px 26px 0;padding-top:28px;border-top:1px solid var(--line)}
+/* карточки «ложатся» на стол при появлении */
+.st6-js .st6 .print.rv{opacity:0;transform:translateY(26px) rotate(0deg) scale(.96);transition:opacity 1s var(--ease),transform 1.4s cubic-bezier(.2,.9,.25,1.05);transition-delay:var(--d,0s)}
+.st6-js .st6 .print.rv.in{opacity:1;transform:rotate(var(--r))}`, `
+  <h2 class="ttl rv wr">Our story</h2>
+  <div class="collage">
+    <!-- ФОТО 1 --><div class="print p1 rv"><figure class="ph">${img(0, 'Артур и Анна')}</figure></div>
+    <!-- ФОТО 2 --><div class="print p2 rv" style="--d:.35s"><figure class="ph">${img(1)}</figure></div>
+  </div>
+  <div class="body">
+    <div class="chap rv">${ch(0)}</div>
+    <div class="chap rv">${ch(1)}</div>
+    <!-- ФОТО 3 --><div class="print solo rv"><figure class="ph">${img(2)}</figure></div>
+    <div class="chap rv">${ch(2)}</div>
+  </div>
+  <div class="end">
+    <p class="fin rv">${FIN}</p>
+    <p class="rv wr" style="--d:.5s"><span class="sign">${SIGN}</span></p>
+  </div>`],
 ];
 
 const dir = new URL('tilda/story/', import.meta.url);
 fs.mkdirSync(dir, { recursive: true });
-for (const [file, name, p, css, html] of V) {
+for (const [file, name, p, css, html, extra = ''] of V) {
   const s = `<!-- НАША ИСТОРИЯ · ${name} -->
 <!-- ФОТО: сейчас стоят временные снимки — замените ссылки в <img src="…"> на свои фото -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,7 +271,7 @@ ${HOG}${base(p)}
 </style>
 <section class="${p}" aria-label="Наша история">${html}
 </section>
-${js(p)}
+${js(p)}${extra ? '\n' + extra : ''}
 `;
   fs.writeFileSync(new URL(file + '.html', dir), s);
   console.log(file.padEnd(12), (Buffer.byteLength(s) / 1024).toFixed(1) + ' KB');
