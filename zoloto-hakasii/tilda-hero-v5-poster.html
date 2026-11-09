@@ -1,0 +1,109 @@
+<!-- ПЕРВЫЙ ЭКРАН · ВАРИАНТ 5 «ПОСТЕР». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;1,400&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.zh5,.zh5 *,.zh5 *::before,.zh5 *::after{box-sizing:border-box;margin:0;padding:0}
+.zh5 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.zh5{--iv:#F7F2E7;--m:#E6D2B4;--sun:#F7C552;--sun2:#FFE3A0;--ease:cubic-bezier(.16,1,.3,1);
+  position:relative;width:100%;height:100vh;min-height:680px;overflow:hidden;isolation:isolate;
+  background:#1A1917;color:var(--iv);-webkit-font-smoothing:antialiased}
+.zh5__media{position:absolute;inset:0;z-index:0;overflow:hidden;animation:zh5Fade 1.8s ease both}
+.zh5__poster,.zh5__video{position:absolute;top:0;left:0;width:100%;height:110%;max-width:none;object-fit:cover;object-position:right top;display:block}
+.zh5__video{opacity:0;transition:opacity 1.2s ease}
+.zh5__video.is-on{opacity:1}
+.zh5__photo{display:none}
+.zh5__grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Яркое «солнечное» золото: градиент + мягкое свечение */
+.zh5__sun{background:linear-gradient(180deg,#FFE7A8 0%,#F9C95A 48%,#EDA233 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgba(255,184,64,.38))}
+@keyframes zh5Fade{from{opacity:0}to{opacity:1}}
+@keyframes zh5Rise{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.zh5{font-family:'Onest',Arial,sans-serif;font-weight:300}
+.zh5__shade{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(0deg,rgba(16,15,13,.94) 0%,rgba(16,15,13,.7) 22%,rgba(16,15,13,0) 50%),
+  linear-gradient(90deg,rgba(16,15,13,.6) 0%,rgba(16,15,13,0) 46%),
+  linear-gradient(180deg,rgba(16,15,13,.45) 0%,rgba(16,15,13,0) 18%)}
+.zh5__top{position:absolute;z-index:3;left:4.4vw;top:calc(88px + 4vh);display:flex;gap:18px;align-items:center;font-size:11px;font-weight:400;letter-spacing:.34em;text-transform:uppercase;color:rgba(247,242,231,.7);animation:zh5Fade 1.4s ease .2s both}
+.zh5__top i{width:9px;height:9px;border-radius:50%;background:var(--sun);box-shadow:0 0 14px rgba(255,190,70,.8)}
+.zh5__title{position:absolute;z-index:3;left:4.4vw;bottom:calc(104px + 4vh);font-family:'Bona Nova',serif;font-weight:400;font-size:clamp(52px,6vw,104px);line-height:1;letter-spacing:-.012em;color:var(--iv)}
+.zh5__title span{display:block;white-space:nowrap;animation:zh5Rise 1.4s var(--ease) both}
+.zh5__title span:nth-child(1){animation-delay:.3s}
+.zh5__title span:nth-child(2){animation-delay:.48s;font-style:italic}
+.zh5__bar{position:absolute;z-index:3;left:4.4vw;right:4.4vw;bottom:0;height:calc(84px + 2vh);display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:48px;border-top:1px solid rgba(247,242,231,.18);animation:zh5Rise 1.2s var(--ease) .75s both}
+.zh5__acts{display:flex;align-items:center;gap:36px}
+.zh5__cta{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--sun)}
+.zh5__cta svg{width:28px;height:10px;transition:transform .5s var(--ease)}
+.zh5__cta:hover svg{transform:translateX(6px)}
+.zh5__link{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,242,231,.6);transition:color .3s}
+.zh5__link:hover{color:var(--iv)}
+.zh5__lead{justify-self:center;font-size:13px;line-height:1.6;color:rgba(230,210,180,.75);text-align:center}
+.zh5__piece{text-align:right;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(247,242,231,.7);transition:color .3s}
+.zh5__piece b{font-family:'Bona Nova',serif;font-style:italic;font-weight:400;font-size:19px;letter-spacing:0;text-transform:none;color:var(--iv);margin-right:12px}
+.zh5__piece:hover{color:var(--sun)}
+@media (max-width:1279px){.zh5__lead{display:none}}
+@keyframes zh5Zoom{from{transform:scale(1)}to{transform:scale(1.04)}}
+@media (max-width:1023px){
+  .zh5{height:100vh;height:100svh;min-height:620px}
+  .zh5__poster,.zh5__video{display:none}
+  .zh5__photo{display:block;position:absolute;inset:0;background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg'),url('https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg');
+    background-size:cover;background-position:62% 100%;background-repeat:no-repeat;transform-origin:62% 100%;animation:zh5Zoom 14s linear both}
+  .zh5__shade{background:linear-gradient(180deg,rgba(16,15,13,.9) 0%,rgba(16,15,13,.55) 46%,rgba(16,15,13,0) 66%)}
+  .zh5__top{left:24px;top:92px;font-size:10px;letter-spacing:.3em}
+  .zh5__title{left:24px;right:24px;top:132px;bottom:auto;font-size:clamp(40px,11.2vw,58px)}
+  .zh5__title span{white-space:normal}
+  .zh5__bar{left:24px;right:24px;top:auto;bottom:24px;height:auto;padding-top:20px;grid-template-columns:1fr;row-gap:14px;background:none}
+  .zh5__acts{justify-content:space-between}
+  .zh5__cta{font-size:11px;letter-spacing:.2em;white-space:nowrap}
+  .zh5__piece{display:none}
+  .zh5__shade{background:linear-gradient(180deg,rgba(16,15,13,.9) 0%,rgba(16,15,13,.55) 44%,rgba(16,15,13,0) 62%),linear-gradient(0deg,rgba(16,15,13,.85) 0%,rgba(16,15,13,0) 18%)}
+}
+@media (prefers-reduced-motion:reduce){
+  .zh5 *,.zh5 *::before,.zh5 *::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  .zh5__video{display:none}
+}
+</style>
+
+<section class="zh5" aria-labelledby="zh5-title">
+  <div class="zh5__media" aria-hidden="true">
+    <img class="zh5__poster" alt="" src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg'">
+    <video class="zh5__video" autoplay muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source data-src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+      <source data-src="https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="zh5__photo"></div>
+  </div>
+  <div class="zh5__shade" aria-hidden="true"></div>
+  <div class="zh5__grain" aria-hidden="true"></div>
+<p class="zh5__top"><i></i>Золото Хакасии · Глава первая</p>
+<h1 class="zh5__title" id="zh5-title">
+  <span>Предки верили:</span>
+  <span>в&nbsp;золоте живёт <span class="zh5__sun" style="display:inline">солнце</span></span>
+</h1>
+<div class="zh5__bar">
+  <div class="zh5__acts">
+    <a class="zh5__cta" href="/catalog">Смотреть коллекции <svg viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 5h27M23 1l4 4-4 4"/></svg></a>
+    <a class="zh5__link" href="/legends">Легенда</a>
+  </div>
+  <p class="zh5__lead">Ручная работа · золото 585 · малые серии</p>
+  <a class="zh5__piece" href="/catalog"><b>Перстень «Путь»</b>Легенды курганов&nbsp;→</a>
+</div>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.zh5');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  var v=r.querySelector('video'),d=matchMedia('(min-width:1024px)'),c=matchMedia('(prefers-reduced-motion: reduce)'),loaded=false;
+  v.muted=true;
+  function play(){var x=v.play();if(x&&x.catch)x.catch(function(){});}
+  function sync(){
+    if(d.matches&&!c.matches){
+      if(!loaded){r.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.getAttribute('data-src');});v.load();loaded=true;}
+      play();
+    }else if(!v.paused)v.pause();
+  }
+  v.addEventListener('playing',function(){v.classList.add('is-on');});
+  sync();d.addEventListener('change',sync);c.addEventListener('change',sync);
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){if(!loaded)return;e[0].isIntersecting?play():v.pause();}).observe(r);
+})();
+</script>

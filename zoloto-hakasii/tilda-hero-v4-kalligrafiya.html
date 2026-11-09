@@ -1,0 +1,106 @@
+<!-- ПЕРВЫЙ ЭКРАН · ВАРИАНТ 4 «КАЛЛИГРАФИЯ». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Ysabeau:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+.zh4,.zh4 *,.zh4 *::before,.zh4 *::after{box-sizing:border-box;margin:0;padding:0}
+.zh4 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.zh4{--iv:#F7F2E7;--m:#E6D2B4;--sun:#F7C552;--sun2:#FFE3A0;--ease:cubic-bezier(.16,1,.3,1);
+  position:relative;width:100%;height:100vh;min-height:680px;overflow:hidden;isolation:isolate;
+  background:#1A1917;color:var(--iv);-webkit-font-smoothing:antialiased}
+.zh4__media{position:absolute;inset:0;z-index:0;overflow:hidden;animation:zh4Fade 1.8s ease both}
+.zh4__poster,.zh4__video{position:absolute;top:0;left:0;width:100%;height:110%;max-width:none;object-fit:cover;object-position:right top;display:block}
+.zh4__video{opacity:0;transition:opacity 1.2s ease}
+.zh4__video.is-on{opacity:1}
+.zh4__photo{display:none}
+.zh4__grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Яркое «солнечное» золото: градиент + мягкое свечение */
+.zh4__sun{background:linear-gradient(180deg,#FFE7A8 0%,#F9C95A 48%,#EDA233 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgba(255,184,64,.38))}
+@keyframes zh4Fade{from{opacity:0}to{opacity:1}}
+@keyframes zh4Rise{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.zh4{font-family:'Ysabeau',Arial,sans-serif;font-weight:300}
+.zh4__shade{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(17,16,14,.85) 0%,rgba(17,16,14,.5) 36%,rgba(17,16,14,0) 60%),
+  linear-gradient(0deg,rgba(17,16,14,.55) 0%,rgba(17,16,14,0) 26%)}
+.zh4__in{position:absolute;z-index:3;left:7vw;top:52%;transform:translateY(-50%)}
+.zh4__kick{font-size:clamp(14px,1.25vw,19px);font-weight:400;letter-spacing:.42em;text-transform:uppercase;color:rgba(247,242,231,.8);animation:zh4Rise 1.2s var(--ease) .2s both}
+.zh4__title{font-weight:200;font-size:clamp(44px,4.9vw,82px);line-height:1;letter-spacing:.06em;text-transform:uppercase;color:var(--iv);margin-top:14px}
+.zh4__title > span{display:block;white-space:nowrap;animation:zh4Rise 1.3s var(--ease) .38s both}
+.zh4__title .zh4__script{position:relative;z-index:1;margin:-.06em 0 0 1.15em;font-family:'Great Vibes',cursive;font-weight:400;font-size:2.55em;line-height:.9;letter-spacing:0;text-transform:none;animation-delay:.6s;padding:0 .12em .1em 0}
+.zh4__lead{max-width:330px;margin:10px 0 0 calc(clamp(44px,4.9vw,82px) * 1.2);font-size:16px;line-height:1.7;color:rgba(230,210,180,.88);animation:zh4Rise 1.2s var(--ease) .85s both}
+.zh4__acts{display:flex;align-items:center;gap:30px;margin:34px 0 0 calc(clamp(44px,4.9vw,82px) * 1.2);animation:zh4Rise 1.2s var(--ease) 1s both}
+.zh4 a.zh4__btn{display:inline-flex;align-items:center;height:54px;padding:0 34px;border-radius:999px;background:linear-gradient(180deg,#FFD978,#F2B544);font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#1A1917;box-shadow:0 0 0 rgba(255,190,70,0);transition:box-shadow .5s,transform .5s var(--ease)}
+.zh4 a.zh4__btn:hover{box-shadow:0 0 36px rgba(255,190,70,.4);transform:translateY(-1px)}
+.zh4__link{font-size:13px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--iv);border-bottom:1px solid rgba(247,242,231,.35)!important;padding-bottom:4px;transition:color .3s,border-color .3s}
+.zh4__link:hover{color:var(--sun);border-color:var(--sun)!important}
+.zh4__piece{position:absolute;z-index:3;right:4.5vw;bottom:42px;text-align:right;animation:zh4Fade 1.4s ease 1.3s both}
+.zh4__piece b{display:block;font-family:'Great Vibes',cursive;font-weight:400;font-size:34px;line-height:1;color:var(--iv)}
+.zh4__piece span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(230,210,180,.7)}
+.zh4__piece:hover span{color:var(--sun)}
+@keyframes zh4Zoom{from{transform:scale(1)}to{transform:scale(1.04)}}
+@media (max-width:1023px){
+  .zh4{height:100vh;height:100svh;min-height:620px}
+  .zh4__poster,.zh4__video{display:none}
+  .zh4__photo{display:block;position:absolute;inset:0;background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg'),url('https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg');
+    background-size:cover;background-position:62% 100%;background-repeat:no-repeat;transform-origin:62% 100%;animation:zh4Zoom 14s linear both}
+  .zh4__shade{background:linear-gradient(180deg,rgba(17,16,14,.9) 0%,rgba(17,16,14,.58) 46%,rgba(17,16,14,0) 68%)}
+  .zh4__in{left:24px;right:24px;top:104px;transform:none}
+  .zh4__kick{font-size:12px;letter-spacing:.36em}
+  .zh4__title{font-size:clamp(30px,9vw,46px);margin-top:10px}
+  .zh4__title .zh4__script{margin-left:.5em}
+  .zh4__lead,.zh4__acts{margin-left:0}
+  .zh4__lead{font-size:15px;max-width:290px;margin-top:6px}
+  .zh4__acts{flex-direction:column;align-items:flex-start;gap:18px;margin-top:26px}
+  .zh4 a.zh4__btn{height:50px}
+  .zh4__piece{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .zh4 *,.zh4 *::before,.zh4 *::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  .zh4__video{display:none}
+}
+</style>
+
+<section class="zh4" aria-labelledby="zh4-title">
+  <div class="zh4__media" aria-hidden="true">
+    <img class="zh4__poster" alt="" src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg'">
+    <video class="zh4__video" autoplay muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source data-src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+      <source data-src="https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="zh4__photo"></div>
+  </div>
+  <div class="zh4__shade" aria-hidden="true"></div>
+  <div class="zh4__grain" aria-hidden="true"></div>
+<div class="zh4__in">
+  <h1 class="zh4__title" id="zh4-title">
+    <span class="zh4__kick">Предки верили:</span>
+    <span>в золоте живёт</span>
+    <span class="zh4__script zh4__sun">Солнце</span>
+  </h1>
+  <p class="zh4__lead">Украшения ручной работы из&nbsp;золота 585. Малые серии, у&nbsp;каждого — своя легенда.</p>
+  <div class="zh4__acts">
+    <a class="zh4__btn" href="/catalog">Коллекции</a>
+    <a class="zh4__link" href="/legends">Легенда бренда</a>
+  </div>
+</div>
+<a class="zh4__piece" href="/catalog"><b>Перстень «Путь»</b><span>Легенды курганов&nbsp;→</span></a>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.zh4');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  var v=r.querySelector('video'),d=matchMedia('(min-width:1024px)'),c=matchMedia('(prefers-reduced-motion: reduce)'),loaded=false;
+  v.muted=true;
+  function play(){var x=v.play();if(x&&x.catch)x.catch(function(){});}
+  function sync(){
+    if(d.matches&&!c.matches){
+      if(!loaded){r.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.getAttribute('data-src');});v.load();loaded=true;}
+      play();
+    }else if(!v.paused)v.pause();
+  }
+  v.addEventListener('playing',function(){v.classList.add('is-on');});
+  sync();d.addEventListener('change',sync);c.addEventListener('change',sync);
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){if(!loaded)return;e[0].isIntersecting?play():v.pause();}).observe(r);
+})();
+</script>

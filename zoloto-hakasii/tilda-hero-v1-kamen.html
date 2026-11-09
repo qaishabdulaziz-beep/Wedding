@@ -1,0 +1,117 @@
+<!-- ПЕРВЫЙ ЭКРАН · ВАРИАНТ 1 «КАМЕНЬ». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.zh1,.zh1 *,.zh1 *::before,.zh1 *::after{box-sizing:border-box;margin:0;padding:0}
+.zh1 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.zh1{--iv:#F7F2E7;--m:#E6D2B4;--sun:#F7C552;--sun2:#FFE3A0;--ease:cubic-bezier(.16,1,.3,1);
+  position:relative;width:100%;height:100vh;min-height:680px;overflow:hidden;isolation:isolate;
+  background:#1A1917;color:var(--iv);-webkit-font-smoothing:antialiased}
+.zh1__media{position:absolute;inset:0;z-index:0;overflow:hidden;animation:zh1Fade 1.8s ease both}
+.zh1__poster,.zh1__video{position:absolute;top:0;left:0;width:100%;height:110%;max-width:none;object-fit:cover;object-position:right top;display:block}
+.zh1__video{opacity:0;transition:opacity 1.2s ease}
+.zh1__video.is-on{opacity:1}
+.zh1__photo{display:none}
+.zh1__grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Яркое «солнечное» золото: градиент + мягкое свечение */
+.zh1__sun{background:linear-gradient(180deg,#FFE7A8 0%,#F9C95A 48%,#EDA233 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgba(255,184,64,.38))}
+@keyframes zh1Fade{from{opacity:0}to{opacity:1}}
+@keyframes zh1Rise{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.zh1{font-family:'Onest',Arial,sans-serif;font-weight:300}
+.zh1__shade{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(18,17,15,.86) 0%,rgba(18,17,15,.55) 34%,rgba(18,17,15,0) 58%),
+  linear-gradient(0deg,rgba(18,17,15,.7) 0%,rgba(18,17,15,0) 30%)}
+.zh1__in{position:absolute;z-index:3;left:6.2vw;top:50%;transform:translateY(-40%)}
+.zh1__kick{display:flex;align-items:center;gap:20px;margin-bottom:28px;font-size:12px;font-weight:400;letter-spacing:.42em;text-transform:uppercase;color:rgba(247,242,231,.78);animation:zh1Rise 1.2s var(--ease) .2s both}
+.zh1__kick::after{content:'';width:120px;height:1px;background:rgba(247,242,231,.35)}
+.zh1__title{font-family:'Forum',serif;font-weight:400;font-size:clamp(64px,9vw,150px);line-height:.86;letter-spacing:.01em;text-transform:uppercase;color:var(--iv)}
+.zh1__title span{display:block;white-space:nowrap;animation:zh1Rise 1.3s var(--ease) both}
+.zh1__title span:nth-child(1){animation-delay:.35s}.zh1__title span:nth-child(2){animation-delay:.5s}.zh1__title span:nth-child(3){animation-delay:.65s}
+.zh1__row{display:flex;align-items:flex-start;gap:56px;margin-top:44px;animation:zh1Rise 1.2s var(--ease) .9s both}
+.zh1__lead{max-width:250px;font-size:14px;line-height:1.7;color:rgba(230,210,180,.86)}
+.zh1__acts{display:flex;flex-direction:column;gap:16px;padding-top:2px}
+.zh1__cta{position:relative;display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--sun)}
+.zh1__cta::after{content:'→';font-size:15px;letter-spacing:0;transition:transform .4s var(--ease)}
+.zh1__cta:hover::after{transform:translateX(6px)}
+.zh1__link{font-size:11px;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,242,231,.6);transition:color .3s}
+.zh1__link:hover{color:var(--iv)}
+.zh1__foot{position:absolute;z-index:3;left:6.2vw;right:6.2vw;bottom:40px;display:flex;justify-content:space-between;align-items:flex-end;animation:zh1Fade 1.4s ease 1.2s both}
+.zh1__meta{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(247,242,231,.5)}
+.zh1__piece{text-align:right}
+.zh1__piece b{display:block;font-family:'Forum',serif;font-weight:400;font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--iv)}
+.zh1__piece span{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(230,210,180,.65);transition:color .3s}
+.zh1__piece:hover span{color:var(--sun)}
+@keyframes zh1Zoom{from{transform:scale(1)}to{transform:scale(1.04)}}
+@media (max-width:1023px){
+  .zh1{height:100vh;height:100svh;min-height:620px}
+  .zh1__poster,.zh1__video{display:none}
+  .zh1__photo{display:block;position:absolute;inset:0;background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg'),url('https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg');
+    background-size:cover;background-position:62% 100%;background-repeat:no-repeat;transform-origin:62% 100%;animation:zh1Zoom 14s linear both}
+  .zh1__shade{background:linear-gradient(180deg,rgba(18,17,15,.88) 0%,rgba(18,17,15,.55) 42%,rgba(18,17,15,0) 64%)}
+  .zh1__in{left:24px;right:24px;top:108px;transform:none}
+  .zh1__kick{font-size:10px;letter-spacing:.36em;margin-bottom:20px}
+  .zh1__kick::after{width:48px}
+  .zh1__title{font-size:clamp(54px,16vw,84px)}
+  .zh1__row{flex-direction:column;gap:22px;margin-top:26px}
+  .zh1__lead{max-width:270px;font-size:13px}
+  .zh1__foot{left:24px;right:24px;bottom:24px}
+  .zh1__meta{display:none}
+  .zh1__piece b{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .zh1 *,.zh1 *::before,.zh1 *::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  .zh1__video{display:none}
+}
+</style>
+
+<section class="zh1" aria-labelledby="zh1-title">
+  <div class="zh1__media" aria-hidden="true">
+    <img class="zh1__poster" alt="" src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg'">
+    <video class="zh1__video" autoplay muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source data-src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+      <source data-src="https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="zh1__photo"></div>
+  </div>
+  <div class="zh1__shade" aria-hidden="true"></div>
+  <div class="zh1__grain" aria-hidden="true"></div>
+<div class="zh1__in">
+  <p class="zh1__kick">Предки верили</p>
+  <h1 class="zh1__title" id="zh1-title">
+    <span>В золоте</span>
+    <span>живёт</span>
+    <span class="zh1__sun">солнце</span>
+  </h1>
+  <div class="zh1__row">
+    <p class="zh1__lead">Украшения ручной работы из&nbsp;золота 585. Малые серии, у&nbsp;каждого — своя легенда.</p>
+    <div class="zh1__acts">
+      <a class="zh1__cta" href="/catalog">Коллекции</a>
+      <a class="zh1__link" href="/legends">Легенда бренда</a>
+    </div>
+  </div>
+</div>
+<div class="zh1__foot">
+  <span class="zh1__meta">Хакасия · золото 585 · ручная работа</span>
+  <a class="zh1__piece" href="/catalog"><b>Перстень «Путь»</b><span>Легенды курганов&nbsp;→</span></a>
+</div>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.zh1');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  var v=r.querySelector('video'),d=matchMedia('(min-width:1024px)'),c=matchMedia('(prefers-reduced-motion: reduce)'),loaded=false;
+  v.muted=true;
+  function play(){var x=v.play();if(x&&x.catch)x.catch(function(){});}
+  function sync(){
+    if(d.matches&&!c.matches){
+      if(!loaded){r.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.getAttribute('data-src');});v.load();loaded=true;}
+      play();
+    }else if(!v.paused)v.pause();
+  }
+  v.addEventListener('playing',function(){v.classList.add('is-on');});
+  sync();d.addEventListener('change',sync);c.addEventListener('change',sync);
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){if(!loaded)return;e[0].isIntersecting?play():v.pause();}).observe(r);
+})();
+</script>

@@ -1,0 +1,118 @@
+<!-- ПЕРВЫЙ ЭКРАН · ВАРИАНТ 2 «ДИДОНА». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,200;0,300;1,200;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.zh2,.zh2 *,.zh2 *::before,.zh2 *::after{box-sizing:border-box;margin:0;padding:0}
+.zh2 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.zh2{--iv:#F7F2E7;--m:#E6D2B4;--sun:#F7C552;--sun2:#FFE3A0;--ease:cubic-bezier(.16,1,.3,1);
+  position:relative;width:100%;height:100vh;min-height:680px;overflow:hidden;isolation:isolate;
+  background:#1A1917;color:var(--iv);-webkit-font-smoothing:antialiased}
+.zh2__media{position:absolute;inset:0;z-index:0;overflow:hidden;animation:zh2Fade 1.8s ease both}
+.zh2__poster,.zh2__video{position:absolute;top:0;left:0;width:100%;height:110%;max-width:none;object-fit:cover;object-position:right top;display:block}
+.zh2__video{opacity:0;transition:opacity 1.2s ease}
+.zh2__video.is-on{opacity:1}
+.zh2__photo{display:none}
+.zh2__grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Яркое «солнечное» золото: градиент + мягкое свечение */
+.zh2__sun{background:linear-gradient(180deg,#FFE7A8 0%,#F9C95A 48%,#EDA233 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 22px rgba(255,184,64,.38))}
+@keyframes zh2Fade{from{opacity:0}to{opacity:1}}
+@keyframes zh2Rise{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.zh2{font-family:'Jost',Arial,sans-serif;font-weight:300}
+.zh2__shade{position:absolute;inset:0;z-index:1;background:
+  radial-gradient(90% 80% at 0% 40%,rgba(16,15,13,.88) 0%,rgba(16,15,13,.5) 45%,rgba(16,15,13,0) 70%),
+  linear-gradient(0deg,rgba(16,15,13,.6) 0%,rgba(16,15,13,0) 28%)}
+.zh2__in{position:absolute;z-index:3;left:6vw;top:calc(88px + 8vh)}
+.zh2__no{display:flex;align-items:baseline;gap:16px;margin-bottom:5vh;font-size:12px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,231,.7);animation:zh2Rise 1.2s var(--ease) .2s both}
+.zh2__no b{font-family:'Noto Serif Display',serif;font-style:italic;font-weight:300;font-size:22px;letter-spacing:0;text-transform:none;color:var(--sun)}
+.zh2__title{font-family:'Noto Serif Display',serif;font-weight:200;font-size:clamp(66px,8.2vw,138px);line-height:.92;letter-spacing:-.025em;color:var(--iv)}
+.zh2__title span{display:block;white-space:nowrap;animation:zh2Rise 1.4s var(--ease) both}
+.zh2__title .zh2__pre{font-style:italic;font-size:.42em;letter-spacing:0;margin-bottom:.35em;color:var(--m);animation-delay:.35s}
+.zh2__title span:nth-child(2){animation-delay:.5s}
+.zh2__title span:nth-child(3){padding-left:1.6em;animation-delay:.65s}
+.zh2__title em{font-style:italic;font-weight:300}
+.zh2__bot{position:absolute;z-index:3;left:6vw;bottom:9vh;display:flex;align-items:flex-end;gap:64px;animation:zh2Rise 1.2s var(--ease) .95s both}
+.zh2__lead{max-width:260px;font-size:15px;line-height:1.65;color:rgba(230,210,180,.88)}
+.zh2__cta{position:relative;padding-bottom:10px;font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--iv)}
+.zh2__cta::before,.zh2__cta::after{content:'';position:absolute;left:0;bottom:0;height:1px}
+.zh2__cta::before{right:0;background:rgba(247,242,231,.3)}
+.zh2__cta::after{width:36%;background:var(--sun);transition:width .6s var(--ease)}
+.zh2__cta:hover::after{width:100%}
+.zh2__link{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,242,231,.55);padding-bottom:10px;transition:color .3s}
+.zh2__link:hover{color:var(--sun)}
+.zh2__side{position:absolute;z-index:3;right:28px;top:50%;transform:translate(50%,-50%) rotate(90deg);transform-origin:center;white-space:nowrap;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:rgba(247,242,231,.5);animation:zh2Fade 1.4s ease 1.2s both}
+.zh2__piece{position:absolute;z-index:3;right:6vw;bottom:9vh;text-align:right;animation:zh2Fade 1.4s ease 1.3s both}
+.zh2__piece b{display:block;font-family:'Noto Serif Display',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--iv)}
+.zh2__piece span{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(230,210,180,.65)}
+.zh2__piece:hover span{color:var(--sun)}
+@media (min-width:1024px) and (max-width:1279px){.zh2__title{font-size:66px}}
+@keyframes zh2Zoom{from{transform:scale(1)}to{transform:scale(1.04)}}
+@media (max-width:1023px){
+  .zh2{height:100vh;height:100svh;min-height:620px}
+  .zh2__poster,.zh2__video{display:none}
+  .zh2__photo{display:block;position:absolute;inset:0;background-image:url('https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg'),url('https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-mobile.jpg');
+    background-size:cover;background-position:62% 100%;background-repeat:no-repeat;transform-origin:62% 100%;animation:zh2Zoom 14s linear both}
+  .zh2__shade{background:linear-gradient(180deg,rgba(16,15,13,.9) 0%,rgba(16,15,13,.55) 44%,rgba(16,15,13,0) 66%)}
+  .zh2{display:flex;flex-direction:column;padding:100px 24px 0}
+  .zh2__in{position:relative;left:auto;right:auto;top:auto}
+  .zh2__no{margin-bottom:24px;font-size:10px}
+  .zh2__no b{font-size:18px}
+  .zh2__title{font-size:clamp(42px,11.6vw,64px)}
+  .zh2__title span{white-space:normal}
+  .zh2__title span:nth-child(3){padding-left:.9em}
+  .zh2__bot{position:relative;z-index:3;left:auto;bottom:auto;flex-direction:column;align-items:flex-start;gap:20px;margin-top:26px}
+  .zh2__lead{font-size:14px;max-width:280px}
+  .zh2__side,.zh2__piece{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .zh2 *,.zh2 *::before,.zh2 *::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  .zh2__video{display:none}
+}
+</style>
+
+<section class="zh2" aria-labelledby="zh2-title">
+  <div class="zh2__media" aria-hidden="true">
+    <img class="zh2__poster" alt="" src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-poster.jpg'">
+    <video class="zh2__video" autoplay muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source data-src="https://cdn.jsdelivr.net/gh/qaishabdulaziz-beep/Wedding@fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+      <source data-src="https://raw.githubusercontent.com/qaishabdulaziz-beep/Wedding/fc3c283611b5a7b6eb4f32f0cc50456d8fac76fc/zoloto-hakasii/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="zh2__photo"></div>
+  </div>
+  <div class="zh2__shade" aria-hidden="true"></div>
+  <div class="zh2__grain" aria-hidden="true"></div>
+<div class="zh2__in">
+  <p class="zh2__no"><b>№ 01</b>Легенды курганов</p>
+  <h1 class="zh2__title" id="zh2-title">
+    <span class="zh2__pre">Предки верили —</span>
+    <span>в&nbsp;золоте живёт</span>
+    <span><em class="zh2__sun">солнце</em></span>
+  </h1>
+</div>
+<div class="zh2__bot">
+  <p class="zh2__lead">Украшения ручной работы из&nbsp;золота&nbsp;585. Малые серии, мастерская в&nbsp;Хакасии.</p>
+  <a class="zh2__cta" href="/catalog">Смотреть коллекции</a>
+  <a class="zh2__link" href="/legends">Легенда</a>
+</div>
+<span class="zh2__side" aria-hidden="true">Золото 585 — ручная работа — Хакасия</span>
+<a class="zh2__piece" href="/catalog"><b>Перстень «Путь»</b><span>Смотреть изделие&nbsp;→</span></a>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.zh2');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  var v=r.querySelector('video'),d=matchMedia('(min-width:1024px)'),c=matchMedia('(prefers-reduced-motion: reduce)'),loaded=false;
+  v.muted=true;
+  function play(){var x=v.play();if(x&&x.catch)x.catch(function(){});}
+  function sync(){
+    if(d.matches&&!c.matches){
+      if(!loaded){r.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.getAttribute('data-src');});v.load();loaded=true;}
+      play();
+    }else if(!v.paused)v.pause();
+  }
+  v.addEventListener('playing',function(){v.classList.add('is-on');});
+  sync();d.addEventListener('change',sync);c.addEventListener('change',sync);
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){if(!loaded)return;e[0].isIntersecting?play():v.pause();}).observe(r);
+})();
+</script>
