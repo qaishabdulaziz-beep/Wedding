@@ -1,0 +1,113 @@
+<!-- ГЛАВНАЯ · БЛОК «ЛЕГЕНДА» · ВАРИАНТ 2 «РАЗВОРОТ». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.lg2,.lg2 *,.lg2 *::before,.lg2 *::after{box-sizing:border-box;margin:0;padding:0}
+.lg2 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.lg2{--g:#2B2B2B;--m:#E6D2B4;--au:#D4A24F;--st:#6B5341;--iv:#F7F2E7;--ink:#3A332C;--e:cubic-bezier(.22,1,.36,1);
+  position:relative;width:100%;overflow:hidden;isolation:isolate;color:var(--iv);
+  font-family:'Onest',Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.lg2__grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.09;mix-blend-mode:multiply;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lg2 .lg2__kick{display:flex;align-items:center;gap:22px;font-size:12px;font-weight:400;line-height:1;letter-spacing:.42em;text-transform:uppercase;color:var(--au)}
+.lg2__rule{display:block;width:72px;height:1px;background:var(--au);transform-origin:left center}
+.lg2__txt{font-family:'Forum',Georgia,serif;font-weight:400;color:var(--ink);font-kerning:normal}
+.lg2 p.lg2__ln{color:var(--ink)}
+.lg2__acc{position:relative;display:inline-block;white-space:nowrap;color:var(--au)}
+.lg2__acc::after{content:attr(data-t);position:absolute;left:0;top:0;white-space:nowrap;color:transparent;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,236,196,0) 38%,rgba(255,236,196,.95) 50%,rgba(255,236,196,0) 62%) 100% 0/300% 100% no-repeat;
+  -webkit-background-clip:text;background-clip:text}
+.lg2 a.lg2__more{position:relative;display:inline-flex;align-items:center;gap:14px;padding-bottom:13px;font-size:12px;font-weight:500;line-height:1;letter-spacing:.28em;text-transform:uppercase;color:var(--iv)}
+.lg2__more::after{content:'';position:absolute;left:0;bottom:0;width:44px;height:1px;background:var(--au);transition:width .8s var(--e)}
+.lg2__more:hover::after,.lg2__more:focus-visible::after{width:100%}
+.lg2__more i{font-style:normal;letter-spacing:0;transition:transform .6s var(--e)}
+.lg2__more:hover i,.lg2__more:focus-visible i{transform:translateX(4px)}
+.lg2__more:focus-visible{outline:none}
+.lg2__br{display:inline}
+
+/* Анимация: включается скриптом один раз, при reduced-motion текст виден сразу */
+.lg2.is-armed .lg2__kick-t{opacity:0}
+.lg2.is-armed .lg2__rule{transform:scaleX(0)}
+.lg2.is-armed .lg2__ln{opacity:0;filter:blur(6px);transform:translateY(10px)}
+.lg2.is-armed .lg2__acc{color:var(--ink)}
+.lg2.is-armed .lg2__more{opacity:0;transform:translateY(6px)}
+.lg2.is-in .lg2__kick-t{opacity:1;transition:opacity 1s var(--e) .1s}
+.lg2.is-in .lg2__rule{transform:none;transition:transform 1.2s var(--e) .5s}
+.lg2.is-in .lg2__ln{opacity:1;filter:blur(0);transform:none;transition:opacity 1.1s var(--e),filter 1.1s var(--e),transform 1.1s var(--e)}
+.lg2.is-in .lg2__ln:nth-child(1){transition-delay:1s}
+.lg2.is-in .lg2__ln:nth-child(2){transition-delay:1.5s}
+.lg2.is-in .lg2__ln:nth-child(3){transition-delay:2s}
+.lg2.is-in .lg2__ln:nth-child(4){transition-delay:2.5s}
+.lg2.is-in .lg2__ln:nth-child(5){transition-delay:3s}
+.lg2.is-in .lg2__acc{color:var(--au);transition:color 1.6s ease 2.7s}
+.lg2.is-in .lg2__acc::after{animation:lg2Sweep 1.8s var(--e) 3s 1 both}
+.lg2.is-in .lg2__more{opacity:1;transform:none;transition:opacity 1s var(--e) 3.8s,transform 1s var(--e) 3.8s}
+@keyframes lg2Sweep{0%{opacity:0;background-position:100% 0}20%,75%{opacity:1}100%{opacity:0;background-position:0 0}}
+
+.lg2{background:#E6D2B4;color:var(--g);padding:clamp(120px,15vh,150px) 6.2vw}
+.lg2__grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:clamp(48px,6.5vw,120px);align-items:end}
+.lg2 .lg2__kick{color:var(--st)}
+.lg2 p.lg2__quote{margin-top:clamp(40px,6vh,64px);font-family:'Forum',Georgia,serif;font-weight:400;font-size:clamp(56px,6.6vw,110px);line-height:.98;letter-spacing:-.012em;color:#2B2B2B}
+.lg2__quote > span{display:block}
+.lg2__hang{margin-left:-.44em}
+.lg2__light{position:relative;display:inline-block;color:var(--au)}
+.lg2__light::after{content:'светом';position:absolute;left:0;top:0;color:transparent;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,240,205,0) 38%,rgba(255,244,214,.95) 50%,rgba(255,240,205,0) 62%) 100% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text}
+.lg2__txt{font-size:clamp(18px,1.42vw,23px);line-height:1.46;letter-spacing:.006em;padding-bottom:.35em}
+.lg2__txt p+p{margin-top:.5em}
+.lg2 a.lg2__more{margin-top:clamp(36px,5vh,52px);color:var(--g)}
+.lg2.is-armed .lg2__quote > span{opacity:0;filter:blur(6px);transform:translateY(12px)}
+.lg2.is-in .lg2__quote > span{opacity:1;filter:blur(0);transform:none;transition:opacity 1.2s var(--e),filter 1.2s var(--e),transform 1.2s var(--e)}
+.lg2.is-in .lg2__quote > span:nth-child(1){transition-delay:.8s}
+.lg2.is-in .lg2__quote > span:nth-child(2){transition-delay:1.25s}
+.lg2.is-in .lg2__ln:nth-child(1){transition-delay:1.8s}
+.lg2.is-in .lg2__ln:nth-child(2){transition-delay:2.3s}
+.lg2.is-in .lg2__ln:nth-child(3){transition-delay:2.8s}
+.lg2.is-in .lg2__ln:nth-child(4){transition-delay:3.3s}
+.lg2.is-in .lg2__ln:nth-child(5){transition-delay:3.8s}
+.lg2.is-armed .lg2__light{color:#2B2B2B}
+.lg2.is-in .lg2__light{color:var(--au);transition:color 1.8s ease 2.1s}
+.lg2.is-in .lg2__light::after{animation:lg2Sweep 1.8s var(--e) 2.4s 1 both}
+.lg2.is-in .lg2__more{transition-delay:4.5s}
+@media (max-width:1023px){
+  .lg2{padding:80px 24px}
+  .lg2__grid{grid-template-columns:1fr;row-gap:44px}
+  .lg2__kick{font-size:11px;gap:18px}
+  .lg2__rule{width:48px}
+  .lg2 p.lg2__quote{margin-top:32px;font-size:clamp(44px,12vw,72px);line-height:1}
+  .lg2__hang{margin-left:-.3em}
+  .lg2__txt{font-size:18px;line-height:1.52;text-wrap:pretty}
+  .lg2__br{display:none}
+}
+@media (prefers-reduced-motion:reduce){.lg2 *,.lg2 *::before,.lg2 *::after{animation:none!important;transition:none!important}}
+</style>
+
+<section class="lg2" aria-labelledby="lg2-h">
+<div class="lg2__grain" aria-hidden="true"></div>
+<div class="lg2__grid">
+  <div>
+    <p class="lg2__kick" id="lg2-h"><span class="lg2__kick-t">Легенда</span><i class="lg2__rule" aria-hidden="true"></i></p>
+    <p class="lg2__quote" aria-hidden="true"><span><span class="lg2__hang">«</span>не&nbsp;богатством,</span><span>а&nbsp;<span class="lg2__light">светом</span>»</span></p>
+  </div>
+  <div>
+    <div class="lg2__txt">
+      <p class="lg2__ln">Две с&nbsp;половиной тысячи лет назад <br class="lg2__br">в&nbsp;этой степи жили люди скифского мира.</p>
+      <p class="lg2__ln">Золото для&nbsp;них было не&nbsp;богатством, а&nbsp;светом.</p>
+      <p class="lg2__ln">Его носили, чтобы солнце было рядом.</p>
+      <p class="lg2__ln">С&nbsp;ним уходили в&nbsp;последний путь, <br class="lg2__br lg2__br2">чтобы душа нашла дорогу.</p>
+      <p class="lg2__ln">Мы берём золото из&nbsp;той&nbsp;же земли <br class="lg2__br lg2__br2">и&nbsp;возвращаем ему&nbsp;форму.</p>
+    </div>
+    <a class="lg2__more" href="/legends">Читать легенду <i aria-hidden="true">→</i></a>
+  </div>
+</div>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.lg2');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  r.classList.add('is-armed');
+  var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('is-in');io.disconnect();}},{threshold:.2,rootMargin:'0px 0px -12% 0px'});
+  io.observe(r);
+})();
+</script>

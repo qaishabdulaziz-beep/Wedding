@@ -1,0 +1,97 @@
+<!-- ГЛАВНАЯ · БЛОК «ЛЕГЕНДА» · ВАРИАНТ 1 «ЛИНИЯ ГОР». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.lg1,.lg1 *,.lg1 *::before,.lg1 *::after{box-sizing:border-box;margin:0;padding:0}
+.lg1 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.lg1{--g:#2B2B2B;--m:#E6D2B4;--au:#D4A24F;--st:#6B5341;--iv:#F7F2E7;--ink:#EFE6D6;--e:cubic-bezier(.22,1,.36,1);
+  position:relative;width:100%;overflow:hidden;isolation:isolate;color:var(--iv);
+  font-family:'Onest',Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.lg1__grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lg1 .lg1__kick{display:flex;align-items:center;gap:22px;font-size:12px;font-weight:400;line-height:1;letter-spacing:.42em;text-transform:uppercase;color:var(--au)}
+.lg1__rule{display:block;width:72px;height:1px;background:var(--au);transform-origin:left center}
+.lg1__txt{font-family:'Forum',Georgia,serif;font-weight:400;color:var(--ink);font-kerning:normal}
+.lg1 p.lg1__ln{color:var(--ink)}
+.lg1__acc{position:relative;display:inline-block;white-space:nowrap;color:var(--au)}
+.lg1__acc::after{content:attr(data-t);position:absolute;left:0;top:0;white-space:nowrap;color:transparent;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,236,196,0) 38%,rgba(255,236,196,.95) 50%,rgba(255,236,196,0) 62%) 100% 0/300% 100% no-repeat;
+  -webkit-background-clip:text;background-clip:text}
+.lg1 a.lg1__more{position:relative;display:inline-flex;align-items:center;gap:14px;padding-bottom:13px;font-size:12px;font-weight:500;line-height:1;letter-spacing:.28em;text-transform:uppercase;color:var(--iv)}
+.lg1__more::after{content:'';position:absolute;left:0;bottom:0;width:44px;height:1px;background:var(--au);transition:width .8s var(--e)}
+.lg1__more:hover::after,.lg1__more:focus-visible::after{width:100%}
+.lg1__more i{font-style:normal;letter-spacing:0;transition:transform .6s var(--e)}
+.lg1__more:hover i,.lg1__more:focus-visible i{transform:translateX(4px)}
+.lg1__more:focus-visible{outline:none}
+.lg1__br{display:inline}
+
+/* Анимация: включается скриптом один раз, при reduced-motion текст виден сразу */
+.lg1.is-armed .lg1__kick-t{opacity:0}
+.lg1.is-armed .lg1__rule{transform:scaleX(0)}
+.lg1.is-armed .lg1__ln{opacity:0;filter:blur(6px);transform:translateY(10px)}
+.lg1.is-armed .lg1__acc{color:var(--ink)}
+.lg1.is-armed .lg1__more{opacity:0;transform:translateY(6px)}
+.lg1.is-in .lg1__kick-t{opacity:1;transition:opacity 1s var(--e) .1s}
+.lg1.is-in .lg1__rule{transform:none;transition:transform 1.2s var(--e) .5s}
+.lg1.is-in .lg1__ln{opacity:1;filter:blur(0);transform:none;transition:opacity 1.1s var(--e),filter 1.1s var(--e),transform 1.1s var(--e)}
+.lg1.is-in .lg1__ln:nth-child(1){transition-delay:1s}
+.lg1.is-in .lg1__ln:nth-child(2){transition-delay:1.5s}
+.lg1.is-in .lg1__ln:nth-child(3){transition-delay:2s}
+.lg1.is-in .lg1__ln:nth-child(4){transition-delay:2.5s}
+.lg1.is-in .lg1__ln:nth-child(5){transition-delay:3s}
+.lg1.is-in .lg1__acc{color:var(--au);transition:color 1.6s ease 2.7s}
+.lg1.is-in .lg1__acc::after{animation:lg1Sweep 1.8s var(--e) 3s 1 both}
+.lg1.is-in .lg1__more{opacity:1;transform:none;transition:opacity 1s var(--e) 3.8s,transform 1s var(--e) 3.8s}
+@keyframes lg1Sweep{0%{opacity:0;background-position:100% 0}20%,75%{opacity:1}100%{opacity:0;background-position:0 0}}
+
+.lg1{background:#2B2B2B;padding:clamp(120px,14vh,150px) 0 clamp(150px,19vh,190px)}
+.lg1__in{position:relative;z-index:2;margin-left:6.2vw;width:min(66vw,980px)}
+.lg1__txt{margin-top:clamp(40px,5vh,56px);font-size:clamp(21px,1.8vw,29px);line-height:1.36;letter-spacing:.004em}
+.lg1__txt p+p{margin-top:.58em}
+.lg1__more{margin-top:clamp(48px,6vh,64px)}
+.lg1__br{display:none}
+.lg1__ridge{position:absolute;z-index:2;left:0;right:0;bottom:clamp(36px,5vh,60px);width:100%;height:clamp(64px,8.4vw,124px);color:var(--au);overflow:visible}
+.lg1__ridge path{stroke-dasharray:1;stroke-dashoffset:0}
+.lg1.is-armed .lg1__ridge path{stroke-dashoffset:1}
+.lg1.is-in .lg1__ridge path{stroke-dashoffset:0;transition:stroke-dashoffset 3.4s cubic-bezier(.45,0,.2,1) .7s}
+@media (min-width:700px) and (max-width:1279px){.lg1__br{display:inline}}
+@media (max-width:767px){
+  .lg1{padding:80px 0 120px}
+  .lg1__in{margin:0 24px;width:auto}
+  .lg1__kick{font-size:11px;gap:18px}
+  .lg1__rule{width:48px}
+  .lg1__txt{margin-top:36px;font-size:19px;line-height:1.5;text-wrap:pretty}
+  .lg1__txt p+p{margin-top:.7em}
+  .lg1__more{margin-top:44px}
+  .lg1__ridge{bottom:28px;height:56px}
+}
+@media (prefers-reduced-motion:reduce){.lg1 *,.lg1 *::before,.lg1 *::after{animation:none!important;transition:none!important}}
+</style>
+
+<section class="lg1" aria-labelledby="lg1-h">
+<div class="lg1__grain" aria-hidden="true"></div>
+<div class="lg1__in">
+  <p class="lg1__kick" id="lg1-h"><span class="lg1__kick-t">Легенда</span><i class="lg1__rule" aria-hidden="true"></i></p>
+  <div class="lg1__txt">
+      <p class="lg1__ln">Две с&nbsp;половиной тысячи лет назад <br class="lg1__br">в&nbsp;этой степи жили люди скифского мира.</p>
+      <p class="lg1__ln">Золото для&nbsp;них было <span class="lg1__acc" data-t="не&nbsp;богатством, а&nbsp;светом">не&nbsp;богатством, а&nbsp;светом</span>.</p>
+      <p class="lg1__ln">Его носили, чтобы солнце было рядом.</p>
+      <p class="lg1__ln">С&nbsp;ним уходили в&nbsp;последний путь, <br class="lg1__br lg1__br2">чтобы душа нашла дорогу.</p>
+      <p class="lg1__ln">Мы берём золото из&nbsp;той&nbsp;же земли <br class="lg1__br lg1__br2">и&nbsp;возвращаем ему&nbsp;форму.</p>
+  </div>
+  <a class="lg1__more" href="/legends">Читать легенду <i aria-hidden="true">→</i></a>
+</div>
+<svg class="lg1__ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
+  <path pathLength="1" d="M0 114 L120 108 L210 99 L290 104 L410 90 L500 96 L620 78 L700 86 L800 60 L862 72 L948 30 L1004 50 L1052 42 L1128 74 L1204 62 L1300 86 L1380 80 L1440 88" stroke="currentColor" stroke-width="1" stroke-linejoin="round" vector-effect="non-scaling-stroke" opacity=".75"/>
+</svg>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.lg1');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  r.classList.add('is-armed');
+  var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('is-in');io.disconnect();}},{threshold:.2,rootMargin:'0px 0px -12% 0px'});
+  io.observe(r);
+})();
+</script>
