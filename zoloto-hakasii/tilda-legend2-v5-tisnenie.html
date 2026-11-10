@@ -1,0 +1,109 @@
+<!-- ГЛАВНАЯ · БЛОК «ЛЕГЕНДА» · ВАРИАНТ 5 «ТИСНЕНИЕ». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.lr5,.lr5 *,.lr5 *::before,.lr5 *::after{box-sizing:border-box;margin:0;padding:0}
+.lr5 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.lr5{--au:#D4A24F;--iv:#F7F2E7;--ink:#EDE3D2;--seam:#161412;--e:cubic-bezier(.22,1,.36,1);--ridge-h:clamp(110px,13.9vw,300px);
+  position:relative;width:100%;overflow:hidden;isolation:isolate;color:var(--iv);background-color:var(--seam);
+  font-family:'Onest',Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.lr5__grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lr5__in{position:relative;z-index:4}
+.lr5 .lr5__kick{display:flex;align-items:center;gap:22px;font-size:12px;font-weight:400;line-height:1;letter-spacing:.42em;text-transform:uppercase;color:var(--au)}
+.lr5__rule{display:block;width:64px;height:1px;background:var(--au);transform-origin:left center}
+.lr5__txt{font-family:'Forum',Georgia,serif;font-weight:400;font-size:clamp(20px,1.62vw,26px);line-height:1.38;letter-spacing:.004em;font-kerning:normal}
+.lr5 p.lr5__ln{color:var(--ink)}
+.lr5__txt p+p{margin-top:.48em}
+.lr5__acc{position:relative;display:inline-block;white-space:nowrap;color:var(--au)}
+.lr5__acc::after{content:attr(data-t);position:absolute;left:0;top:0;white-space:nowrap;color:transparent;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,236,196,0) 38%,rgba(255,236,196,.95) 50%,rgba(255,236,196,0) 62%) 100% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text}
+.lr5 a.lr5__more{position:relative;display:inline-flex;align-items:center;gap:14px;padding-bottom:13px;font-size:12px;font-weight:500;line-height:1;letter-spacing:.28em;text-transform:uppercase;color:var(--iv)}
+.lr5__more::after{content:'';position:absolute;left:0;bottom:0;width:44px;height:1px;background:var(--au);transition:width .8s var(--e)}
+.lr5__more:hover::after,.lr5__more:focus-visible::after{width:100%}
+.lr5__more i{font-style:normal;letter-spacing:0;transition:transform .6s var(--e)}
+.lr5__more:hover i,.lr5__more:focus-visible i{transform:translateX(4px)}
+.lr5__more:focus-visible{outline:none}
+.lr5__br{display:none}
+.lr5__ridges{position:absolute;left:0;right:0;bottom:0;width:100%;height:var(--ridge-h);z-index:2;overflow:visible;pointer-events:none}
+.lr5__ridges .ln{fill:none;stroke:var(--au);stroke-width:1;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+
+/* Анимация: один раз при появлении; при reduced-motion всё видно сразу */
+.lr5.is-armed .lr5__kick-t{opacity:0}
+.lr5.is-armed .lr5__rule{transform:scaleX(0)}
+.lr5.is-armed .lr5__ln{opacity:0;filter:blur(6px);transform:translateY(10px)}
+.lr5.is-armed .lr5__acc{color:var(--ink)}
+.lr5.is-armed .lr5__more{opacity:0;transform:translateY(6px)}
+.lr5.is-armed .lr5__ridges .ln{stroke-dasharray:1;stroke-dashoffset:1}
+.lr5.is-in .lr5__kick-t{opacity:1;transition:opacity 1s var(--e) .1s}
+.lr5.is-in .lr5__rule{transform:none;transition:transform 1.2s var(--e) .5s}
+.lr5.is-in .lr5__ln{opacity:1;filter:blur(0);transform:none;transition:opacity 1.1s var(--e),filter 1.1s var(--e),transform 1.1s var(--e)}
+.lr5.is-in .lr5__ln:nth-child(1){transition-delay:.9s}
+.lr5.is-in .lr5__ln:nth-child(2){transition-delay:1.4s}
+.lr5.is-in .lr5__ln:nth-child(3){transition-delay:1.9s}
+.lr5.is-in .lr5__ln:nth-child(4){transition-delay:2.4s}
+.lr5.is-in .lr5__ln:nth-child(5){transition-delay:2.9s}
+.lr5.is-in .lr5__acc{color:var(--au);transition:color 1.6s ease 2.6s}
+.lr5.is-in .lr5__acc::after{animation:lr5Sweep 1.8s var(--e) 2.9s 1 both}
+.lr5.is-in .lr5__more{opacity:1;transform:none;transition:opacity 1s var(--e) 3.6s,transform 1s var(--e) 3.6s}
+.lr5.is-in .lr5__ridges .ln{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset 3.2s cubic-bezier(.45,0,.2,1) var(--d,.6s)}
+@keyframes lr5Sweep{0%{opacity:0;background-position:100% 0}20%,75%{opacity:1}100%{opacity:0;background-position:0 0}}
+@media (min-width:700px) and (max-width:1279px){.lr5__br{display:inline}}
+
+.lr5{background:
+  radial-gradient(80% 120% at 20% 0%,rgba(255,236,210,.035) 0%,rgba(255,236,210,0) 60%),
+  radial-gradient(50% 80% at 62% 100%,rgba(214,150,70,.10) 0%,rgba(214,150,70,0) 70%),
+  linear-gradient(180deg,var(--seam) 0%,#1E1B18 60%,#211D19 100%);
+  padding:clamp(84px,10.5vh,112px) 0 calc(var(--ridge-h) * .42 + 56px)}
+.lr5__in{margin-left:max(6.2vw,calc(38vw - 120px));width:min(58vw,820px)}
+.lr5__txt{margin-top:clamp(32px,4.2vh,44px)}
+.lr5__more{margin-top:clamp(36px,4.6vh,48px)}
+/* выдавленная линия: тёмная грань снизу, светлая кромка сверху */
+.lr5__ridges .em-d{fill:none;stroke:rgba(0,0,0,.8);stroke-width:1.6;vector-effect:non-scaling-stroke;transform:translateY(1.2px)}
+.lr5__ridges .em-l{fill:none;stroke:rgba(255,238,214,.16);stroke-width:1;vector-effect:non-scaling-stroke;transform:translateY(-.8px)}
+.lr5__ridges .gold{opacity:.95;--d:1.6s}
+.lr5.is-armed .lr5__ridges .em{opacity:0}
+.lr5.is-in .lr5__ridges .em{opacity:1;transition:opacity 2.4s ease .3s}
+@media (max-width:1023px){.lr5__in{margin-left:6.2vw;width:min(70vw,820px)}}
+@media (max-width:767px){
+  .lr5{--ridge-h:120px}
+  .lr5 .lr5__kick{font-size:11px;gap:18px}
+  .lr5__rule{width:44px}
+  .lr5__txt{font-size:19px;line-height:1.5;text-wrap:pretty}
+  .lr5__txt p+p{margin-top:.62em}
+  .lr5{padding:72px 0 calc(var(--ridge-h) * .5 + 48px)}
+  .lr5__in{margin:0 24px;width:auto}
+  .lr5__txt{margin-top:32px}
+  .lr5__more{margin-top:36px}
+}
+@media (prefers-reduced-motion:reduce){.lr5 *,.lr5 *::before,.lr5 *::after{animation:none!important;transition:none!important}}
+</style>
+
+<section class="lr5" aria-labelledby="lr5-h">
+<div class="lr5__grain" aria-hidden="true"></div>
+<svg class="lr5__ridges" viewBox="0 0 1440 200" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+  <g class="em"><path class="em-d" d="M0 190 L11.2 190 L22.5 190 L33.8 190 L45 190 L56.2 190 L67.5 189.8 L78.8 189.5 L90 189.2 L101.2 188.9 L112.5 188.6 L123.8 188.4 L135 188.1 L146.2 187.9 L157.5 187.7 L168.8 187.6 L180 187.5 L191.2 187.2 L202.5 186.9 L213.8 186.8 L225 186.4 L236.2 186 L247.5 185.8 L258.8 185.7 L270 185.2 L281.2 184.8 L292.5 184 L303.8 183.5 L315 182.7 L326.2 182 L337.5 181.8 L348.8 181 L360 180.5 L371.2 179.8 L382.5 179 L393.8 178.6 L405 177.7 L416.2 176.5 L427.5 174.9 L438.8 173.4 L450 171.3 L461.2 169.5 L472.5 167.2 L483.8 165.3 L495 163.9 L506.2 161.4 L517.5 157.5 L528.8 157 L540 157.3 L551.2 157.4 L562.5 158.2 L573.8 158.4 L585 157.2 L596.2 155.7 L607.5 152.1 L618.8 149.5 L630 148.1 L641.2 142 L652.5 139.9 L663.8 141.5 L675 144.3 L686.2 145.4 L697.5 147 L708.8 148.2 L720 148.4 L731.2 147.3 L742.5 144 L753.8 143.3 L765 140.5 L776.2 137.7 L787.5 135.7 L798.8 130.6 L810 127.2 L821.2 123.3 L832.5 116.2 L843.8 108.7 L855 102.1 L866.2 96.5 L877.5 88.4 L888.8 82.2 L900 85.8 L911.2 94.9 L922.5 103.6 L933.8 108.4 L945 115.4 L956.2 118.1 L967.5 121 L978.8 123.8 L990 127.8 L1001.2 130.6 L1012.5 131 L1023.8 133.9 L1035 134.5 L1046.2 136.8 L1057.5 138 L1068.8 138.7 L1080 138.7 L1091.2 140.6 L1102.5 141.8 L1113.8 141.9 L1125 141.3 L1136.2 138.3 L1147.5 136.3 L1158.8 134.2 L1170 130.4 L1181.2 126.7 L1192.5 119.9 L1203.8 112.5 L1215 111.8 L1226.2 119.1 L1237.5 127.5 L1248.8 132.1 L1260 137.4 L1271.2 144 L1282.5 148.3 L1293.8 152.9 L1305 156.7 L1316.2 159.8 L1327.5 162.3 L1338.8 164.1 L1350 164.7 L1361.2 166.8 L1372.5 167.9 L1383.8 168.4 L1395 168.9 L1406.2 169.3 L1417.5 170.1 L1428.8 170 L1440 170.2"/><path class="em-l" d="M0 190 L11.2 190 L22.5 190 L33.8 190 L45 190 L56.2 190 L67.5 189.8 L78.8 189.5 L90 189.2 L101.2 188.9 L112.5 188.6 L123.8 188.4 L135 188.1 L146.2 187.9 L157.5 187.7 L168.8 187.6 L180 187.5 L191.2 187.2 L202.5 186.9 L213.8 186.8 L225 186.4 L236.2 186 L247.5 185.8 L258.8 185.7 L270 185.2 L281.2 184.8 L292.5 184 L303.8 183.5 L315 182.7 L326.2 182 L337.5 181.8 L348.8 181 L360 180.5 L371.2 179.8 L382.5 179 L393.8 178.6 L405 177.7 L416.2 176.5 L427.5 174.9 L438.8 173.4 L450 171.3 L461.2 169.5 L472.5 167.2 L483.8 165.3 L495 163.9 L506.2 161.4 L517.5 157.5 L528.8 157 L540 157.3 L551.2 157.4 L562.5 158.2 L573.8 158.4 L585 157.2 L596.2 155.7 L607.5 152.1 L618.8 149.5 L630 148.1 L641.2 142 L652.5 139.9 L663.8 141.5 L675 144.3 L686.2 145.4 L697.5 147 L708.8 148.2 L720 148.4 L731.2 147.3 L742.5 144 L753.8 143.3 L765 140.5 L776.2 137.7 L787.5 135.7 L798.8 130.6 L810 127.2 L821.2 123.3 L832.5 116.2 L843.8 108.7 L855 102.1 L866.2 96.5 L877.5 88.4 L888.8 82.2 L900 85.8 L911.2 94.9 L922.5 103.6 L933.8 108.4 L945 115.4 L956.2 118.1 L967.5 121 L978.8 123.8 L990 127.8 L1001.2 130.6 L1012.5 131 L1023.8 133.9 L1035 134.5 L1046.2 136.8 L1057.5 138 L1068.8 138.7 L1080 138.7 L1091.2 140.6 L1102.5 141.8 L1113.8 141.9 L1125 141.3 L1136.2 138.3 L1147.5 136.3 L1158.8 134.2 L1170 130.4 L1181.2 126.7 L1192.5 119.9 L1203.8 112.5 L1215 111.8 L1226.2 119.1 L1237.5 127.5 L1248.8 132.1 L1260 137.4 L1271.2 144 L1282.5 148.3 L1293.8 152.9 L1305 156.7 L1316.2 159.8 L1327.5 162.3 L1338.8 164.1 L1350 164.7 L1361.2 166.8 L1372.5 167.9 L1383.8 168.4 L1395 168.9 L1406.2 169.3 L1417.5 170.1 L1428.8 170 L1440 170.2"/></g>
+  <path class="ln gold" pathLength="1" d="M753.8 143.3 L765 140.5 L776.2 137.7 L787.5 135.7 L798.8 130.6 L810 127.2 L821.2 123.3 L832.5 116.2 L843.8 108.7 L855 102.1 L866.2 96.5 L877.5 88.4 L888.8 82.2 L900 85.8 L911.2 94.9 L922.5 103.6 L933.8 108.4 L945 115.4 L956.2 118.1 L967.5 121 L978.8 123.8 L990 127.8 L1001.2 130.6 L1012.5 131 L1023.8 133.9 L1035 134.5 L1046.2 136.8 L1057.5 138 L1068.8 138.7"/>
+</svg>
+<div class="lr5__in">
+  <p class="lr5__kick" id="lr5-h"><span class="lr5__kick-t">Легенда</span><i class="lr5__rule" aria-hidden="true"></i></p>
+  <div class="lr5__txt">
+    <p class="lr5__ln">Две с&nbsp;половиной тысячи лет назад <br class="lr5__br">в&nbsp;этой степи жили люди скифского мира.</p>
+    <p class="lr5__ln">Золото для&nbsp;них было <span class="lr5__acc" data-t="не&nbsp;богатством, а&nbsp;светом">не&nbsp;богатством, а&nbsp;светом</span>.</p>
+    <p class="lr5__ln">Его носили, чтобы солнце было рядом.</p>
+    <p class="lr5__ln">С&nbsp;ним уходили в&nbsp;последний путь, <br class="lr5__br">чтобы душа нашла дорогу.</p>
+    <p class="lr5__ln">Мы берём золото из&nbsp;той&nbsp;же земли <br class="lr5__br">и&nbsp;возвращаем ему&nbsp;форму.</p>
+  </div>
+  <a class="lr5__more" href="/legends">Читать легенду <i aria-hidden="true">→</i></a>
+</div>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.lr5');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  r.classList.add('is-armed');
+  var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('is-in');io.disconnect();}},{threshold:.25,rootMargin:'0px 0px -10% 0px'});
+  io.observe(r);
+})();
+</script>

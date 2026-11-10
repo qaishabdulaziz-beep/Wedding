@@ -1,0 +1,114 @@
+<!-- ГЛАВНАЯ · БЛОК «ЛЕГЕНДА» · ВАРИАНТ 2 «ГОРИЗОНТ». Вставить целиком в блок T123 «HTML-код», отступы блока 0. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.lr2,.lr2 *,.lr2 *::before,.lr2 *::after{box-sizing:border-box;margin:0;padding:0}
+.lr2 a{color:inherit;text-decoration:none;border:0;box-shadow:none}
+.lr2{--au:#D4A24F;--iv:#F7F2E7;--ink:#EDE3D2;--seam:#161412;--e:cubic-bezier(.22,1,.36,1);--ridge-h:clamp(110px,13.9vw,300px);
+  position:relative;width:100%;overflow:hidden;isolation:isolate;color:var(--iv);background-color:var(--seam);
+  font-family:'Onest',Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.lr2__grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-size:220px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lr2__in{position:relative;z-index:4}
+.lr2 .lr2__kick{display:flex;align-items:center;gap:22px;font-size:12px;font-weight:400;line-height:1;letter-spacing:.42em;text-transform:uppercase;color:var(--au)}
+.lr2__rule{display:block;width:64px;height:1px;background:var(--au);transform-origin:left center}
+.lr2__txt{font-family:'Forum',Georgia,serif;font-weight:400;font-size:clamp(20px,1.62vw,26px);line-height:1.38;letter-spacing:.004em;font-kerning:normal}
+.lr2 p.lr2__ln{color:var(--ink)}
+.lr2__txt p+p{margin-top:.48em}
+.lr2__acc{position:relative;display:inline-block;white-space:nowrap;color:var(--au)}
+.lr2__acc::after{content:attr(data-t);position:absolute;left:0;top:0;white-space:nowrap;color:transparent;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,236,196,0) 38%,rgba(255,236,196,.95) 50%,rgba(255,236,196,0) 62%) 100% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text}
+.lr2 a.lr2__more{position:relative;display:inline-flex;align-items:center;gap:14px;padding-bottom:13px;font-size:12px;font-weight:500;line-height:1;letter-spacing:.28em;text-transform:uppercase;color:var(--iv)}
+.lr2__more::after{content:'';position:absolute;left:0;bottom:0;width:44px;height:1px;background:var(--au);transition:width .8s var(--e)}
+.lr2__more:hover::after,.lr2__more:focus-visible::after{width:100%}
+.lr2__more i{font-style:normal;letter-spacing:0;transition:transform .6s var(--e)}
+.lr2__more:hover i,.lr2__more:focus-visible i{transform:translateX(4px)}
+.lr2__more:focus-visible{outline:none}
+.lr2__br{display:none}
+.lr2__ridges{position:absolute;left:0;right:0;bottom:0;width:100%;height:var(--ridge-h);z-index:2;overflow:visible;pointer-events:none}
+.lr2__ridges .ln{fill:none;stroke:var(--au);stroke-width:1;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+
+/* Анимация: один раз при появлении; при reduced-motion всё видно сразу */
+.lr2.is-armed .lr2__kick-t{opacity:0}
+.lr2.is-armed .lr2__rule{transform:scaleX(0)}
+.lr2.is-armed .lr2__ln{opacity:0;filter:blur(6px);transform:translateY(10px)}
+.lr2.is-armed .lr2__acc{color:var(--ink)}
+.lr2.is-armed .lr2__more{opacity:0;transform:translateY(6px)}
+.lr2.is-armed .lr2__ridges .ln{stroke-dasharray:1;stroke-dashoffset:1}
+.lr2.is-in .lr2__kick-t{opacity:1;transition:opacity 1s var(--e) .1s}
+.lr2.is-in .lr2__rule{transform:none;transition:transform 1.2s var(--e) .5s}
+.lr2.is-in .lr2__ln{opacity:1;filter:blur(0);transform:none;transition:opacity 1.1s var(--e),filter 1.1s var(--e),transform 1.1s var(--e)}
+.lr2.is-in .lr2__ln:nth-child(1){transition-delay:.9s}
+.lr2.is-in .lr2__ln:nth-child(2){transition-delay:1.4s}
+.lr2.is-in .lr2__ln:nth-child(3){transition-delay:1.9s}
+.lr2.is-in .lr2__ln:nth-child(4){transition-delay:2.4s}
+.lr2.is-in .lr2__ln:nth-child(5){transition-delay:2.9s}
+.lr2.is-in .lr2__acc{color:var(--au);transition:color 1.6s ease 2.6s}
+.lr2.is-in .lr2__acc::after{animation:lr2Sweep 1.8s var(--e) 2.9s 1 both}
+.lr2.is-in .lr2__more{opacity:1;transform:none;transition:opacity 1s var(--e) 3.6s,transform 1s var(--e) 3.6s}
+.lr2.is-in .lr2__ridges .ln{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset 3.2s cubic-bezier(.45,0,.2,1) var(--d,.6s)}
+@keyframes lr2Sweep{0%{opacity:0;background-position:100% 0}20%,75%{opacity:1}100%{opacity:0;background-position:0 0}}
+@media (min-width:700px) and (max-width:1279px){.lr2__br{display:inline}}
+
+.lr2{--earth:#100F0D;--earth-h:clamp(64px,8vh,84px);background:
+  radial-gradient(34% 46% at 68% calc(100% - var(--earth-h) - var(--ridge-h) * .55),rgba(226,150,64,.22) 0%,rgba(226,150,64,0) 72%),
+  linear-gradient(180deg,var(--seam) 0%,#1C1916 45%,#2A231D 100%);
+  padding:clamp(84px,10.5vh,112px) 0 calc(var(--earth-h) + var(--ridge-h) * .5 + 24px)}
+.lr2__in{margin-left:6.2vw;width:min(64vw,940px)}
+.lr2__txt{margin-top:clamp(32px,4.2vh,44px)}
+.lr2__ridges{bottom:calc(var(--earth-h) - 1px)}
+.lr2__ridges .earth{fill:var(--earth)}
+.lr2__ridges .ln{opacity:.9}
+.lr2__earth{position:absolute;left:0;right:0;bottom:0;height:var(--earth-h);background:var(--earth);z-index:2}
+.lr2__foot{position:absolute;z-index:4;left:6.2vw;right:6.2vw;bottom:0;height:var(--earth-h);display:flex;align-items:center;justify-content:space-between}
+.lr2__foot .lr2__more{padding-top:13px}
+.lr2__note{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(247,242,231,.38)}
+.lr2.is-armed .lr2__note{opacity:0}
+.lr2.is-in .lr2__note{opacity:1;transition:opacity 1.4s ease 3.8s}
+@media (max-width:767px){
+  .lr2{--ridge-h:120px}
+  .lr2 .lr2__kick{font-size:11px;gap:18px}
+  .lr2__rule{width:44px}
+  .lr2__txt{font-size:19px;line-height:1.5;text-wrap:pretty}
+  .lr2__txt p+p{margin-top:.62em}
+  .lr2{--earth-h:72px;padding:72px 0 calc(var(--earth-h) + var(--ridge-h) * .55 + 16px)}
+  .lr2__in{margin:0 24px;width:auto}
+  .lr2__txt{margin-top:32px}
+  .lr2__foot{left:24px;right:24px}
+  .lr2__note{display:none}
+}
+@media (prefers-reduced-motion:reduce){.lr2 *,.lr2 *::before,.lr2 *::after{animation:none!important;transition:none!important}}
+</style>
+
+<section class="lr2" aria-labelledby="lr2-h">
+<div class="lr2__grain" aria-hidden="true"></div>
+<svg class="lr2__ridges" viewBox="0 0 1440 200" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+  <path class="earth" d="M0 192 L11.2 192 L22.5 192 L33.8 192 L45 192 L56.2 192 L67.5 191.7 L78.8 191.5 L90 191.2 L101.2 190.9 L112.5 190.7 L123.8 190.4 L135 190.3 L146.2 190.1 L157.5 189.9 L168.8 189.6 L180 189.3 L191.2 189.1 L202.5 188.9 L213.8 188.9 L225 188.8 L236.2 188.5 L247.5 188.2 L258.8 188.1 L270 187.9 L281.2 187.7 L292.5 187.2 L303.8 186.9 L315 186.5 L326.2 186.1 L337.5 186.1 L348.8 185.9 L360 185.4 L371.2 184.9 L382.5 184.2 L393.8 183.8 L405 183.2 L416.2 182.2 L427.5 181.4 L438.8 180.4 L450 179.6 L461.2 179 L472.5 178.2 L483.8 177 L495 175.7 L506.2 173.8 L517.5 172.2 L528.8 172.7 L540 172.9 L551.2 173.2 L562.5 173.2 L573.8 172.6 L585 172.1 L596.2 171.5 L607.5 170.9 L618.8 169.8 L630 167.5 L641.2 166.7 L652.5 164.8 L663.8 163.1 L675 160.2 L686.2 157.1 L697.5 154.1 L708.8 149.6 L720 145 L731.2 140 L742.5 141.8 L753.8 143.8 L765 146 L776.2 148.5 L787.5 149.8 L798.8 150.9 L810 152.3 L821.2 150.9 L832.5 150.5 L843.8 149.9 L855 148.5 L866.2 146.1 L877.5 141.6 L888.8 138.8 L900 135 L911.2 130.2 L922.5 124 L933.8 119.6 L945 113.2 L956.2 105.1 L967.5 93.7 L978.8 85.2 L990 92.6 L1001.2 98.9 L1012.5 106.1 L1023.8 113.7 L1035 118.7 L1046.2 123.8 L1057.5 128.6 L1068.8 132.6 L1080 135.1 L1091.2 138.9 L1102.5 141.1 L1113.8 142.1 L1125 143.5 L1136.2 144.5 L1147.5 144.4 L1158.8 144.6 L1170 143.5 L1181.2 141.3 L1192.5 138.3 L1203.8 134.3 L1215 129.9 L1226.2 124.8 L1237.5 118.7 L1248.8 125.9 L1260 134.3 L1271.2 140.4 L1282.5 145.4 L1293.8 148.9 L1305 152 L1316.2 155.5 L1327.5 159 L1338.8 161.4 L1350 163.4 L1361.2 164.6 L1372.5 165.9 L1383.8 167.5 L1395 168.8 L1406.2 169.8 L1417.5 170 L1428.8 170.9 L1440 171 L1440 200 L0 200 Z"/>
+  <path class="ln" pathLength="1" d="M0 192 L11.2 192 L22.5 192 L33.8 192 L45 192 L56.2 192 L67.5 191.7 L78.8 191.5 L90 191.2 L101.2 190.9 L112.5 190.7 L123.8 190.4 L135 190.3 L146.2 190.1 L157.5 189.9 L168.8 189.6 L180 189.3 L191.2 189.1 L202.5 188.9 L213.8 188.9 L225 188.8 L236.2 188.5 L247.5 188.2 L258.8 188.1 L270 187.9 L281.2 187.7 L292.5 187.2 L303.8 186.9 L315 186.5 L326.2 186.1 L337.5 186.1 L348.8 185.9 L360 185.4 L371.2 184.9 L382.5 184.2 L393.8 183.8 L405 183.2 L416.2 182.2 L427.5 181.4 L438.8 180.4 L450 179.6 L461.2 179 L472.5 178.2 L483.8 177 L495 175.7 L506.2 173.8 L517.5 172.2 L528.8 172.7 L540 172.9 L551.2 173.2 L562.5 173.2 L573.8 172.6 L585 172.1 L596.2 171.5 L607.5 170.9 L618.8 169.8 L630 167.5 L641.2 166.7 L652.5 164.8 L663.8 163.1 L675 160.2 L686.2 157.1 L697.5 154.1 L708.8 149.6 L720 145 L731.2 140 L742.5 141.8 L753.8 143.8 L765 146 L776.2 148.5 L787.5 149.8 L798.8 150.9 L810 152.3 L821.2 150.9 L832.5 150.5 L843.8 149.9 L855 148.5 L866.2 146.1 L877.5 141.6 L888.8 138.8 L900 135 L911.2 130.2 L922.5 124 L933.8 119.6 L945 113.2 L956.2 105.1 L967.5 93.7 L978.8 85.2 L990 92.6 L1001.2 98.9 L1012.5 106.1 L1023.8 113.7 L1035 118.7 L1046.2 123.8 L1057.5 128.6 L1068.8 132.6 L1080 135.1 L1091.2 138.9 L1102.5 141.1 L1113.8 142.1 L1125 143.5 L1136.2 144.5 L1147.5 144.4 L1158.8 144.6 L1170 143.5 L1181.2 141.3 L1192.5 138.3 L1203.8 134.3 L1215 129.9 L1226.2 124.8 L1237.5 118.7 L1248.8 125.9 L1260 134.3 L1271.2 140.4 L1282.5 145.4 L1293.8 148.9 L1305 152 L1316.2 155.5 L1327.5 159 L1338.8 161.4 L1350 163.4 L1361.2 164.6 L1372.5 165.9 L1383.8 167.5 L1395 168.8 L1406.2 169.8 L1417.5 170 L1428.8 170.9 L1440 171"/>
+</svg>
+<div class="lr2__earth" aria-hidden="true"></div>
+<div class="lr2__in">
+  <p class="lr2__kick" id="lr2-h"><span class="lr2__kick-t">Легенда</span><i class="lr2__rule" aria-hidden="true"></i></p>
+  <div class="lr2__txt">
+    <p class="lr2__ln">Две с&nbsp;половиной тысячи лет назад <br class="lr2__br">в&nbsp;этой степи жили люди скифского мира.</p>
+    <p class="lr2__ln">Золото для&nbsp;них было <span class="lr2__acc" data-t="не&nbsp;богатством, а&nbsp;светом">не&nbsp;богатством, а&nbsp;светом</span>.</p>
+    <p class="lr2__ln">Его носили, чтобы солнце было рядом.</p>
+    <p class="lr2__ln">С&nbsp;ним уходили в&nbsp;последний путь, <br class="lr2__br">чтобы душа нашла дорогу.</p>
+    <p class="lr2__ln">Мы берём золото из&nbsp;той&nbsp;же земли <br class="lr2__br">и&nbsp;возвращаем ему&nbsp;форму.</p>
+  </div>
+</div>
+<div class="lr2__foot">
+  <a class="lr2__more" href="/legends">Читать легенду <i aria-hidden="true">→</i></a>
+  <span class="lr2__note" aria-hidden="true">Хакасия · вечер</span>
+</div>
+</section>
+
+<script>
+(function(){
+  var r=document.querySelector('.lr2');if(!r||r.dataset.ready)return;r.dataset.ready='1';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  r.classList.add('is-armed');
+  var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('is-in');io.disconnect();}},{threshold:.25,rootMargin:'0px 0px -10% 0px'});
+  io.observe(r);
+})();
+</script>
